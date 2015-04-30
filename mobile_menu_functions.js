@@ -68,11 +68,6 @@ mobile_menu_functions.menu_additions = function(req, res){
     food_item_id = food_item_id[food_item_id.length - 1];
 
     var query = '';
-    //query += "SELECT at.id, at.name, at.description, at.selection_type, at.selections_amount ";
-    //query += "FROM addition_types at ";
-    //query += "LEFT JOIN food_items_additions fia ON at.id = fia.addition_type_id ";
-    //query += "WHERE fia.food_item_id='"+food_item_id+"';";
-
     query += "SELECT at.id AS addition_type_id, " +
                     "at.name AS addition_type_name, " +
                     "at.description AS addition_type_description, " +
@@ -81,12 +76,14 @@ mobile_menu_functions.menu_additions = function(req, res){
                     "ai.name AS addition_item_name, " +
                     "ai.description AS addition_item_description, " +
                     "ai.addition_type_id, " +
-                    "ai.image, " +
-                    "ai.price ";
+                    "ai.price, " +
+                    "i.image_name AS image ";
     query += "FROM addition_types at ";
     query += "LEFT JOIN food_items_additions fia ON at.id = fia.addition_type_id ";
     query += "LEFT JOIN addition_items ai ON at.id=ai.addition_type_id ";
-    query += "WHERE fia.food_item_id='"+food_item_id+"';";
+    query += "LEFT JOIN addition_items_images aii ON ai.id = aii.addition_item_id ";
+    query += "LEFT JOIN ai_images i ON aii.image_id = i.id ";
+    query += "WHERE fia.food_item_id='"+food_item_id+"' AND i.active='1';";
 
     //query += "LEFT JOIN fi_images i ON fii.image_id = i.id ";
     //query += "WHERE fi.food_type_id='"+food_type_id+"' AND i.active='1';";
