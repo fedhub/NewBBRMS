@@ -56,7 +56,7 @@ mobile_authentication_functions.log_in = function(req, res){
                         query = "SELECT * FROM `private_customers` WHERE phone_number='"+phone_number+"';";
                         conn.query(query, function(err, result){
                             if(!err){
-                                if(result[0].first_name == first_name) res.send('success');
+                                if(result[0].first_name == first_name) res.send(result[0]);
                                 else res.send('name-not-match');
                             }
                             else console.log("There was an error with MySQL Query: " + query + ' ' + err);
