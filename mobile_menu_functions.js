@@ -28,7 +28,7 @@ mobile_menu_functions.menu_types = function(req, res){
         else{console.log(err);}
     });
 
-}
+};
 
 // Fetch the menu items
 mobile_menu_functions.menu_items = function(req, res){
@@ -104,7 +104,7 @@ mobile_menu_functions.menu_additions = function(req, res){
         else{console.log(err);}
     });
 
-}
+};
 
 module.exports = mobile_menu_functions;
 
