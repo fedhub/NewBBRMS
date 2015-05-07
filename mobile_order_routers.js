@@ -10,4 +10,20 @@ mobile_order_routers.post('/last-orders&:phone_number', function(req, res){
     mobile_order_functions.last_orders(req, res);
 });
 
+mobile_order_routers.post('/new-library', function(req, res){
+    mobile_order_functions.new_library(req, res);
+});
+
+mobile_order_routers.post('/get-libraries&:phone_number', function(req, res){
+    mobile_order_functions.get_libraries(req, res);
+});
+
+mobile_order_routers.post('/library-items&:library_id', function(req, res){
+    mobile_order_functions.library_items(req, res);
+});
+
+mobile_order_routers.post('/add-library-item', function(req, res){
+    mobile_order_functions.add_library_item(req, res);
+});
+
 module.exports = mobile_order_routers;

@@ -59,6 +59,149 @@ mobile_order_functions.last_orders = function(req, res){
 
 };
 
+mobile_order_functions.get_libraries = function(req, res){
+
+    var phone_number = req.params.phone_number.split('=')[1];
+    var query = "SELECT COUNT(id) AS val FROM `order_libraries` WHERE phone_number='"+phone_number+"';";
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    if(result[0].val > 0){
+                        query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+phone_number+'"';
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                res.send(result);
+                            }
+                            else{
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send(false);
+                            }
+                        });
+                    }
+                    else res.send('empty');
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+};
+
+mobile_order_functions.library_items = function(req, res){
+
+    var library_id = req.params.library_id.split('=')[1];
+    var query = "SELECT COUNT(id) AS val FROM `library_items` WHERE `library_id`='"+library_id+"';";
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    if(result[0].val > 0){
+                        query = 'SELECT * FROM `library_items` WHERE `library_id`="'+library_id+'"';
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                res.send(result);
+                            }
+                            else{
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send(false);
+                            }
+                        });
+                    }
+                    else res.send('empty');
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+};
+
+mobile_order_functions.new_library = function(req, res){
+
+    var lib_details = JSON.parse(req.body.data);
+    var query = 'INSERT INTO `order_libraries`(' +
+        '`phone_number`, ' +
+        '`lib_name`, ' +
+        '`lib_description`, ' +
+        '`creation_date`, ' +
+        '`creation_time`) ' +
+        'VALUES (' +
+        '"'+lib_details.phone_number+'",' +
+        '"'+lib_details.lib_name+'",' +
+        '"'+lib_details.lib_description+'",' +
+        '"'+lib_details.creation_date+'",' +
+        '"'+lib_details.creation_time+'");';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+lib_details.phone_number+'";';
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            res.send(result);
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send(false);
+                        }
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+
+};
+
+// API -- sent from client (menu.js)
+//var library_item_info = {
+//    library_id: library.getLibraryID(),
+//    creation_date: date.getFullDate(),
+//    creation_time: date.getDefaultTime(),
+//    phone_number: customer.getPhoneNumber(),
+//    item_json: JSON.stringify(cart.getMyCart())
+//};
+mobile_order_functions.add_library_item = function(req, res){
+
+    var library_item = JSON.parse(req.body.data);
+    var query = 'INSERT INTO `library_items`(`library_id`, `creation_date`, `creation_time`, `phone_number`, `item_json`) ' +
+        'VALUES ("'+library_item.library_id+'","'+library_item.creation_date+'","'+library_item.creation_time+'","'+library_item.phone_number+'","'+mysql_real_escape_string(library_item.item_json)+'");';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.send(true);
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+
+};
+
 function mysql_real_escape_string (str) {
     return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
         switch (char) {
