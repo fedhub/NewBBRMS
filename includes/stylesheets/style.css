@@ -1,44 +1,249 @@
+/* line 1, ../sass/_authentication.scss */
+.authentication-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+/* line 5, ../sass/_authentication.scss */
+.authentication-wrapper .container {
+  width: 500px;
+  height: 300px;
+  box-shadow: 0 0 20px 0 #000;
+  background-color: #D8DDCD;
+  margin: 50px auto;
+}
+/* line 11, ../sass/_authentication.scss */
+.authentication-wrapper .logo-cont {
+  width: 230px;
+  height: 70px;
+  background: url("../images/logo.png") no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+/* line 17, ../sass/_authentication.scss */
+.authentication-wrapper .login-form {
+  width: 300px;
+  height: 130px;
+  margin: 20px auto;
+}
+/* line 21, ../sass/_authentication.scss */
+.authentication-wrapper .title {
+  width: 110px;
+  height: 30px;
+}
+/* line 23, ../sass/_authentication.scss */
+.authentication-wrapper .title p {
+  font-size: 25px;
+  color: #333;
+  font-weight: bold;
+}
+/* line 29, ../sass/_authentication.scss */
+.authentication-wrapper form {
+  width: 300px;
+  height: 100px;
+}
+/* line 32, ../sass/_authentication.scss */
+.authentication-wrapper .set {
+  width: 100%;
+  height: 40%;
+  margin-top: 5px;
+}
+/* line 35, ../sass/_authentication.scss */
+.authentication-wrapper .set section {
+  float: right;
+}
+/* line 39, ../sass/_authentication.scss */
+.authentication-wrapper .set:nth-of-type(1) {
+  margin-top: 10px;
+}
+/* line 42, ../sass/_authentication.scss */
+.authentication-wrapper .label {
+  width: 35%;
+  height: 100%;
+  display: table;
+}
+/* line 45, ../sass/_authentication.scss */
+.authentication-wrapper .label p {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #333;
+}
+/* line 52, ../sass/_authentication.scss */
+.authentication-wrapper .input-cont {
+  width: 65%;
+  height: 100%;
+  display: table;
+}
+/* line 55, ../sass/_authentication.scss */
+.authentication-wrapper .input-cont input {
+  width: 97%;
+  height: 80%;
+  display: table-cell;
+  vertical-align: middle;
+  margin-top: 4px;
+  font-size: 18px;
+  color: #333;
+}
+/* line 62, ../sass/_authentication.scss */
+.authentication-wrapper .input-cont input:hover {
+  border: 1px solid #002E02;
+}
+/* line 67, ../sass/_authentication.scss */
+.authentication-wrapper .approve-button {
+  width: 110px;
+  height: 35px;
+  background-color: rgba(0, 46, 2, 0.9);
+  border: 1px solid grey;
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 5px;
+  cursor: pointer;
+  display: table;
+  margin: 0 auto;
+}
+/* line 76, ../sass/_authentication.scss */
+.authentication-wrapper .approve-button p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+  color: #D8DDCD;
+}
+/* line 82, ../sass/_authentication.scss */
+.authentication-wrapper .approve-button:hover {
+  background-color: #002E02;
+}
+
 /* line 1, ../sass/_structure.scss */
 html, body {
   width: 100%;
   height: 100%;
   font-family: Arial;
   direction: rtl;
+  background-color: #D8DDCD;
 }
 
-/* line 8, ../sass/_structure.scss */
+/* line 9, ../sass/_structure.scss */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* line 13, ../sass/_structure.scss */
+/* line 14, ../sass/_structure.scss */
 .wrapper {
   width: 60%;
   height: 100%;
   min-height: 100%;
   overflow: hidden;
   margin: 0 auto;
-  background-color: yellow;
+  box-shadow: 0px 0px 50px 0px #333;
 }
 
 /* line 1, ../sass/_header.scss */
 header {
   width: 100%;
   height: 20%;
-  background-color: green;
 }
-/* line 4, ../sass/_header.scss */
+/* line 3, ../sass/_header.scss */
 header .top-strip {
   width: 100%;
   height: 25%;
+  background-color: #7B7C79;
+}
+/* line 7, ../sass/_header.scss */
+header .authentication-cont {
+  width: 200px;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+/* line 12, ../sass/_header.scss */
+header .user-icon {
+  width: 50px;
+  height: 100%;
+  display: table;
+  float: left;
+  cursor: pointer;
+}
+/* line 17, ../sass/_header.scss */
+header .user-icon p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 35px;
+  color: rgba(51, 51, 51, 0.8);
+  padding-top: 5px;
+}
+/* line 22, ../sass/_header.scss */
+header .user-icon p:hover {
+  color: #002E02;
+}
+/* line 27, ../sass/_header.scss */
+header .options-cont {
+  display: none;
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  top: 48px;
+  right: -5px;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0px 0px 5px 0px #FFF;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: grey;
+}
+/* line 36, ../sass/_header.scss */
+header .logged-cont {
+  width: 150px;
+  height: 100%;
+  background-color: #006600;
+}
+/* line 40, ../sass/_header.scss */
+header .logo-cont {
+  width: 100%;
+  height: 55%;
+}
+/* line 43, ../sass/_header.scss */
+header .nav-strip {
+  width: 100%;
+  height: 20%;
   background-color: brown;
+}
+/* line 47, ../sass/_header.scss */
+header .logo {
+  width: 365px;
+  height: 100%;
+  background: url("../images/logo.png") no-repeat;
+  background-position: center center;
+  background-size: contain;
 }
 
 /* line 1, ../sass/_body.scss */
 .main {
   width: 100%;
   height: 65%;
+}
+/* line 3, ../sass/_body.scss */
+.main .side-nav {
+  width: 20%;
+  height: 100%;
+  float: right;
+  background-color: grey;
+}
+/* line 8, ../sass/_body.scss */
+.main .content {
+  width: 80%;
+  height: 100%;
+  float: right;
+}
+/* line 12, ../sass/_body.scss */
+.main .breadcrumbs-strip {
+  width: 100%;
+  height: 5%;
+  background-color: green;
 }
 
 /* line 1, ../sass/_footer.scss */

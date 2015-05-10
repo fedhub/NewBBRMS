@@ -1,0 +1,86 @@
+.authentication-wrapper{
+  @include size(100%, 100%);
+  background-color: rgba(#000, 0.3);
+  overflow: hidden;
+  .container{
+    @include size(500px, 300px);
+    box-shadow: 0 0 20px 0 #000;
+    background-color: $bg-color;
+    margin: 50px auto;
+  }
+  .logo-cont{
+    @include size(230px, 70px);
+    background: url('../images/logo.png') no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+  .login-form{
+    @include size(300px, 130px);
+    margin: 20px auto;
+  }
+  .title{
+    @include size(110px, 30px);
+    p{
+      font-size: 25px;
+      color: #333;
+      font-weight: bold;
+    }
+  }
+  form{
+    @include size(300px, 100px);
+  }
+  .set{
+    @include size(100%, 40%);
+    margin-top: 5px;
+    section{
+      float: right;
+    }
+  }
+  .set:nth-of-type(1){
+    margin-top: 10px;
+  }
+  .label{
+    @include size(35%, 100%);
+    display: table;
+    p{
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 18px;
+      color: #333;
+    }
+  }
+  .input-cont{
+    @include size(65%, 100%);
+    display: table;
+    input{
+      @include size(97%, 80%);
+      display: table-cell;
+      vertical-align: middle;
+      margin-top: 4px;
+      font-size: 18px;
+      color: #333;
+      &:hover{
+        border: 1px solid $txt-color;
+      }
+    }
+  }
+  .approve-button{
+    @include size(110px, 35px);
+    background-color: rgba($txt-color, 0.9);
+    border: 1px solid grey;
+    box-shadow: 0 0 10px 0 #000;
+    border-radius: 5px;
+    cursor: pointer;
+    display: table;
+    margin: 0 auto;
+    p{
+      @include cell-settings();
+      font-size: 18px;
+      font-weight: bold;
+      color: $bg-color;
+    }
+    &:hover{
+      background-color: $txt-color;
+    }
+  }
+}

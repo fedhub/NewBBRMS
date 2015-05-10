@@ -3,6 +3,7 @@ html, body{
   height: 100%;
   font-family: Arial;
   direction: rtl;
+  background-color: $bg-color;
 }
 
 *{
@@ -16,5 +17,5 @@ html, body{
   min-height: 100%;
   overflow: hidden;
   margin: 0 auto;
-  background-color: yellow;
+  box-shadow: 0px 0px 50px 0px #333;
 }

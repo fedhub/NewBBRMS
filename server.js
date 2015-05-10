@@ -4,6 +4,7 @@ var server     = require('http').createServer(app);
 //var io         = require('socket.io').listen(server);
 var path       = require('path');
 var bodyParser = require('body-parser');
+var settings = require('./settings');
 
 // socket.io
 /*io.sockets.on('connection', function(socket){
@@ -32,12 +33,21 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(require('./controller/routers'));
+app.all('*', function(req,res, next){
+    if(!settings.get_is_connected()){
+        res.render('authentication');
+    }
+    else{
+        next();
+    }
+});
+
+app.use(require('./routers'));
 app.use(require('./mysql'));
 app.use(require('./mobile_authentication_routers'));
 app.use(require('./mobile_menu_routers'));
 app.use(require('./mobile_order_routers'));
-app.use(require('./model/functions'));
+app.use(require('./functions'));
 app.use(require('./mobile_authentication_functions'));
 app.use(require('./mobile_menu_functions'));
 app.use(require('./mobile_order_functions'));

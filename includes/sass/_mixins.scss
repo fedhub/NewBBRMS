@@ -2,3 +2,17 @@
   width: $width;
   height: $height;
 }
+
+@mixin cell-settings(){
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@mixin position($type, $top, $right, $bottom, $left){
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

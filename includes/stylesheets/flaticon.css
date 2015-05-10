@@ -1,0 +1,147 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+    font-style: normal;
+}
+.flaticon-add89:before {
+    content: "\e000";
+    font-size: 30px;
+ }
+.flaticon-box37:before {
+    content: "\e001";
+    font-size: 60px;
+    color: #333;
+}
+.flaticon-building120:before {
+	content: "\e002";
+     font-size: 29px;
+     line-height: 130%;
+}
+.flaticon-cancel4:before {
+    content: "\e003";
+    color: red;
+}
+.flaticon-close32:before {
+    content: "\e004";
+    font-size: 30px;
+}
+.flaticon-credit31:before {
+    content: "\e005";
+    font-size: 60px;
+    color: #333;
+}
+.flaticon-currency19:before {
+    content: "\e006";
+    font-size: 60px;
+    color: #333;
+}
+.flaticon-cutlery6:before {
+    content: "\e007";
+    font-size: 42px;
+}
+.flaticon-delete96:before {
+	content: "\e008";
+}
+.flaticon-edit45:before {
+    content: "\e009";
+    color: #333;
+}
+.flaticon-file7:before {
+    content: "\e00a";
+    font-size: 153px;
+    vertical-align: top;
+    color: #333;
+    opacity: 0.6;
+}
+.flaticon-folder15:before {
+    content: "\e00b";
+    font-size: 142px;
+    vertical-align: middle;
+    color: #333;
+    opacity: 0.6;
+}
+.flaticon-free6:before {
+    content: "\e00c";
+    font-size: 60px;
+    color: #333;
+}
+.flaticon-good1:before {
+    content: "\e00d";
+    color: green;
+}
+.flaticon-hourglass:before {
+	content: "\e00e";
+    font-size: 29px;
+    line-height: 138%;
+}
+.flaticon-info28:before {
+    content: "\e00f";
+}
+.flaticon-list19:before {
+	content: "\e010";
+    font-size: 29px;
+    line-height: 130%;
+}
+.flaticon-list40:before {
+    content: "\e011";
+}
+.flaticon-login:before {
+    content: "\e012";
+    font-size: 30px;
+}
+.flaticon-logistics2:before {
+    content: "\e013";
+    font-size: 42px;
+}
+.flaticon-medical55:before {
+    content: "\e014";
+}
+.flaticon-menu45:before {
+	content: "\e015";
+    font-size: 40px;
+    line-height: 82%;
+    font-weight: bold;
+    color: #002E02;
+}
+.flaticon-money132:before {
+    content: "\e016";
+    font-size: 42px;
+}
+.flaticon-network60:before {
+    content: "\e017";
+    font-size: 20px;
+}
+.flaticon-plus25:before {
+    content: "\e018";
+}
+.flaticon-shopping100:before {
+    content: "\e019";
+    color: #333;
+}
+.flaticon-shoppingcart14:before {
+	content: "\e01a";
+    font-size: 31px;
+    line-height: 130%;
+}
+.flaticon-symbol21:before {
+    content: "\e01b";
+    font-size: 30px;
+}
+.flaticon-two200:before {
+    content: "\e01c";
+    font-size: 60px;
+    color: #333;
+}
+.flaticon-user7:before {
+    content: "\e01d";
+}
