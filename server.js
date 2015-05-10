@@ -32,12 +32,12 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(require('./routers'));
+app.use(require('./controller/routers'));
 app.use(require('./mysql'));
 app.use(require('./mobile_authentication_routers'));
 app.use(require('./mobile_menu_routers'));
 app.use(require('./mobile_order_routers'));
-app.use(require('./functions'));
+app.use(require('./model/functions'));
 app.use(require('./mobile_authentication_functions'));
 app.use(require('./mobile_menu_functions'));
 app.use(require('./mobile_order_functions'));

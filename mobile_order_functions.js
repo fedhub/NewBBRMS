@@ -62,14 +62,14 @@ mobile_order_functions.last_orders = function(req, res){
 mobile_order_functions.get_libraries = function(req, res){
 
     var phone_number = req.params.phone_number.split('=')[1];
-    var query = "SELECT COUNT(id) AS val FROM `order_libraries` WHERE phone_number='"+phone_number+"';";
+    var query = 'SELECT COUNT(id) AS val FROM `order_libraries` WHERE `phone_number`="'+phone_number+'" AND `lock`="0";';
 
     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
                     if(result[0].val > 0){
-                        query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+phone_number+'"';
+                        query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+phone_number+'" AND `lock`="0";';
                         conn.query(query, function(err, result){
                             if(!err){
                                 res.send(result);
@@ -147,7 +147,7 @@ mobile_order_functions.new_library = function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
-                    query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+lib_details.phone_number+'";';
+                    query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+lib_details.phone_number+'" AND `lock`="0";';
                     conn.query(query, function(err, result){
                         if(!err){
                             res.send(result);
@@ -201,6 +201,173 @@ mobile_order_functions.add_library_item = function(req, res){
     });
 
 };
+
+mobile_order_functions.update_library = function(req, res){
+
+    var lib_details = JSON.parse(req.body.data);
+    var query = 'UPDATE `order_libraries` SET `lib_name`="'+lib_details.lib_name+'",`lib_description`="'+lib_details.lib_description+'" WHERE `id`="'+lib_details.lib_id+'";';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+lib_details.phone_number+'" AND `lock`="0";';
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            res.send(result);
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send(false);
+                        }
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+
+};
+
+mobile_order_functions.delete_from_library = function(req, res){
+
+    var info = JSON.parse(req.body.data);
+    var query = 'DELETE FROM `library_items` WHERE `id`="'+info.id+'";';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    query = "SELECT COUNT(id) AS val FROM `library_items` WHERE `library_id`='"+info.library_id+"';";
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            if(result[0].val > 0){
+                                query = 'SELECT * FROM `library_items` WHERE `library_id`="'+info.library_id+'"';
+                                conn.query(query, function(err, result){
+                                    if(!err){
+                                        res.send(result);
+                                    }
+                                    else{
+                                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                        res.send(false);
+                                    }
+                                });
+                            }
+                            else res.send('empty');
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send(false);
+                        }
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+
+};
+
+mobile_order_functions.delete_library = function(req, res){
+
+    //info : --> lib_id, phone_number
+    var info = JSON.parse(req.body.data);
+    var query = "SELECT COUNT(id) AS val FROM `library_items` WHERE `library_id`='"+info.lib_id+"';";
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    // if there are items in the library
+                    if(result[0].val > 0){
+                        query = 'DELETE FROM `library_items` WHERE `library_id`="'+info.lib_id+'";';
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                query = 'UPDATE `order_libraries` SET `lock`="1" WHERE `id`="'+info.lib_id+'";';
+                                conn.query(query, function(err, result){
+                                    if(!err){
+                                        get_unlocked_libraries(res, conn, info.phone_number);
+                                    }
+                                    else{
+                                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                        res.send(false);
+                                    }
+                                });
+                            }
+                            else{
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send(false);
+                            }
+                        });
+                    }
+                    // if there are no items in the library
+                    else{
+                        query = 'UPDATE `order_libraries` SET `lock`="1" WHERE `id`="'+info.lib_id+'";';
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                get_unlocked_libraries(res, conn, info.phone_number);
+                            }
+                            else{
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send(false);
+                            }
+                        });
+                    }
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+
+};
+
+// get the unlocked libraries for that user
+function get_unlocked_libraries(res, conn, lib_phone_number){
+
+    var query = 'SELECT COUNT(id) AS val FROM `order_libraries` WHERE `phone_number`="'+lib_phone_number+'" AND `lock`="0";';
+    conn.query(query, function(err, result){
+        if(!err){
+            // after updating the deletion library lock to 1, if there are any unlocked libraries left for that user
+            if(result[0].val > 0){
+                query = 'SELECT * FROM `order_libraries` WHERE `phone_number`="'+lib_phone_number+'" AND `lock`="0";';
+                conn.query(query, function(err, result){
+                    if(!err){
+                        res.send(result);
+                    }
+                    else{
+                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                        res.send(false);
+                    }
+                });
+            }
+            // after updating the deletion library lock to 1, if there aren't any unlocked libraries left for that user return 'empty'
+            else{
+                res.send('empty');
+            }
+        }
+        else{
+            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+            res.send(false);
+        }
+    });
+}
+
+
 
 function mysql_real_escape_string (str) {
     return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {

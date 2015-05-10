@@ -26,4 +26,16 @@ mobile_order_routers.post('/add-library-item', function(req, res){
     mobile_order_functions.add_library_item(req, res);
 });
 
+mobile_order_routers.post('/update-library', function(req, res){
+    mobile_order_functions.update_library(req, res);
+});
+
+mobile_order_routers.post('/delete-from-library', function(req, res){
+    mobile_order_functions.delete_from_library(req, res);
+});
+
+mobile_order_routers.post('/delete-library', function(req, res){
+    mobile_order_functions.delete_library(req, res);
+});
+
 module.exports = mobile_order_routers;

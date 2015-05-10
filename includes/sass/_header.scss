@@ -1,0 +1,8 @@
+header{
+  @include size(100%, 20%);
+  background-color: green;
+  .top-strip{
+    @include size(100%, 25%);
+    background-color: brown;
+  }
+}
