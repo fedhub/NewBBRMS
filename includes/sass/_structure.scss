@@ -25,3 +25,24 @@ hr {
   @include size(80%, 1px);
   margin: 0 auto;
 }
+
+.approve-button{
+  float: right;
+  @include size(110px, 35px);
+  background-color: rgba($txt-color, 0.9);
+  border: 1px solid grey;
+  box-shadow: 0 0 10px 0 #000;
+  border-radius: 5px;
+  cursor: pointer;
+  display: table;
+  margin-right: 20%;
+  p{
+    @include cell-settings();
+    font-size: 18px;
+    font-weight: bold;
+    color: $bg-color;
+  }
+  &:hover{
+    background-color: $txt-color;
+  }
+}

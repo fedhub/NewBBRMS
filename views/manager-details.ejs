@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Best Biss | Manager Details</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/flaticon.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="js/input-checks.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <section class="top-strip">
+            <section class="authentication-cont">
+                <section class="user-icon" id="user-icon"><p class="flaticon-user7"></p></section>
+                <section class="options-cont" id="options-cont">
+                    <section id="log-out"><p class="flaticon-symbol21"></p><p>התנתק</p></section>
+                    <hr class="hr">
+                    <section id="update-manager-details"><p class="flaticon-profile31"></p><p>עדכן פרטים</p></section>
+                    <hr class="hr">
+                    <section id="switch-user"><p class="flaticon-users38"></p><p>החלף משתמש</p></section>
+                </section>
+                <section class="logged-cont"><p><%= username %></p></section>
+            </section>
+        </section>
+        <section class="logo-cont">
+            <section class="logo"></section>
+        </section>
+        <section class="nav-strip"></section>
+    </header>
+    <section class="main">
+        <section class="side-nav"></section>
+        <section class="content">
+            <section class="breadcrumbs-strip">
+                <% for(var i = 0; i < breadcrumbs.length; i++){ %>
+                    <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
+                <% } %>
+            </section>
+            <section class="manager-details-cont">
+                <form class="manager-details-form">
+                    <% for(var i = 0; i < form_items.length; i++) {%>
+                        <section class="form-item" id="<%= form_items[i].id %>">
+                            <section class="required"><p><%= form_items[i].required %></p></section>
+                            <section class="detail-label"><p><%= form_items[i].label %></p></section>
+                            <section class="detail-input"><input type="<%= form_items[i].type %>" maxlength="<%= form_items[i].max_length %>" value="<%= form_items[i].value %>"></section>
+                            <section class="validation"><p></p></section>
+                        </section>
+                    <% } %>
+                    <section class="approve-button" id="approve-manager-update"><p>עדכן</p></section>
+                    <section class="error" id="manager-update-error"><p></p></section>
+                </form>
+            </section>
+        </section>
+    </section>
+    <footer></footer>
+</div>
+</body>
+</html>

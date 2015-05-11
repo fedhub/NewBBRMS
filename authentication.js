@@ -68,5 +68,73 @@ authentication.get('/authentication', function(req, res){
 
 });
 
+authentication.get('/manager-details', function(req, res){
+
+    var breadcrumbs = [{path: '/', name: 'דף הבית'},{path: '#', name: 'עדכון פרטים אישיים'}];
+    var form_items = get_form_details();
+
+    res.render('manager-details', {
+        username: settings.get_username(),
+        breadcrumbs: breadcrumbs,
+        form_items: form_items
+    });
+
+});
+
+authentication.post('/update-manager-details', function(req, res){
+
+    var manager = JSON.parse(req.body.data);
+    var query = 'UPDATE `managers` SET ' +
+        '`first_name`="'+manager.first_name+'",' +
+        '`last_name`="'+manager.last_name+'",' +
+        '`phone_number`="'+manager.phone_number+'",' +
+        '`email`="'+manager.email+'",' +
+        '`username`="'+manager.username+'",' +
+        '`password`="'+manager.password+'" ' +
+        'WHERE `id`="'+settings.get_manager_id()+'"';
+
+    mysql.getConnection(function(err, conn) {
+        if (!err) {
+            conn.query(query, function (err, result) {
+                if (!err) {
+                    //res.send({status: true, msg: 'הפרטים עודכנו בהצלחה'});
+                    query = 'SELECT * FROM `managers` WHERE `id`="' + settings.get_manager_id() + '"';
+                    conn.query(query, function (err, result) {
+                        if (!err) {
+                            settings.set_manager(result[0]);
+                            res.send({status: true, result: result[0]});
+                        }
+                        else {
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send({status: false, msg: 'הייתה בעיה בתהליך עדכון הפרטים, אנא נסה שוב מאוחר יותר'});
+                        }
+                    });
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בתהליך עדכון הפרטים, אנא נסה שוב מאוחר יותר'});
+                }
+            });
+            conn.release();
+        }
+        else {
+            console.log(err);
+        }
+    });
+
+});
+
+function get_form_details(){
+    var manager = settings.get_manager();
+    return [
+        {required: '*', type: 'text', label: 'שם פרטי:', max_length: 20, id: 'first-name', value: manager.first_name},
+        {required: '*', type: 'text', label: 'שם משפחה:', max_length: 20, id: 'last-name', value: manager.last_name},
+        {required: '*', type: 'text', label: 'טלפון:', max_length: 10, id: 'phone-number', value: manager.phone_number},
+        {required: '*', type: 'text', label: 'דוא"ל:', max_length: 50, id: 'email', value: manager.email},
+        {required: '*', type: 'text', label: 'שם משתמש:', max_length: 10, id: 'username', value: manager.username},
+        {required: '*', type: 'password', label: 'סיסמה:', max_length: 15, id: 'password', value: manager.password}
+    ];
+}
+
 
 module.exports = authentication;

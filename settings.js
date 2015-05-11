@@ -26,6 +26,7 @@ var manager = {};
 
 settings.set_manager = function(details){
     manager = {
+        id: details.id,
         first_name: details.first_name,
         last_name: details.last_name,
         phone_number: details.phone_number,
@@ -38,6 +39,10 @@ settings.set_manager = function(details){
 
 settings.get_manager = function(){
     return manager;
+};
+
+settings.get_manager_id = function(){
+    return manager.id;
 };
 
 settings.get_username = function(){
