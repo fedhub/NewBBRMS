@@ -19,3 +19,9 @@ html, body{
   margin: 0 auto;
   box-shadow: 0px 0px 50px 0px #333;
 }
+
+hr {
+  border: none;
+  @include size(80%, 1px);
+  margin: 0 auto;
+}

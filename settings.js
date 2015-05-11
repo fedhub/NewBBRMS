@@ -21,4 +21,38 @@ settings.set_is_admin = function(state){
     is_admin = state;
 };
 
+// Manager Details
+var manager = {};
+
+settings.set_manager = function(details){
+    manager = {
+        first_name: details.first_name,
+        last_name: details.last_name,
+        phone_number: details.phone_number,
+        email: details.email,
+        admin: details.admin,
+        username: details.username,
+        password: details.password
+    };
+};
+
+settings.get_manager = function(){
+    return manager;
+};
+
+settings.get_username = function(){
+    return manager.username;
+};
+
+settings.reset_manager = function(){
+    manager = {};
+};
+
+// Reset
+settings.reset_sys = function(){
+    settings.set_is_connected(false);
+    settings.set_is_admin(false);
+    settings.reset_manager();
+};
+
 module.exports = settings;

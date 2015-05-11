@@ -124,24 +124,32 @@
 .flaticon-plus25:before {
     content: "\e018";
 }
-.flaticon-shopping100:before {
+.flaticon-profile31:before {
     content: "\e019";
+    font-size: 20px;
+}
+.flaticon-shopping100:before {
+    content: "\e01a";
     color: #333;
 }
 .flaticon-shoppingcart14:before {
-	content: "\e01a";
+	content: "\e01b";
     font-size: 31px;
     line-height: 130%;
 }
 .flaticon-symbol21:before {
-    content: "\e01b";
-    font-size: 30px;
+    content: "\e01c";
+    font-size: 20px;
 }
 .flaticon-two200:before {
-    content: "\e01c";
+    content: "\e01d";
     font-size: 60px;
     color: #333;
 }
 .flaticon-user7:before {
-    content: "\e01d";
+    content: "\e01e";
+}
+.flaticon-users38:before {
+    content: "\e01f";
+    font-size: 20px;
 }
