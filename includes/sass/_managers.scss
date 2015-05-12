@@ -2,7 +2,8 @@
   @include size(100%, 95%);
   overflow: hidden;
   .managers-list-wrap{
-    width: 80%;
+    width: 97%;
+    margin: 0 auto;
     margin-top: 20px;
     margin-right: 5px;
   }
@@ -12,35 +13,37 @@
     margin-top: 5px;
     background-color: orange;
     section{
-      height: 100%;
-      display: table;
+      float: right;
+      line-height: 30px;
+      text-align: center;
       p{
-        @include cell-settings();
+        font-size: 15px;
+        color: #333;
       }
     }
   }
   .first-name{
-    width: 15%;
+    @include size(15%, 100%);
   }
   .last-name{
-    width: 15%;
-  }
-  .phone-number{
-    width: 15%;
+    @include size(15%, 100%);
   }
   .email{
-    width: 15%;
+    @include size(32%, 100%);
+  }
+  .phone-number{
+    @include size(11%, 100%);
   }
   .username{
-    width: 15%;
+    @include size(9%, 100%);
   }
-  .is-admin{
-    width: 15%;
-  }
-  .delete{
-    width: 5%;
+  .is-admin {
+    @include size(7%, 100%);
   }
   .save{
-    width: 5%;
+    @include size(5%, 100%);
+  }
+  .delete{
+    @include size(5%, 100%);
   }
 }

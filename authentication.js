@@ -127,11 +127,11 @@ authentication.post('/update-manager-details', function(req, res){
 function get_form_details(){
     var manager = settings.get_manager();
     return [
-        {required: '*', type: 'text', label: 'שם פרטי:', max_length: 20, id: 'first-name', value: manager.first_name},
-        {required: '*', type: 'text', label: 'שם משפחה:', max_length: 20, id: 'last-name', value: manager.last_name},
+        {required: '*', type: 'text', label: 'שם פרטי:', max_length: 15, id: 'first-name', value: manager.first_name},
+        {required: '*', type: 'text', label: 'שם משפחה:', max_length: 15, id: 'last-name', value: manager.last_name},
         {required: '*', type: 'text', label: 'טלפון:', max_length: 10, id: 'phone-number', value: manager.phone_number},
-        {required: '*', type: 'text', label: 'דוא"ל:', max_length: 50, id: 'email', value: manager.email},
-        {required: '*', type: 'text', label: 'שם משתמש:', max_length: 10, id: 'username', value: manager.username},
+        {required: '*', type: 'text', label: 'דוא"ל:', max_length: 30, id: 'email', value: manager.email},
+        {required: '*', type: 'text', label: 'שם משתמש:', max_length: 8, id: 'username', value: manager.username},
         {required: '*', type: 'password', label: 'סיסמה:', max_length: 15, id: 'password', value: manager.password}
     ];
 }

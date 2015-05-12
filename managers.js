@@ -22,6 +22,7 @@ managers.get('/managers', function(req, res){
                     res.status(404).render('error404')
                 }
             });
+            conn.release();
         }
         else {console.log(err);}
     });
@@ -29,8 +30,6 @@ managers.get('/managers', function(req, res){
 });
 
 managers.post('/is-admin-check', function(req, res){
-
-    console.log(settings.get_is_admin());
 
     if(settings.get_is_admin()) res.send(true);
     else res.send(false);

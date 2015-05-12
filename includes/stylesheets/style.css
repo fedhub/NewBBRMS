@@ -226,7 +226,7 @@ header .top-strip {
 }
 /* line 7, ../sass/_header.scss */
 header .authentication-cont {
-  width: 146px;
+  width: 150px;
   height: 100%;
   position: relative;
   float: left;
@@ -535,11 +535,12 @@ footer {
 }
 /* line 4, ../sass/_managers.scss */
 .managers-cont .managers-list-wrap {
-  width: 80%;
+  width: 97%;
+  margin: 0 auto;
   margin-top: 20px;
   margin-right: 5px;
 }
-/* line 9, ../sass/_managers.scss */
+/* line 10, ../sass/_managers.scss */
 .managers-cont .manager-item {
   width: 100%;
   height: 30px;
@@ -547,46 +548,54 @@ footer {
   margin-top: 5px;
   background-color: orange;
 }
-/* line 14, ../sass/_managers.scss */
+/* line 15, ../sass/_managers.scss */
 .managers-cont .manager-item section {
-  height: 100%;
-  display: table;
-}
-/* line 17, ../sass/_managers.scss */
-.managers-cont .manager-item section p {
-  display: table-cell;
+  float: right;
+  line-height: 30px;
   text-align: center;
-  vertical-align: middle;
 }
-/* line 22, ../sass/_managers.scss */
-.managers-cont .first-name {
-  width: 15%;
+/* line 19, ../sass/_managers.scss */
+.managers-cont .manager-item section p {
+  font-size: 15px;
+  color: #333;
 }
 /* line 25, ../sass/_managers.scss */
-.managers-cont .last-name {
+.managers-cont .first-name {
   width: 15%;
+  height: 100%;
 }
 /* line 28, ../sass/_managers.scss */
-.managers-cont .phone-number {
+.managers-cont .last-name {
   width: 15%;
+  height: 100%;
 }
 /* line 31, ../sass/_managers.scss */
 .managers-cont .email {
-  width: 15%;
+  width: 32%;
+  height: 100%;
 }
 /* line 34, ../sass/_managers.scss */
-.managers-cont .username {
-  width: 15%;
+.managers-cont .phone-number {
+  width: 11%;
+  height: 100%;
 }
 /* line 37, ../sass/_managers.scss */
-.managers-cont .is-admin {
-  width: 15%;
+.managers-cont .username {
+  width: 9%;
+  height: 100%;
 }
 /* line 40, ../sass/_managers.scss */
-.managers-cont .delete {
-  width: 5%;
+.managers-cont .is-admin {
+  width: 7%;
+  height: 100%;
 }
 /* line 43, ../sass/_managers.scss */
 .managers-cont .save {
   width: 5%;
+  height: 100%;
+}
+/* line 46, ../sass/_managers.scss */
+.managers-cont .delete {
+  width: 5%;
+  height: 100%;
 }
