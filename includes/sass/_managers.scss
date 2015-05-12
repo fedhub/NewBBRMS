@@ -1,0 +1,46 @@
+.managers-cont {
+  @include size(100%, 95%);
+  overflow: hidden;
+  .managers-list-wrap{
+    width: 80%;
+    margin-top: 20px;
+    margin-right: 5px;
+  }
+  .manager-item{
+    @include size(100%, 30px);
+    padding: 5px;
+    margin-top: 5px;
+    background-color: orange;
+    section{
+      height: 100%;
+      display: table;
+      p{
+        @include cell-settings();
+      }
+    }
+  }
+  .first-name{
+    width: 15%;
+  }
+  .last-name{
+    width: 15%;
+  }
+  .phone-number{
+    width: 15%;
+  }
+  .email{
+    width: 15%;
+  }
+  .username{
+    width: 15%;
+  }
+  .is-admin{
+    width: 15%;
+  }
+  .delete{
+    width: 5%;
+  }
+  .save{
+    width: 5%;
+  }
+}

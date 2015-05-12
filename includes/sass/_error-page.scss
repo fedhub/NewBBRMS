@@ -1,0 +1,37 @@
+.error-cont {
+  @include size(100%, 100%);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(#fff, 0.8);
+  z-index: 10000;
+  .container{
+    @include size(480px, 340px);
+    background-color: #FFF;
+    margin: 0 auto;
+    box-shadow: 0px 0px 8px -2px #000;
+    border: 1px solid #B6B6B6;
+    margin-top: 15%;
+    position: relative;
+  }
+  .close{
+    @include size(28px, 30px);
+    display: table;
+    float: right;
+    p{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .content{
+    @include size(100%, 80%);
+    margin-top: 40px;
+    display: table;
+    p{
+      @include cell-settings();
+      color: $txt-color;
+      font-size: 20px;
+    }
+  }
+}

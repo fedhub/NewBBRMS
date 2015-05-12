@@ -103,6 +103,56 @@
   color: brown;
 }
 
+/* line 1, ../sass/_error-page.scss */
+.error-cont {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10000;
+}
+/* line 9, ../sass/_error-page.scss */
+.error-cont .container {
+  width: 480px;
+  height: 340px;
+  background-color: #FFF;
+  margin: 0 auto;
+  box-shadow: 0px 0px 8px -2px #000;
+  border: 1px solid #B6B6B6;
+  margin-top: 15%;
+  position: relative;
+}
+/* line 18, ../sass/_error-page.scss */
+.error-cont .close {
+  width: 28px;
+  height: 30px;
+  display: table;
+  float: right;
+}
+/* line 22, ../sass/_error-page.scss */
+.error-cont .close p {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 27, ../sass/_error-page.scss */
+.error-cont .content {
+  width: 100%;
+  height: 80%;
+  margin-top: 40px;
+  display: table;
+}
+/* line 31, ../sass/_error-page.scss */
+.error-cont .content p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: #002E02;
+  font-size: 20px;
+}
+
 /* line 1, ../sass/_structure.scss */
 html, body {
   width: 100%;
@@ -301,25 +351,18 @@ header .logo {
   height: 65%;
 }
 /* line 3, ../sass/_body.scss */
-.main .side-nav {
-  width: 20%;
-  height: 100%;
-  float: right;
-  background-color: grey;
-}
-/* line 8, ../sass/_body.scss */
 .main .content {
   width: 80%;
   height: 100%;
   float: right;
 }
-/* line 12, ../sass/_body.scss */
+/* line 7, ../sass/_body.scss */
 .main .breadcrumbs-strip {
   width: 100%;
   height: 5%;
   line-height: 27px;
 }
-/* line 16, ../sass/_body.scss */
+/* line 11, ../sass/_body.scss */
 .main .breadcrumb-item {
   display: inline-block;
   vertical-align: middle;
@@ -331,14 +374,42 @@ header .logo {
   border-bottom-left-radius: 100px;
   background: rgba(123, 124, 121, 0.8);
 }
-/* line 26, ../sass/_body.scss */
+/* line 21, ../sass/_body.scss */
 .main .breadcrumb-item:nth-of-type(1) {
   margin-right: 5px;
 }
-/* line 29, ../sass/_body.scss */
+/* line 24, ../sass/_body.scss */
 .main .breadcrumb-item a {
   font-size: 15px;
   text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* line 1, ../sass/_side-nav.scss */
+.side-nav {
+  width: 20%;
+  height: 100%;
+  float: right;
+  background-color: grey;
+}
+/* line 5, ../sass/_side-nav.scss */
+.side-nav nav {
+  padding-right: 10px;
+  padding-top: 10px;
+}
+/* line 9, ../sass/_side-nav.scss */
+.side-nav li {
+  line-height: 35px;
+}
+/* line 12, ../sass/_side-nav.scss */
+.side-nav a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #002E02;
+}
+/* line 16, ../sass/_side-nav.scss */
+.side-nav a:hover {
   color: #333;
   font-weight: bold;
 }
@@ -454,4 +525,68 @@ footer {
 /* line 71, ../sass/_manager-details.scss */
 .manager-details-cont .error p {
   font-size: 15px;
+}
+
+/* line 1, ../sass/_managers.scss */
+.managers-cont {
+  width: 100%;
+  height: 95%;
+  overflow: hidden;
+}
+/* line 4, ../sass/_managers.scss */
+.managers-cont .managers-list-wrap {
+  width: 80%;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+/* line 9, ../sass/_managers.scss */
+.managers-cont .manager-item {
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  margin-top: 5px;
+  background-color: orange;
+}
+/* line 14, ../sass/_managers.scss */
+.managers-cont .manager-item section {
+  height: 100%;
+  display: table;
+}
+/* line 17, ../sass/_managers.scss */
+.managers-cont .manager-item section p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 22, ../sass/_managers.scss */
+.managers-cont .first-name {
+  width: 15%;
+}
+/* line 25, ../sass/_managers.scss */
+.managers-cont .last-name {
+  width: 15%;
+}
+/* line 28, ../sass/_managers.scss */
+.managers-cont .phone-number {
+  width: 15%;
+}
+/* line 31, ../sass/_managers.scss */
+.managers-cont .email {
+  width: 15%;
+}
+/* line 34, ../sass/_managers.scss */
+.managers-cont .username {
+  width: 15%;
+}
+/* line 37, ../sass/_managers.scss */
+.managers-cont .is-admin {
+  width: 15%;
+}
+/* line 40, ../sass/_managers.scss */
+.managers-cont .delete {
+  width: 5%;
+}
+/* line 43, ../sass/_managers.scss */
+.managers-cont .save {
+  width: 5%;
 }

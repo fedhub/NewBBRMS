@@ -42,6 +42,7 @@ app.use(require('./functions'));
 app.use(require('./mobile_authentication_functions'));
 app.use(require('./mobile_menu_functions'));
 app.use(require('./mobile_order_functions'));
+app.use(require('./managers'));
 
 
 var port = process.env.PORT || 3000;

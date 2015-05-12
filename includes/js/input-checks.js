@@ -4,24 +4,14 @@ $(document).ready(function(){
 
     // first-name, last-name, email, street, house-number, floor, enter
     $('.validation p').addClass('flaticon-good1');
-    $('.wrapper').on('keyup', '#first-name input, #last-name input, #email input, #username input', function(event){
+    $('.wrapper').on('keyup', '#first-name input, #last-name input, #email input, #username input, #password input', function(event){
         var regex;
         var id = $(event.target).parent().parent().attr('id');
         var $val = $('#'+id+' input').val();
         var $p = $('#'+id+' .validation p');
         if(id == 'first-name' || id == 'last-name') regex = /^[a-zא-תA-Z\s]+$/;
         if(id == 'email') regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        //if(id == 'street') regex = /^[a-zא-תA-Z"\s]+$/;
-        //if(id == 'house-number'){
-        //    if($val.length == 0 || $val.length == 1) regex = /^[1-9]/;
-        //    if($val.length == 2) regex = /^[1-9][0-9]/;
-        //    if($val.length == 3) regex = /^[1-4][0-9][0-9]/;
-        //}
-        //if(id == 'floor'){
-        //    if($val.length == 0 || $val.length == 1) regex = /^[0-9]/;
-        //    if($val.length == 2) regex = /^[1-4][1-9]/;
-        //}
-        //if(id == 'enter') regex = /^[a-iA-I0-9א-ט\s]+$/;
+        if(id == 'username' || id == 'password') regex = /^[a-zA-Zא-ת0-9@$*&!^%#]+$/;
         if(regex.test($val)) validation($p, true);
         else validation($p, false);
     });

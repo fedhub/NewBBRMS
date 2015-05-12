@@ -2,13 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Manager Details</title>
+    <title>Best Biss | Managers</title>
     <link rel="stylesheet" href="stylesheets/style.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/flaticon.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
-    <script type="text/javascript" src="js/input-checks.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
 </head>
 <body>
@@ -19,7 +18,6 @@
             <section class="content"><p id="error-msg"></p></section>
         </section>
     </section>
-    <section class="error-cont"></section>
     <header>
         <section class="top-strip">
             <section class="authentication-cont">
@@ -57,22 +55,24 @@
         <section class="content">
             <section class="breadcrumbs-strip">
                 <% for(var i = 0; i < breadcrumbs.length; i++){ %>
-                    <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
+                <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="manager-details-cont">
-                <form class="manager-details-form">
-                    <% for(var i = 0; i < form_items.length; i++) {%>
-                        <section class="form-item" id="<%= form_items[i].id %>">
-                            <section class="required"><p><%= form_items[i].required %></p></section>
-                            <section class="detail-label"><p><%= form_items[i].label %></p></section>
-                            <section class="detail-input"><input type="<%= form_items[i].type %>" maxlength="<%= form_items[i].max_length %>" value="<%= form_items[i].value %>"></section>
-                            <section class="validation"><p></p></section>
-                        </section>
-                    <% } %>
-                    <section class="approve-button" id="approve-manager-update"><p>עדכן</p></section>
-                    <section class="error" id="manager-update-error"><p></p></section>
-                </form>
+            <section class="managers-cont">
+                <section class="managers-list-wrap">
+                    <% for(var i = 0; i < managers.length; i++) { %>
+                    <section class="manager-item">
+                        <section class="first-name"><p><%= managers[i].first_name %></p></section>
+                        <section class="last-name"><p><%= managers[i].last_name %></p></section>
+                        <section class="email"><p><%= managers[i].email %></p></section>
+                        <section class="phone-number"><p><%= managers[i].phone_number %></p></section>
+                        <section class="username"><p><%= managers[i].username %></p></section>
+                        <section class="is-admin"><p><%= managers[i].admin %></p></section>
+                        <section class="save"><p></p></section>
+                        <section class="delete"><p></p></section>
+                    </section>
+                    <% }%>
+                </section>
             </section>
         </section>
     </section>

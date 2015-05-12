@@ -1,0 +1,21 @@
+.side-nav{
+  @include size(20%, 100%);
+  float: right;
+  background-color: grey;
+  nav{
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+  li{
+    line-height: 35px;
+  }
+  a{
+    text-decoration: none;
+    font-size: 18px;
+    color: $txt-color;
+    &:hover{
+      color: #333;
+      font-weight: bold;
+    }
+  }
+}
