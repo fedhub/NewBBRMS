@@ -7,11 +7,10 @@
     margin-top: 20px;
     margin-right: 5px;
   }
-  .manager-item{
+  .manager-item, .header{
     @include size(100%, 30px);
     padding: 5px;
     margin-top: 5px;
-    background-color: orange;
     section{
       float: right;
       line-height: 30px;
@@ -42,8 +41,62 @@
   }
   .save{
     @include size(5%, 100%);
+    position: relative;
+    cursor: pointer;
+    p{
+      font-size: 20px !important;
+      &:hover{
+        color: brown;
+      }
+    }
   }
   .delete{
     @include size(5%, 100%);
+    cursor: pointer;
+    p{
+      font-size: 21px !important;
+      &:hover{
+        color: brown;
+      }
+    }
+  }
+  .header{
+    section p{
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: underline;
+      color: rgba(#333, 0.8);
+    }
+  }
+  .msg{
+    display: none;
+    position: absolute;
+    top: -34px;
+    left: 29px;
+    @include size(150px, 30px);
+    border: 3px solid rgba(#000, 0.6);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    box-shadow: 0 0 10px 0 #FFF;
+    line-height: 30px;
+    background-color: #FAFAD2 !important;
+    p{
+      text-align: center;
+      font-size: 18px !important;
+      color: #333;
+    }
+  }
+}
+
+@include medium(){
+  .managers-cont{
+    .manager-item{
+      section{
+        p{
+          font-size: 11px;
+        }
+      }
+    }
   }
 }

@@ -92,3 +92,17 @@ header{
     background-size: contain;
   }
 }
+
+@include medium(){
+  header{
+    .user-icon{
+      p{
+        font-size: 25px;
+        padding-top: 2px;
+      }
+    }
+    .logo{
+      width: 255px;
+    }
+  }
+}

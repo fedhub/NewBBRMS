@@ -345,6 +345,17 @@ header .logo {
   background-size: contain;
 }
 
+@media only screen and (max-width: 1366px) {
+  /* line 99, ../sass/_header.scss */
+  header .user-icon p {
+    font-size: 25px;
+    padding-top: 2px;
+  }
+  /* line 104, ../sass/_header.scss */
+  header .logo {
+    width: 255px;
+  }
+}
 /* line 1, ../sass/_body.scss */
 .main {
   width: 100%;
@@ -414,6 +425,12 @@ header .logo {
   font-weight: bold;
 }
 
+@media only screen and (max-width: 1366px) {
+  /* line 25, ../sass/_side-nav.scss */
+  .side-nav a {
+    font-size: 15px;
+  }
+}
 /* line 1, ../sass/_footer.scss */
 footer {
   width: 100%;
@@ -541,61 +558,115 @@ footer {
   margin-right: 5px;
 }
 /* line 10, ../sass/_managers.scss */
-.managers-cont .manager-item {
+.managers-cont .manager-item, .managers-cont .header {
   width: 100%;
   height: 30px;
   padding: 5px;
   margin-top: 5px;
-  background-color: orange;
 }
-/* line 15, ../sass/_managers.scss */
-.managers-cont .manager-item section {
+/* line 14, ../sass/_managers.scss */
+.managers-cont .manager-item section, .managers-cont .header section {
   float: right;
   line-height: 30px;
   text-align: center;
 }
-/* line 19, ../sass/_managers.scss */
-.managers-cont .manager-item section p {
+/* line 18, ../sass/_managers.scss */
+.managers-cont .manager-item section p, .managers-cont .header section p {
   font-size: 15px;
   color: #333;
 }
-/* line 25, ../sass/_managers.scss */
+/* line 24, ../sass/_managers.scss */
 .managers-cont .first-name {
   width: 15%;
   height: 100%;
 }
-/* line 28, ../sass/_managers.scss */
+/* line 27, ../sass/_managers.scss */
 .managers-cont .last-name {
   width: 15%;
   height: 100%;
 }
-/* line 31, ../sass/_managers.scss */
+/* line 30, ../sass/_managers.scss */
 .managers-cont .email {
   width: 32%;
   height: 100%;
 }
-/* line 34, ../sass/_managers.scss */
+/* line 33, ../sass/_managers.scss */
 .managers-cont .phone-number {
   width: 11%;
   height: 100%;
 }
-/* line 37, ../sass/_managers.scss */
+/* line 36, ../sass/_managers.scss */
 .managers-cont .username {
   width: 9%;
   height: 100%;
 }
-/* line 40, ../sass/_managers.scss */
+/* line 39, ../sass/_managers.scss */
 .managers-cont .is-admin {
   width: 7%;
   height: 100%;
 }
-/* line 43, ../sass/_managers.scss */
+/* line 42, ../sass/_managers.scss */
 .managers-cont .save {
   width: 5%;
   height: 100%;
+  position: relative;
+  cursor: pointer;
 }
 /* line 46, ../sass/_managers.scss */
+.managers-cont .save p {
+  font-size: 20px !important;
+}
+/* line 48, ../sass/_managers.scss */
+.managers-cont .save p:hover {
+  color: brown;
+}
+/* line 53, ../sass/_managers.scss */
 .managers-cont .delete {
   width: 5%;
   height: 100%;
+  cursor: pointer;
+}
+/* line 56, ../sass/_managers.scss */
+.managers-cont .delete p {
+  font-size: 21px !important;
+}
+/* line 58, ../sass/_managers.scss */
+.managers-cont .delete p:hover {
+  color: brown;
+}
+/* line 64, ../sass/_managers.scss */
+.managers-cont .header section p {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 71, ../sass/_managers.scss */
+.managers-cont .msg {
+  display: none;
+  position: absolute;
+  top: -34px;
+  left: 29px;
+  width: 150px;
+  height: 30px;
+  border: 3px solid rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: 0 0 10px 0 #FFF;
+  line-height: 30px;
+  background-color: #FAFAD2 !important;
+}
+/* line 84, ../sass/_managers.scss */
+.managers-cont .msg p {
+  text-align: center;
+  font-size: 18px !important;
+  color: #333;
+}
+
+@media only screen and (max-width: 1366px) {
+  /* line 96, ../sass/_managers.scss */
+  .managers-cont .manager-item section p {
+    font-size: 11px;
+  }
 }

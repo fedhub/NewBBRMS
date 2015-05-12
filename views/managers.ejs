@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Best Biss | Managers</title>
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
     <link rel="stylesheet" href="stylesheets/style.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/flaticon.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -60,16 +63,29 @@
             </section>
             <section class="managers-cont">
                 <section class="managers-list-wrap">
+                    <section class="header">
+                        <section class="first-name"><p>שם פרטי</p></section>
+                        <section class="last-name"><p>שם משפחה</p></section>
+                        <section class="email"><p>דוא"ל</p></section>
+                        <section class="phone-number"><p>טלפון</p></section>
+                        <section class="username"><p>שם משתמש</p></section>
+                        <section class="is-admin"><p>Admin</p></section>
+                    </section>
                     <% for(var i = 0; i < managers.length; i++) { %>
-                    <section class="manager-item">
+                    <section class="manager-item" id="manager-<%= managers[i].id %>">
                         <section class="first-name"><p><%= managers[i].first_name %></p></section>
                         <section class="last-name"><p><%= managers[i].last_name %></p></section>
                         <section class="email"><p><%= managers[i].email %></p></section>
                         <section class="phone-number"><p><%= managers[i].phone_number %></p></section>
                         <section class="username"><p><%= managers[i].username %></p></section>
-                        <section class="is-admin"><p><%= managers[i].admin %></p></section>
-                        <section class="save"><p></p></section>
-                        <section class="delete"><p></p></section>
+                        <section class="is-admin">
+                            <select id="<%= managers[i].admin %>">
+                                <option value="0">לא</option>
+                                <option value="1">כן</option>
+                            </select>
+                        </section>
+                        <section class="save"><p class="flaticon-floppy13" id="save-<%= managers[i].id %>" title="שמור"></p></section>
+                        <section class="delete"><p class="flaticon-delete96" id="delete-<%= managers[i].id %>" title="מחק"></p></section>
                     </section>
                     <% }%>
                 </section>

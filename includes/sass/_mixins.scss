@@ -16,3 +16,11 @@
   bottom: $bottom;
   left: $left;
 }
+
+
+
+@mixin medium(){
+  @media only screen and (max-width: 1366px) {
+    @content;
+  }
+}

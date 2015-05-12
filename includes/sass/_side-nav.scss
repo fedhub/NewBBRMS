@@ -19,3 +19,11 @@
     }
   }
 }
+
+@include medium(){
+  .side-nav{
+    a{
+      font-size: 15px;
+    }
+  }
+}
