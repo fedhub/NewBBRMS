@@ -29,6 +29,9 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Headers", "Content-Type");
     res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    var req_url = req.originalUrl;
+    if(settings.get_is_connected() || req_url == '/authenticate') next();
+    else if(!settings.get_is_connected()) res.render('authentication');
     next();
 });
 
