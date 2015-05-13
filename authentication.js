@@ -125,30 +125,30 @@ function get_form_details(){
     ];
 }
 
-//authentication.all('*', function(req, res, next){
-//
-//    var req_url = req.originalUrl;
-//    if(settings.get_is_connected()
-//        || req_url == '/authenticate')
-//        //|| req_url == '/menu-types'
-//        //|| req_url == '/menu-items&:food_type_id'
-//        //|| req_url == '/menu-additions&:food_item_id'
-//        //|| req_url == '/make-order'
-//        //|| req_url == '/last-orders&:phone_number'
-//        //|| req_url == '/new-library'
-//        //|| req_url == '/get-libraries&:phone_number'
-//        //|| req_url == '/library-items&:library_id'
-//        //|| req_url == '/add-library-item'
-//        //|| req_url == '/update-library'
-//        //|| req_url == '/delete-from-library'
-//        //|| req_url == '/delete-library'
-//        //|| req_url == '/sign-up'
-//        //|| req_url == '/log-in')
-//        //|| req_url == '/ms-log-out')
-//        next();
-//
-//    else if(!settings.get_is_connected()) res.render('authentication');
-//
-//});
+authentication.all('*', function(req, res, next){
+
+    var req_url = req.originalUrl;
+    if(settings.get_is_connected()
+        || req_url == '/authenticate')
+        //|| req_url == '/menu-types'
+        //|| req_url == '/menu-items&:food_type_id'
+        //|| req_url == '/menu-additions&:food_item_id'
+        //|| req_url == '/make-order'
+        //|| req_url == '/last-orders&:phone_number'
+        //|| req_url == '/new-library'
+        //|| req_url == '/get-libraries&:phone_number'
+        //|| req_url == '/library-items&:library_id'
+        //|| req_url == '/add-library-item'
+        //|| req_url == '/update-library'
+        //|| req_url == '/delete-from-library'
+        //|| req_url == '/delete-library'
+        //|| req_url == '/sign-up'
+        //|| req_url == '/log-in')
+        //|| req_url == '/ms-log-out')
+        next();
+
+    else if(!settings.get_is_connected()) res.render('authentication');
+
+});
 
 module.exports = authentication;
