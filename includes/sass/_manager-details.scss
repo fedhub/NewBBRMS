@@ -35,9 +35,19 @@
       input, textarea{
         @include size(97%, 90%);
         margin-top: 2px;
-        font-size: 15px;
+        font-size: 12px;
         font-weight: bold;
         padding-right: 5px;
+        color: rgba(#333, 0.8);
+        &:hover{
+          border: 1px solid $txt-color;
+        }
+      }
+      select{
+        @include size(25%, 90%);
+        margin-top: 2px;
+        font-size: 15px;
+        font-weight: bold;
         color: rgba(#333, 0.8);
         &:hover{
           border: 1px solid $txt-color;
@@ -52,7 +62,8 @@
       }
     }
   }
-  #approve-manager-update{
+  #approve-manager-update,
+  #approve-manager-addition{
     margin-top: 20px;
     margin-right: 5px;
     background-color: rgba($txt-color, 0.8);

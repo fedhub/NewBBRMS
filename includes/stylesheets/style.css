@@ -497,7 +497,7 @@ footer {
   width: 97%;
   height: 90%;
   margin-top: 2px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   padding-right: 5px;
   color: rgba(51, 51, 51, 0.8);
@@ -506,31 +506,46 @@ footer {
 .manager-details-cont .manager-details-form .detail-input input:hover, .manager-details-cont .manager-details-form .detail-input textarea:hover {
   border: 1px solid #002E02;
 }
-/* line 47, ../sass/_manager-details.scss */
+/* line 46, ../sass/_manager-details.scss */
+.manager-details-cont .manager-details-form .detail-input select {
+  width: 25%;
+  height: 90%;
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 52, ../sass/_manager-details.scss */
+.manager-details-cont .manager-details-form .detail-input select:hover {
+  border: 1px solid #002E02;
+}
+/* line 57, ../sass/_manager-details.scss */
 .manager-details-cont .manager-details-form .validation {
   width: 8%;
   height: 100%;
 }
-/* line 49, ../sass/_manager-details.scss */
+/* line 59, ../sass/_manager-details.scss */
 .manager-details-cont .manager-details-form .validation p {
   font-size: 20px;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
 }
-/* line 55, ../sass/_manager-details.scss */
-.manager-details-cont #approve-manager-update {
+/* line 65, ../sass/_manager-details.scss */
+.manager-details-cont #approve-manager-update,
+.manager-details-cont #approve-manager-addition {
   margin-top: 20px;
   margin-right: 5px;
   background-color: rgba(0, 46, 2, 0.8);
   border: 1px solid grey;
   box-shadow: 0 0 5px 0 #000;
 }
-/* line 61, ../sass/_manager-details.scss */
-.manager-details-cont #approve-manager-update:hover {
+/* line 72, ../sass/_manager-details.scss */
+.manager-details-cont #approve-manager-update:hover,
+.manager-details-cont #approve-manager-addition:hover {
   background-color: rgba(0, 46, 2, 0.9);
 }
-/* line 65, ../sass/_manager-details.scss */
+/* line 76, ../sass/_manager-details.scss */
 .manager-details-cont .error {
   width: 190px;
   height: 40px;
@@ -539,7 +554,7 @@ footer {
   margin-right: 10px;
   color: brown;
 }
-/* line 71, ../sass/_manager-details.scss */
+/* line 82, ../sass/_manager-details.scss */
 .manager-details-cont .error p {
   font-size: 15px;
 }
@@ -624,24 +639,25 @@ footer {
 .managers-cont .delete {
   width: 5%;
   height: 100%;
+  position: relative;
   cursor: pointer;
 }
-/* line 56, ../sass/_managers.scss */
+/* line 57, ../sass/_managers.scss */
 .managers-cont .delete p {
   font-size: 21px !important;
 }
-/* line 58, ../sass/_managers.scss */
+/* line 59, ../sass/_managers.scss */
 .managers-cont .delete p:hover {
   color: brown;
 }
-/* line 64, ../sass/_managers.scss */
+/* line 65, ../sass/_managers.scss */
 .managers-cont .header section p {
   font-size: 15px;
   font-weight: bold;
   text-decoration: underline;
   color: rgba(51, 51, 51, 0.8);
 }
-/* line 71, ../sass/_managers.scss */
+/* line 72, ../sass/_managers.scss */
 .managers-cont .msg {
   display: none;
   position: absolute;
@@ -657,15 +673,38 @@ footer {
   line-height: 30px;
   background-color: #FAFAD2 !important;
 }
-/* line 84, ../sass/_managers.scss */
+/* line 85, ../sass/_managers.scss */
 .managers-cont .msg p {
   text-align: center;
-  font-size: 18px !important;
+  font-size: 12px !important;
   color: #333;
+  font-weight: bold;
+}
+/* line 92, ../sass/_managers.scss */
+.managers-cont .add-manager {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 45px;
+  display: table;
+  cursor: pointer;
+}
+/* line 99, ../sass/_managers.scss */
+.managers-cont .add-manager p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 40px;
+  color: rgba(128, 128, 128, 0.8);
+}
+/* line 103, ../sass/_managers.scss */
+.managers-cont .add-manager p:hover {
+  color: grey;
 }
 
 @media only screen and (max-width: 1366px) {
-  /* line 96, ../sass/_managers.scss */
+  /* line 114, ../sass/_managers.scss */
   .managers-cont .manager-item section p {
     font-size: 11px;
   }

@@ -52,6 +52,7 @@
   }
   .delete{
     @include size(5%, 100%);
+    position: relative;
     cursor: pointer;
     p{
       font-size: 21px !important;
@@ -83,8 +84,25 @@
     background-color: #FAFAD2 !important;
     p{
       text-align: center;
-      font-size: 18px !important;
+      font-size: 12px !important;
       color: #333;
+      font-weight: bold;
+    }
+  }
+  .add-manager{
+    @include size(50px, 50px);
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 45px;
+    display: table;
+    cursor: pointer;
+    p{
+      @include cell-settings();
+      font-size: 40px;
+      color: rgba(grey, 0.8);
+      &:hover{
+        color: grey;
+      }
     }
   }
 }

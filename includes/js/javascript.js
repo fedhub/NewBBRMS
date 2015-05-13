@@ -1,4 +1,4 @@
-var base_url = 'http://localhost:3000';
+var base_url = 'http://best-biss.herokuapp.com';
 
 $(document).ready(function() {
 

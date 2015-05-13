@@ -1,4 +1,4 @@
-var base_url = 'http://localhost:3000';
+var base_url = 'http://best-biss.herokuapp.com';
 
 $(document).ready(function() {
 
@@ -21,6 +21,7 @@ $(document).ready(function() {
 
     var manager_details = manager_details_obj();
     $('#approve-manager-update').click(function(){
+        $('#manager-update-error').empty();
         var $msg_box = $('#manager-update-error');
         var empty_msg = is_empty_input();
         if(empty_msg.length > 0) $msg_box.html(empty_msg);

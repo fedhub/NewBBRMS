@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Managers</title>
+    <title>Best Biss | Add Manager</title>
     <meta name="format-detection" content="telephone=no" />
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
@@ -11,6 +11,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
+    <script type="text/javascript" src="js/input-checks.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
 </head>
 <body>
@@ -21,6 +22,7 @@
             <section class="content"><p id="error-msg"></p></section>
         </section>
     </section>
+    <section class="error-cont"></section>
     <header>
         <section class="top-strip">
             <section class="authentication-cont">
@@ -61,35 +63,29 @@
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="managers-cont">
-                <section class="managers-list-wrap">
-                    <section class="header">
-                        <section class="first-name"><p>שם פרטי</p></section>
-                        <section class="last-name"><p>שם משפחה</p></section>
-                        <section class="email"><p>דוא"ל</p></section>
-                        <section class="phone-number"><p>טלפון</p></section>
-                        <section class="username"><p>שם משתמש</p></section>
-                        <section class="is-admin"><p>Admin</p></section>
+            <section class="manager-details-cont">
+                <form class="manager-details-form">
+                    <% for(var i = 0; i < form_items.length; i++) {%>
+                    <section class="form-item" id="<%= form_items[i].id %>">
+                        <section class="required"><p><%= form_items[i].required %></p></section>
+                        <section class="detail-label"><p><%= form_items[i].label %></p></section>
+                        <section class="detail-input"><input type="<%= form_items[i].type %>" maxlength="<%= form_items[i].max_length %>"></section>
+                        <section class="validation"><p></p></section>
                     </section>
-                    <% for(var i = 0; i < managers.length; i++) { %>
-                    <section class="manager-item" id="manager-<%= managers[i].id %>">
-                        <section class="first-name"><p><%= managers[i].first_name %></p></section>
-                        <section class="last-name"><p><%= managers[i].last_name %></p></section>
-                        <section class="email"><p><%= managers[i].email %></p></section>
-                        <section class="phone-number"><p><%= managers[i].phone_number %></p></section>
-                        <section class="username"><p><%= managers[i].username %></p></section>
-                        <section class="is-admin">
-                            <select id="<%= managers[i].admin %>">
+                    <% } %>
+                    <section class="form-item">
+                        <section class="required"><p></p></section>
+                        <section class="detail-label"><p>Admin</p></section>
+                        <section class="detail-input">
+                            <select id="admin-selection">
                                 <option value="0">לא</option>
                                 <option value="1">כן</option>
                             </select>
                         </section>
-                        <section class="save"><p class="flaticon-floppy13" id="save-<%= managers[i].id %>" title="שמור"></p></section>
-                        <section class="delete"><p class="flaticon-delete96" id="delete-<%= managers[i].id %>" title="מחק"></p></section>
                     </section>
-                    <% }%>
-                </section>
-                <section class="add-manager" id="add-manager" title="הוסף מנהל"><p class="flaticon-add182"></p></section>
+                    <section class="approve-button" id="approve-manager-addition"><p>אישור</p></section>
+                    <section class="error" id="manager-addition-error"><p></p></section>
+                </form>
             </section>
         </section>
     </section>

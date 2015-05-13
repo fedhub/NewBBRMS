@@ -13,146 +13,149 @@
 	font-family: Flaticon;
     font-style: normal;
 }
+.flaticon-add182:before {
+     content: "\e000";
+ }
 .flaticon-add89:before {
-    content: "\e000";
+    content: "\e001";
     font-size: 30px;
  }
 .flaticon-box37:before {
-    content: "\e001";
+    content: "\e002";
     font-size: 60px;
     color: #333;
 }
 .flaticon-building120:before {
-	content: "\e002";
+	content: "\e003";
      font-size: 29px;
      line-height: 130%;
 }
 .flaticon-cancel4:before {
-    content: "\e003";
+    content: "\e004";
     color: red;
 }
 .flaticon-close32:before {
-    content: "\e004";
+    content: "\e005";
     font-size: 30px;
 }
 .flaticon-credit31:before {
-    content: "\e005";
-    font-size: 60px;
-    color: #333;
-}
-.flaticon-currency19:before {
     content: "\e006";
     font-size: 60px;
     color: #333;
 }
-.flaticon-cutlery6:before {
+.flaticon-currency19:before {
     content: "\e007";
+    font-size: 60px;
+    color: #333;
+}
+.flaticon-cutlery6:before {
+    content: "\e008";
     font-size: 42px;
 }
 .flaticon-delete96:before {
-	content: "\e008";
+	content: "\e009";
 }
 .flaticon-edit45:before {
-    content: "\e009";
+    content: "\e00a";
     color: #333;
 }
 .flaticon-file7:before {
-    content: "\e00a";
+    content: "\e00b";
     font-size: 153px;
     vertical-align: top;
     color: #333;
     opacity: 0.6;
 }
 .flaticon-floppy13:before {
-    content: "\e00b";
+    content: "\e00c";
 }
 .flaticon-folder15:before {
-    content: "\e00c";
+    content: "\e00d";
     font-size: 142px;
     vertical-align: middle;
     color: #333;
     opacity: 0.6;
 }
 .flaticon-free6:before {
-    content: "\e00d";
+    content: "\e00e";
     font-size: 60px;
     color: #333;
 }
 .flaticon-good1:before {
-    content: "\e00e";
+    content: "\e00f";
     color: green;
 }
 .flaticon-hourglass:before {
-	content: "\e00f";
+	content: "\e010";
     font-size: 29px;
     line-height: 138%;
 }
 .flaticon-info28:before {
-    content: "\e010";
+    content: "\e011";
 }
 .flaticon-list19:before {
-	content: "\e011";
+	content: "\e012";
     font-size: 29px;
     line-height: 130%;
 }
 .flaticon-list40:before {
-    content: "\e012";
+    content: "\e013";
 }
 .flaticon-login:before {
-    content: "\e013";
+    content: "\e014";
     font-size: 30px;
 }
 .flaticon-logistics2:before {
-    content: "\e014";
+    content: "\e015";
     font-size: 42px;
 }
 .flaticon-medical55:before {
-    content: "\e015";
+    content: "\e016";
 }
 .flaticon-menu45:before {
-	content: "\e016";
+	content: "\e017";
     font-size: 40px;
     line-height: 82%;
     font-weight: bold;
     color: #002E02;
 }
 .flaticon-money132:before {
-    content: "\e017";
+    content: "\e018";
     font-size: 42px;
 }
 .flaticon-network60:before {
-    content: "\e018";
+    content: "\e019";
     font-size: 20px;
 }
 .flaticon-plus25:before {
-    content: "\e019";
+    content: "\e01a";
 }
 .flaticon-profile31:before {
-    content: "\e01a";
+    content: "\e01b";
     font-size: 20px;
 }
 .flaticon-shopping100:before {
-    content: "\e01b";
+    content: "\e01c";
     color: #333;
 }
 .flaticon-shoppingcart14:before {
-	content: "\e01c";
+	content: "\e01d";
     font-size: 31px;
     line-height: 130%;
 }
 .flaticon-symbol21:before {
-    content: "\e01d";
+    content: "\e01e";
     font-size: 20px;
 }
 .flaticon-two200:before {
-    content: "\e01e";
+    content: "\e01f";
     font-size: 60px;
     color: #333;
 }
 .flaticon-user7:before {
-    content: "\e01f";
+    content: "\e020";
 }
 .flaticon-users38:before {
-    content: "\e020";
+    content: "\e021";
     font-size: 20px;
 }

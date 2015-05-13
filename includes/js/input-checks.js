@@ -2,8 +2,7 @@ $(document).ready(function(){
 
     // INPUT CHECKS
 
-    // first-name, last-name, email, street, house-number, floor, enter
-    $('.validation p').addClass('flaticon-good1');
+    // first-name, last-name, email, username, password
     $('.wrapper').on('keyup', '#first-name input, #last-name input, #email input, #username input, #password input', function(event){
         var regex;
         var id = $(event.target).parent().parent().attr('id');
