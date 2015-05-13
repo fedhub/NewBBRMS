@@ -128,7 +128,6 @@ function get_form_details(){
 authentication.all('*', function(req, res, next){
 
     var req_url = req.originalUrl;
-    console.log(req_url);
     if(settings.get_is_connected()
         || req_url == '/authenticate')
         //|| req_url == '/menu-types'
