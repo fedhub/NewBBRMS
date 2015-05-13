@@ -4,7 +4,6 @@ var server     = require('http').createServer(app);
 //var io         = require('socket.io').listen(server);
 var path       = require('path');
 var bodyParser = require('body-parser');
-var settings = require('settings');
 
 // socket.io
 /*io.sockets.on('connection', function(socket){
