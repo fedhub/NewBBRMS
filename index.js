@@ -33,7 +33,6 @@ app.use(function(req, res, next) {
     var req_url = req.originalUrl;
     if(settings.get_is_connected() || req_url == '/authenticate') next();
     else if(!settings.get_is_connected()) res.render('authentication');
-    next();
 });
 
 app.use(require('./mysql'));
