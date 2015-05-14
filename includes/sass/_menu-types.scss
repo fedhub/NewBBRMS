@@ -1,0 +1,53 @@
+.menu-types-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  //overflow: hidden;
+  .item-container{
+    @include size(33%, 300px);
+    display: inline-block;
+    margin: 2px auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover{
+      box-shadow: 0px 0px 20px 0px grey;
+    }
+  }
+  .header{
+    display: table;
+    width: 100%;
+    height: 10%;
+    background: rgba(grey, 0.5);
+    box-shadow: 0px 3px 10px -4px #000;
+    p{
+      @include cell-settings();
+      font-size: 18px;
+      color: rgba($txt-color, 0.8);
+      font-weight: bold;
+    }
+  }
+
+  .footer {
+    display: block;
+    position: absolute;
+    bottom: -20%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    //background: rgba(#7B7C79, 1);
+    background: rgba(#7B7C79, 1);
+    box-shadow: inset 0px 2px 13px rgba($txt-color,0.35);
+    //box-shadow: inset -2px 0 2px rgba($txt-color, .35);
+    transition: transform .20s ease-in-out;
+    -webkit-transition: -webkit-transform .20s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+}
+
+.top{
+  transform: translate3d(0, -100%, 0); /* X, Y, Z */
+  -webkit-transform: translate3d(0, -100%, 0 );
+}

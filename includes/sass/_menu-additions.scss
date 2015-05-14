@@ -1,0 +1,109 @@
+.menu-additions-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+.additions-set-cont{
+  width: 100%;
+  .additions-set-title{
+    @include size(100%, 45px);
+    .title{
+      @include size(100%, 35px);
+      display: table;
+      background: rgba(#333, 0.3);
+      p{
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: bold;
+        font-size: 18px;
+        //color: rgba(#333, 0.8);
+        padding-right: 5px;
+        color: rgba(#333, 0.8);
+      }
+    }
+    .hr{
+      @include size(100%, 5px);
+      background-color: rgba(#333, 0.8);
+    }
+  }
+}
+.additions-set-items{
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 2px;
+  .item-container{
+    @include size(19.5%, 200px);
+    display: inline-block;
+    margin: 2px auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px 1px #333;
+    &:hover{
+      box-shadow: 0px 0px 10px 1px #333;
+    }
+  }
+  .header{
+    @include size(100%, 30%);
+    background: rgba(grey, 0.5);
+  }
+  .title{
+    @include size(100%, 35%);
+    display: table;
+    text-align: center;
+    box-shadow: 0px 6px 7px -7px #333;
+    section{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .name{
+    @include size(80%, 100%);
+    p{
+      font-size: 15px;
+      font-weight: bold;
+      color: rgba(#333, 1);
+    }
+  }
+  .price{
+    @include size(20%, 100%);
+    p{
+      font-size: 15px;
+      font-weight: bold;
+      color: rgba(#333, 1);
+    }
+  }
+  .description{
+    @include size(100%, 65%);
+    p{
+      display: table-cell;
+      padding-right: 2px;
+      padding-left: 2px;
+      padding-top: 7px;
+      font-size: 13px;
+      font-weight: bold;
+      color: rgba(#333, 1);
+    }
+  }
+  .image{
+    @include size(100%, 70%);
+  }
+  .footer {
+    display: block;
+    position: absolute;
+    bottom: -20%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    //background: rgba(#7B7C79, 1);
+    background: rgba(#7B7C79, 1);
+    box-shadow: inset 0px 2px 13px rgba($txt-color,0.35);
+    //box-shadow: inset -2px 0 2px rgba($txt-color, .35);
+    transition: transform .20s ease-in-out;
+    -webkit-transition: -webkit-transform .20s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+}

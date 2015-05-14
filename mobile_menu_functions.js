@@ -59,7 +59,7 @@ mobile_menu_functions.menu_items = function(req, res){
         else{console.log(err);}
     });
 
-}
+};
 
 // Fetch the menu additions
 mobile_menu_functions.menu_additions = function(req, res){

@@ -42,6 +42,9 @@ app.use(require('./authentication'));
 app.use(require('./routers'));
 app.use(require('./functions'));
 app.use(require('./managers'));
+app.use(require('./menu-types'));
+app.use(require('./menu-items'));
+app.use(require('./menu-additions'));
 
 //app.use(require('./authentication'));
 //app.use(require('./routers'));

@@ -1,4 +1,6 @@
 footer{
-  @include size(100%, 15%);
+  @include size(100%, 90px);
+
+ // @include size(100%, 15%);
   background-color: #FCBC58;
 }

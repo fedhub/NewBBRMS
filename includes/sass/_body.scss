@@ -1,7 +1,10 @@
 .main{
-  @include size(100%, 65%);
+  width: 100%;
+  overflow: hidden;
   .content{
-    @include size(80%, 100%);
+    width: 80%;
+    //@include size(80%, 100%);
+    //min-height: 100%;
     float: right;
   }
   .breadcrumbs-strip{

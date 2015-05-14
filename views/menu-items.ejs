@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -59,6 +60,21 @@
             <section class="breadcrumbs-strip">
                 <% for(var i = 0; i < breadcrumbs.length; i++){ %>
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
+                <% } %>
+            </section>
+            <section class="menu-items-cont">
+                <% for(var i = 0; i < menu_items.length; i++) { %>
+                <section class="item-container" id="<%= menu_type_name %>-<%= menu_type_id %>-<%= menu_items[i].name %>-<%= menu_items[i].id %>">
+                    <section class="header">
+                        <section class="title">
+                            <section class="name"><p><%= menu_items[i].name %></p></section>
+                            <section class="price"><p><%= menu_items[i].price %> &#8362;</p></section>
+                        </section>
+                        <section class="description"><p><%= menu_items[i].description %></p></section>
+                    </section>
+                    <section class="image" style="background: url('../images/<%= menu_items[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;"></section>
+                    <section class="footer"></section>
+                </section>
                 <% } %>
             </section>
         </section>

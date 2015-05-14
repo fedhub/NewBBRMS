@@ -1,5 +1,6 @@
 header{
-  @include size(100%, 20%);
+ // @include size(100%, 20%);
+  @include size(100%, 190px);
   .top-strip{
     @include size(100%, 25%);
     background-color: #7B7C79;
