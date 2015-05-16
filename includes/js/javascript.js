@@ -1,8 +1,12 @@
-var base_url = 'http://www.best-biss.com';
+//var base_url = 'http://www.best-biss.com';
 //var base_url = 'http://best-biss.herokuapp.com';
-//var base_url = 'http://localhost:3000';
+var base_url = 'http://localhost:3000';
 
 $(document).ready(function() {
+
+    //if (document.documentElement.clientWidth <= 1366) {
+    //    $('html').css('zoom', '75%');
+    //}
 
     var $header_height;
     var $footer_height;

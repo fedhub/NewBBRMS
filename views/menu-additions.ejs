@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Home</title>
+    <title>Best Biss | Menu Additions</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/menu-additions.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -73,7 +74,9 @@
                         </section>
                         <section class="additions-set-items">
                             <% for(var j = 0; j < addition_types[i].addition_items.length; j++) { %>
-                            <section class="item-container">
+                            <section class="item-container" name="<%= addition_types[i].addition_items[j].name %>" id="<%= menu_type_id %>-<%= menu_item_id %>-<%= addition_types[i].id %>-<%= addition_types[i].addition_items[j].id %>">
+                                <section class="sealed-cont" id="<%= addition_types[i].addition_items[j].seal %>"><p class="flaticon-forbidden"></p></section>
+                                <section class="reveal-button" id="reveal"><p id="reveal-additionitem">שחרר</p></section>
                                 <section class="header">
                                     <section class="title">
                                         <section class="name"><p><%= addition_types[i].addition_items[j].name %></p></section>
@@ -82,9 +85,14 @@
                                     <section class="description"><p><%= addition_types[i].addition_items[j].description %></p></section>
                                 </section>
                                 <section class="image" style="background: url('../images/<%= addition_types[i].addition_items[j].image %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;"></section>
-                                <section class="footer"></section>
+                                <section class="footer">
+                                    <section title="הסתר באפליקצייה"><p id="conceal-additionitem" class="flaticon-forbidden"></p></section>
+                                    <section title="ערוך"><p id="edit-additionitem" class="flaticon-edit45"></p></section>
+                                    <section title="מחק מהתפריט"><p id="delete-additionitem" class="flaticon-delete96"></p></section>
+                                </section>
                             </section>
                             <% } %>
+                            <section class="item-container"><section class="add"><p class="flaticon-plus25"></p></section></section>
                         </section>
                     </section>
                 <% } %>

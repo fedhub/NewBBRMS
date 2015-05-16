@@ -24,6 +24,7 @@ menu_additions.get('/menu-additions&:menu_type_id&:menu_type_name&:menu_item_id&
     "ai.description AS addition_item_description, " +
     "ai.addition_type_id, " +
     "ai.price, " +
+    "ai.seal, " +
     "i.image_name AS image ";
     query += "FROM addition_types at ";
     query += "LEFT JOIN food_items_additions fia ON at.id = fia.addition_type_id ";
@@ -64,6 +65,112 @@ menu_additions.get('/menu-additions&:menu_type_id&:menu_type_name&:menu_item_id&
     });
 
 });
+
+menu_additions.post('/conceal-addition-item&:addition_type_id&:addition_item_id', function(req, res){
+
+    var addition_item_id = req.params.addition_item_id.split('=')[1];
+    var addition_type_id = req.params.addition_type_id.split('=')[1];
+    var query = 'SELECT (SELECT COUNT(*) FROM `addition_items` WHERE `addition_type_id`="'+addition_type_id+'") AS tot_count, (SELECT COUNT(*) FROM `addition_items` WHERE `addition_type_id`="'+addition_type_id+'" AND `seal`="1") AS sealed_count;';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    var tot_addition_items_count = result[0].tot_count;
+                    var sealed_addition_items_count = result[0].sealed_count;
+                    if((result[0].tot_count - result[0].sealed_count) >= 2){
+                        query = 'SELECT * FROM `addition_types` WHERE `id`="'+addition_type_id+'";';
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                var msg = '';
+                                if(result[0].selection_type == 'required_min'){
+                                    if(result[0].selections_amount == (tot_addition_items_count - sealed_addition_items_count)){
+                                        msg = 'אופן הבחירה שהגדרת עבור סט תוספות זה הוא בחירה של לפחות ';
+                                        msg += result[0].selections_amount + ' ';
+                                        msg += 'פריטים, באפשרותך לשנות את הגדרות הבחירה של סט תוספות זה';
+                                        res.send({status: false, msg: msg});
+                                    }
+                                    else{
+                                        conceal_addition_item(addition_item_id, res);
+                                    }
+                                }
+                                if(result[0].selection_type == 'required_exact'){
+                                    if(result[0].selections_amount == (tot_addition_items_count - sealed_addition_items_count)){
+                                        msg = 'אופן הבחירה שהגדרת עבור סט תוספות זה הוא בחירה של בדיוק ';
+                                        msg += result[0].selections_amount + ' ';
+                                        msg += 'פריטים, באפשרותך לשנות את הגדרות הבחירה של סט תוספות זה';
+                                        res.send({status: false, msg: msg});
+                                    }
+                                    else{
+                                        conceal_addition_item(addition_item_id, res);
+                                    }
+                                }
+                                if(result[0].selection_type == 'optional_max'){
+                                    conceal_addition_item(addition_item_id, res);
+                                }
+                            }
+                            else{
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
+                            }
+                        });
+                    }
+                    else{
+                        res.send({status: false, msg: 'מדובר בפריט האחרון בקטגוריה זו שאינו מוסתר ולכן לא ניתן להסתיר אותו מהמשתמשים מאחר וזה עלול לגרום לשיבושים בתפקוד של האפליקצייה'});
+                    }
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+});
+
+menu_additions.post('/reveal-addition-item&:addition_type_id&:addition_item_id', function(req, res){
+
+    var addition_item_id = req.params.addition_item_id.split('=')[1];
+    var addition_type_id = req.params.addition_type_id.split('=')[1];
+    var query = 'UPDATE `addition_items` SET `seal`="0" WHERE `id`='+addition_item_id+';';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.send({status: true, msg: ''});
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בתהליך חשיפת הפריט, אנא נסה שוב מאוחר יותר'});
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+
+});
+
+function conceal_addition_item(addition_item_id, res){
+    var query = 'UPDATE `addition_items` SET `seal`="1" WHERE `id`='+addition_item_id+';';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.send({status: true, msg: ''});
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
+                }
+            });
+            conn.release();
+        }
+        else{console.log(err);}
+    });
+}
 
 function getAdditions(menu_additions){
     var additions = [];
@@ -107,6 +214,7 @@ function additionItem(item){
     this.description = item.addition_item_description;
     this.image = item.image;
     this.price = item.price;
+    this.seal = item.seal;
 }
 
 module.exports = menu_additions ;

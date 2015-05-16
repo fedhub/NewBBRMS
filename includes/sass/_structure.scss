@@ -56,7 +56,42 @@ hr {
   }
 }
 
-@include small(){
+.menu-options-box{
+  display: none;
+  position: absolute;
+  @include size(200, 150);
+  top: -34px;
+  left: 29px;
+  border: 3px solid rgba(#000, 0.6);
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: 0 0 10px 0 #FFF;
+  line-height: 30px;
+  background-color: #FAFAD2 !important;
+  p{
+    text-align: center;
+    font-size: 12px !important;
+    color: #333;
+    font-weight: bold;
+  }
+
+}
+
+@include medium_1680(){
+  .wrapper{
+    width: 70%;
+  }
+}
+
+
+@include medium_1366(){
+  .wrapper{
+    width: 83%;
+  }
+}
+
+@include small_360(){
   .wrapper{
     width: 100%;
   }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Home</title>
+    <title>Best Biss | Menu</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/menu-types.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -65,11 +66,18 @@
             </section>
             <section class="menu-types-cont">
                 <% for(var i = 0; i < menu_types.length; i++){ %>
-                    <section class="item-container" id="menu-type-<%= menu_types[i].id %>" style="background: url('../images/<%= menu_types[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;">
+                    <section class="item-container" name="<%= menu_types[i].name %>" id="menu-type-<%= menu_types[i].id %>" style="background: url('../images/<%= menu_types[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;">
+                        <section class="sealed-cont" id="<%= menu_types[i].seal %>"><p class="flaticon-forbidden"></p></section>
+                        <section class="reveal-button" id="reveal"><p id="reveal-menutype">שחרר</p></section>
                         <section class="header"><p><%= menu_types[i].name %></p></section>
-                        <section class="footer"></section>
+                        <section class="footer">
+                            <section title="הסתר באפליקצייה" ><p id="conceal-menutype" class="flaticon-forbidden"></p></section>
+                            <section title="ערוך" ><p id="edit-menutype" class="flaticon-edit45"></p></section>
+                            <section title="מחק מהתפריט" ><p id="delete-menutype" class="flaticon-delete96"></p></section>
+                        </section>
                     </section>
                 <% } %>
+                <section class="item-container"><section class="add"><p class="flaticon-plus25"></p></section></section>
             </section>
         </section>
     </section>

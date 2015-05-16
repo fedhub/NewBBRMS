@@ -17,16 +17,20 @@
   left: $left;
 }
 
+@mixin medium_1680(){
+  @media only screen and (max-width: 1680px) {
+    @content;
+  }
+}
 
-
-@mixin medium(){
+@mixin medium_1366(){
   @media only screen and (max-width: 1366px) {
     @content;
   }
 }
 
 
-@mixin small(){
+@mixin small_360(){
   @media only screen and (max-width: 360px) {
     @content;
   }

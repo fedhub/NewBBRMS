@@ -1,3 +1,96 @@
+/* line 1, ../sass/_lightbox.scss */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 10000;
+}
+/* line 9, ../sass/_lightbox.scss */
+.lightbox .container {
+  width: 390px;
+  height: 250px;
+  border: 5px solid rgba(51, 51, 51, 0.8);
+  border-radius: 5px;
+  background-color: #FFF;
+  margin: 0 auto;
+  box-shadow: 0px 0px 8px -2px #000;
+  margin-top: 20%;
+  position: relative;
+}
+/* line 19, ../sass/_lightbox.scss */
+.lightbox .close {
+  width: 28px;
+  height: 30px;
+  display: table;
+  float: right;
+  cursor: pointer;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 25, ../sass/_lightbox.scss */
+.lightbox .close:hover {
+  color: #333;
+}
+/* line 28, ../sass/_lightbox.scss */
+.lightbox .close p {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 33, ../sass/_lightbox.scss */
+.lightbox .title {
+  float: right;
+  display: table;
+  width: 350px;
+  height: 33px;
+}
+/* line 37, ../sass/_lightbox.scss */
+.lightbox .title p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  text-align: right;
+  padding-right: 10px;
+  text-shadow: -2px 1px #D8DDCD;
+  color: #002E02;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 18px;
+}
+/* line 48, ../sass/_lightbox.scss */
+.lightbox .content {
+  width: 90%;
+  height: 150px;
+  display: table;
+}
+/* line 51, ../sass/_lightbox.scss */
+.lightbox .content p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #333333;
+}
+/* line 57, ../sass/_lightbox.scss */
+.lightbox .approve {
+  width: 70px;
+  height: 25px;
+  background-color: green;
+  margin: 10px auto;
+  box-shadow: 0px 0px 8px -2px #000;
+  display: table;
+  cursor: pointer;
+}
+/* line 64, ../sass/_lightbox.scss */
+.lightbox .approve p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: #FFF;
+}
+
 /* line 1, ../sass/_authentication.scss */
 .authentication-wrapper {
   width: 100%;
@@ -223,8 +316,44 @@ hr {
   background-color: #002E02;
 }
 
+/* line 59, ../sass/_structure.scss */
+.menu-options-box {
+  display: none;
+  position: absolute;
+  width: 200;
+  height: 150;
+  top: -34px;
+  left: 29px;
+  border: 3px solid rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: 0 0 10px 0 #FFF;
+  line-height: 30px;
+  background-color: #FAFAD2 !important;
+}
+/* line 72, ../sass/_structure.scss */
+.menu-options-box p {
+  text-align: center;
+  font-size: 12px !important;
+  color: #333;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 1680px) {
+  /* line 82, ../sass/_structure.scss */
+  .wrapper {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 1366px) {
+  /* line 89, ../sass/_structure.scss */
+  .wrapper {
+    width: 83%;
+  }
+}
 @media only screen and (max-width: 360px) {
-  /* line 60, ../sass/_structure.scss */
+  /* line 95, ../sass/_structure.scss */
   .wrapper {
     width: 100%;
   }
@@ -745,7 +874,66 @@ footer {
 .menu-types-cont .item-container:hover {
   box-shadow: 0px 0px 20px 0px grey;
 }
-/* line 18, ../sass/_menu-types.scss */
+/* line 17, ../sass/_menu-types.scss */
+.menu-types-cont .item-container .add {
+  width: 97%;
+  height: 290px;
+  border: solid 5px rgba(51, 51, 51, 0.5);
+  border-radius: 5px;
+  display: table;
+}
+/* line 23, ../sass/_menu-types.scss */
+.menu-types-cont .item-container .add:hover p {
+  color: rgba(51, 51, 51, 0.7);
+}
+/* line 27, ../sass/_menu-types.scss */
+.menu-types-cont .item-container .add p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 70px;
+  color: rgba(51, 51, 51, 0.5);
+}
+/* line 34, ../sass/_menu-types.scss */
+.menu-types-cont .sealed-cont {
+  display: none;
+  width: 100%;
+  height: 260px;
+  line-height: 260px;
+  top: 35px;
+  position: absolute;
+  left: 0;
+}
+/* line 41, ../sass/_menu-types.scss */
+.menu-types-cont .sealed-cont p {
+  font-size: 250px;
+  color: rgba(51, 51, 51, 0.4);
+}
+/* line 46, ../sass/_menu-types.scss */
+.menu-types-cont .reveal-button {
+  display: none;
+  width: 45px;
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  left: 5px;
+  background-color: green;
+  border: solid 1px rgba(51, 51, 51, 0.4);
+  border-radius: 5px;
+  box-shadow: 0 0 2px 0 #000;
+  line-height: 20px;
+}
+/* line 57, ../sass/_menu-types.scss */
+.menu-types-cont .reveal-button:hover {
+  box-shadow: 0 0 5px 0 #000;
+}
+/* line 60, ../sass/_menu-types.scss */
+.menu-types-cont .reveal-button p {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* line 66, ../sass/_menu-types.scss */
 .menu-types-cont .header {
   display: table;
   width: 100%;
@@ -753,7 +941,7 @@ footer {
   background: rgba(128, 128, 128, 0.5);
   box-shadow: 0px 3px 10px -4px #000;
 }
-/* line 24, ../sass/_menu-types.scss */
+/* line 72, ../sass/_menu-types.scss */
 .menu-types-cont .header p {
   display: table-cell;
   text-align: center;
@@ -762,7 +950,7 @@ footer {
   color: rgba(0, 46, 2, 0.8);
   font-weight: bold;
 }
-/* line 32, ../sass/_menu-types.scss */
+/* line 79, ../sass/_menu-types.scss */
 .menu-types-cont .footer {
   display: block;
   position: absolute;
@@ -777,8 +965,42 @@ footer {
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
+/* line 94, ../sass/_menu-types.scss */
+.menu-types-cont .footer section {
+  display: inline-block;
+  margin-top: 2%;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.3);
+  line-height: 50px;
+  border-radius: 100px;
+}
+/* line 101, ../sass/_menu-types.scss */
+.menu-types-cont .footer section p {
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 25px;
+}
+/* line 108, ../sass/_menu-types.scss */
+.menu-types-cont .footer section:first-child p {
+  font-size: 28px;
+}
+/* line 113, ../sass/_menu-types.scss */
+.menu-types-cont .footer section:last-child p {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 27px;
+}
+/* line 118, ../sass/_menu-types.scss */
+.menu-types-cont .footer section:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 120, ../sass/_menu-types.scss */
+.menu-types-cont .footer section:hover p {
+  color: rgba(0, 0, 0, 0.9);
+}
 
-/* line 50, ../sass/_menu-types.scss */
+/* line 128, ../sass/_menu-types.scss */
 .top {
   transform: translate3d(0, -100%, 0);
   /* X, Y, Z */
@@ -807,13 +1029,80 @@ footer {
 .menu-items-cont .item-container:hover {
   box-shadow: 0px 0px 10px 1px #333;
 }
-/* line 18, ../sass/_menu-items.scss */
+/* line 17, ../sass/_menu-items.scss */
+.menu-items-cont .item-container:last-child {
+  box-shadow: none;
+}
+/* line 19, ../sass/_menu-items.scss */
+.menu-items-cont .item-container:last-child:hover {
+  box-shadow: 0px 0px 20px 0px grey;
+}
+/* line 23, ../sass/_menu-items.scss */
+.menu-items-cont .item-container .add {
+  width: 96%;
+  height: 270px;
+  border: solid 5px rgba(51, 51, 51, 0.5);
+  border-radius: 5px;
+  display: table;
+}
+/* line 29, ../sass/_menu-items.scss */
+.menu-items-cont .item-container .add:hover p {
+  color: rgba(51, 51, 51, 0.7);
+}
+/* line 33, ../sass/_menu-items.scss */
+.menu-items-cont .item-container .add p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 60px;
+  color: rgba(51, 51, 51, 0.5);
+}
+/* line 40, ../sass/_menu-items.scss */
+.menu-items-cont .sealed-cont {
+  display: none;
+  width: 100%;
+  height: 180px;
+  line-height: 180px;
+  top: 85px;
+  position: absolute;
+  left: 0;
+}
+/* line 47, ../sass/_menu-items.scss */
+.menu-items-cont .sealed-cont p {
+  font-size: 175px;
+  color: rgba(51, 51, 51, 0.4);
+}
+/* line 52, ../sass/_menu-items.scss */
+.menu-items-cont .reveal-button {
+  display: none;
+  width: 45px;
+  height: 20px;
+  position: absolute;
+  top: 90px;
+  left: 5px;
+  background-color: green;
+  border: solid 1px rgba(51, 51, 51, 0.4);
+  border-radius: 5px;
+  box-shadow: 0 0 2px 0 #000;
+  line-height: 20px;
+}
+/* line 63, ../sass/_menu-items.scss */
+.menu-items-cont .reveal-button:hover {
+  box-shadow: 0 0 5px 0 #000;
+}
+/* line 66, ../sass/_menu-items.scss */
+.menu-items-cont .reveal-button p {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* line 72, ../sass/_menu-items.scss */
 .menu-items-cont .header {
   width: 100%;
   height: 30%;
   background: rgba(128, 128, 128, 0.5);
 }
-/* line 22, ../sass/_menu-items.scss */
+/* line 76, ../sass/_menu-items.scss */
 .menu-items-cont .title {
   width: 100%;
   height: 35%;
@@ -821,39 +1110,39 @@ footer {
   text-align: center;
   box-shadow: 0px 6px 7px -7px #333;
 }
-/* line 27, ../sass/_menu-items.scss */
+/* line 81, ../sass/_menu-items.scss */
 .menu-items-cont .title section {
   display: table-cell;
   vertical-align: middle;
 }
-/* line 32, ../sass/_menu-items.scss */
+/* line 86, ../sass/_menu-items.scss */
 .menu-items-cont .name {
   width: 80%;
   height: 100%;
 }
-/* line 34, ../sass/_menu-items.scss */
+/* line 88, ../sass/_menu-items.scss */
 .menu-items-cont .name p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 40, ../sass/_menu-items.scss */
+/* line 94, ../sass/_menu-items.scss */
 .menu-items-cont .price {
   width: 20%;
   height: 100%;
 }
-/* line 42, ../sass/_menu-items.scss */
+/* line 96, ../sass/_menu-items.scss */
 .menu-items-cont .price p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 48, ../sass/_menu-items.scss */
+/* line 102, ../sass/_menu-items.scss */
 .menu-items-cont .description {
   width: 100%;
   height: 65%;
 }
-/* line 50, ../sass/_menu-items.scss */
+/* line 104, ../sass/_menu-items.scss */
 .menu-items-cont .description p {
   display: table-cell;
   padding-right: 2px;
@@ -863,12 +1152,12 @@ footer {
   font-weight: bold;
   color: #333333;
 }
-/* line 60, ../sass/_menu-items.scss */
+/* line 114, ../sass/_menu-items.scss */
 .menu-items-cont .image {
   width: 100%;
   height: 70%;
 }
-/* line 63, ../sass/_menu-items.scss */
+/* line 117, ../sass/_menu-items.scss */
 .menu-items-cont .footer {
   display: block;
   position: absolute;
@@ -882,6 +1171,40 @@ footer {
   -webkit-transition: -webkit-transform .20s ease-in-out;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
+}
+/* line 132, ../sass/_menu-items.scss */
+.menu-items-cont .footer section {
+  display: inline-block;
+  margin-top: 3%;
+  width: 43px;
+  height: 43px;
+  background-color: rgba(0, 0, 0, 0.3);
+  line-height: 43px;
+  border-radius: 100px;
+}
+/* line 139, ../sass/_menu-items.scss */
+.menu-items-cont .footer section p {
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 23px;
+}
+/* line 146, ../sass/_menu-items.scss */
+.menu-items-cont .footer section:first-child p {
+  font-size: 26px;
+}
+/* line 151, ../sass/_menu-items.scss */
+.menu-items-cont .footer section:last-child p {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 25px;
+}
+/* line 156, ../sass/_menu-items.scss */
+.menu-items-cont .footer section:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 158, ../sass/_menu-items.scss */
+.menu-items-cont .footer section:hover p {
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* line 1, ../sass/_menu-additions.scss */
@@ -946,13 +1269,41 @@ footer {
 .additions-set-items .item-container:hover {
   box-shadow: 0px 0px 10px 1px #333;
 }
-/* line 48, ../sass/_menu-additions.scss */
+/* line 47, ../sass/_menu-additions.scss */
+.additions-set-items .item-container:last-child {
+  box-shadow: none;
+}
+/* line 49, ../sass/_menu-additions.scss */
+.additions-set-items .item-container:last-child:hover {
+  box-shadow: 0px 0px 20px 0px grey;
+}
+/* line 53, ../sass/_menu-additions.scss */
+.additions-set-items .item-container .add {
+  width: 95%;
+  height: 190px;
+  border: solid 5px rgba(51, 51, 51, 0.5);
+  border-radius: 5px;
+  display: table;
+}
+/* line 59, ../sass/_menu-additions.scss */
+.additions-set-items .item-container .add:hover p {
+  color: rgba(51, 51, 51, 0.7);
+}
+/* line 63, ../sass/_menu-additions.scss */
+.additions-set-items .item-container .add p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+  color: rgba(51, 51, 51, 0.5);
+}
+/* line 70, ../sass/_menu-additions.scss */
 .additions-set-items .header {
   width: 100%;
   height: 30%;
   background: rgba(128, 128, 128, 0.5);
 }
-/* line 52, ../sass/_menu-additions.scss */
+/* line 74, ../sass/_menu-additions.scss */
 .additions-set-items .title {
   width: 100%;
   height: 35%;
@@ -960,39 +1311,78 @@ footer {
   text-align: center;
   box-shadow: 0px 6px 7px -7px #333;
 }
-/* line 57, ../sass/_menu-additions.scss */
+/* line 79, ../sass/_menu-additions.scss */
 .additions-set-items .title section {
   display: table-cell;
   vertical-align: middle;
 }
-/* line 62, ../sass/_menu-additions.scss */
+/* line 84, ../sass/_menu-additions.scss */
+.additions-set-items .sealed-cont {
+  display: none;
+  width: 100%;
+  height: 130px;
+  line-height: 130px;
+  top: 65px;
+  position: absolute;
+  left: 0;
+}
+/* line 92, ../sass/_menu-additions.scss */
+.additions-set-items .sealed-cont p {
+  font-size: 125px;
+  color: rgba(51, 51, 51, 0.4);
+}
+/* line 97, ../sass/_menu-additions.scss */
+.additions-set-items .reveal-button {
+  display: none;
+  width: 45px;
+  height: 20px;
+  position: absolute;
+  top: 65px;
+  left: 5px;
+  background-color: green;
+  border: solid 1px rgba(51, 51, 51, 0.4);
+  border-radius: 5px;
+  box-shadow: 0 0 2px 0 #000;
+  line-height: 20px;
+}
+/* line 108, ../sass/_menu-additions.scss */
+.additions-set-items .reveal-button:hover {
+  box-shadow: 0 0 5px 0 #000;
+}
+/* line 111, ../sass/_menu-additions.scss */
+.additions-set-items .reveal-button p {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* line 117, ../sass/_menu-additions.scss */
 .additions-set-items .name {
   width: 80%;
   height: 100%;
 }
-/* line 64, ../sass/_menu-additions.scss */
+/* line 119, ../sass/_menu-additions.scss */
 .additions-set-items .name p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 70, ../sass/_menu-additions.scss */
+/* line 125, ../sass/_menu-additions.scss */
 .additions-set-items .price {
   width: 20%;
   height: 100%;
 }
-/* line 72, ../sass/_menu-additions.scss */
+/* line 127, ../sass/_menu-additions.scss */
 .additions-set-items .price p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 78, ../sass/_menu-additions.scss */
+/* line 133, ../sass/_menu-additions.scss */
 .additions-set-items .description {
   width: 100%;
   height: 65%;
 }
-/* line 80, ../sass/_menu-additions.scss */
+/* line 135, ../sass/_menu-additions.scss */
 .additions-set-items .description p {
   display: table-cell;
   padding-right: 2px;
@@ -1002,12 +1392,12 @@ footer {
   font-weight: bold;
   color: #333333;
 }
-/* line 90, ../sass/_menu-additions.scss */
+/* line 145, ../sass/_menu-additions.scss */
 .additions-set-items .image {
   width: 100%;
   height: 70%;
 }
-/* line 93, ../sass/_menu-additions.scss */
+/* line 148, ../sass/_menu-additions.scss */
 .additions-set-items .footer {
   display: block;
   position: absolute;
@@ -1021,4 +1411,38 @@ footer {
   -webkit-transition: -webkit-transform .20s ease-in-out;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
+}
+/* line 163, ../sass/_menu-additions.scss */
+.additions-set-items .footer section {
+  display: inline-block;
+  margin-top: 3%;
+  width: 31px;
+  height: 31px;
+  background-color: rgba(0, 0, 0, 0.3);
+  line-height: 31px;
+  border-radius: 100px;
+}
+/* line 170, ../sass/_menu-additions.scss */
+.additions-set-items .footer section p {
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+}
+/* line 177, ../sass/_menu-additions.scss */
+.additions-set-items .footer section:first-child p {
+  font-size: 21px;
+}
+/* line 182, ../sass/_menu-additions.scss */
+.additions-set-items .footer section:last-child p {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 20px;
+}
+/* line 187, ../sass/_menu-additions.scss */
+.additions-set-items .footer section:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 189, ../sass/_menu-additions.scss */
+.additions-set-items .footer section:hover p {
+  color: rgba(0, 0, 0, 0.9);
 }
