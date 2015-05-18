@@ -26,8 +26,8 @@ mobile_order_functions.make_order = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -51,8 +51,8 @@ mobile_order_functions.last_orders = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -86,8 +86,8 @@ mobile_order_functions.get_libraries = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -120,8 +120,8 @@ mobile_order_functions.library_items = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -162,8 +162,8 @@ mobile_order_functions.new_library = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -194,8 +194,8 @@ mobile_order_functions.add_library_item = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -226,8 +226,8 @@ mobile_order_functions.update_library = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -270,8 +270,8 @@ mobile_order_functions.delete_from_library = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -328,8 +328,8 @@ mobile_order_functions.delete_library = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -364,6 +364,7 @@ function get_unlocked_libraries(res, conn, lib_phone_number){
             console.log("There was an error with MySQL Query: " + query + ' ' + err);
             res.send(false);
         }
+        conn.release();
     });
 }
 

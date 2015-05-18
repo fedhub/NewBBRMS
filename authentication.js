@@ -68,8 +68,8 @@ authentication.post('/authenticate', function(req, res, next){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בתהליך ההתחברות, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -129,8 +129,8 @@ authentication.post('/update-manager-details', function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בתהליך עדכון הפרטים, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else {
             console.log(err);

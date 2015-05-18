@@ -5,10 +5,10 @@ var mysql      = express.Router();
 mysql.MySql_Connection = my_sql.createPool({
     connectionLimit : 10,
     host     : 'sql3.freemysqlhosting.net',
-    user     : 'sql377201',
+    user     : 'sql377627',
     port	 : 3306,
-    password : 'zL1%fZ6!',
-    database : 'sql377201'
+    password : 'zQ8%yN8*',
+    database : 'sql377627'
 });
 
 mysql.getConnection = function(callback){

@@ -15,6 +15,7 @@
     <script type="text/javascript" src="js/managers.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/menu-additions.js"></script>
+    <script type="text/javascript" src="js/addition-types.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -69,7 +70,13 @@
                     <section class="additions-set-cont">
                         <section class="additions-set-title">
                             <section class="hr"></section>
-                            <section class="title"><p><%= addition_types[i].name %> ></p></section>
+                            <section class="title">
+                                <section class="name"><p><%= addition_types[i].name %> ></p></section>
+                                <section class="edit" title="עריכת סט"><p class="flaticon-edit45"></p></section>
+                                <section class="delete" title="מחיקת סט" id="additiontype-<%= menu_type_id %>-<%= menu_type_name %>-<%= menu_item_id %>-<%= menu_item_name %>-<%= addition_types[i].id %>"><p class="flaticon-delete96"></p></section>
+                                <section class="add" title="הוספת סט"><p class="flaticon-add182"></p></section>
+                                <section class="description"><p class=""></p></section>
+                            </section>
                             <section class="hr"></section>
                         </section>
                         <section class="additions-set-items">

@@ -1227,33 +1227,74 @@ footer {
 .additions-set-cont .additions-set-title .title {
   width: 100%;
   height: 35px;
-  display: table;
+  line-height: 35px;
   background: rgba(51, 51, 51, 0.3);
 }
-/* line 14, ../sass/_menu-additions.scss */
-.additions-set-cont .additions-set-title .title p {
-  display: table-cell;
-  vertical-align: middle;
-  font-weight: bold;
-  font-size: 18px;
-  padding-right: 5px;
-  color: rgba(51, 51, 51, 0.8);
-}
-/* line 24, ../sass/_menu-additions.scss */
+/* line 15, ../sass/_menu-additions.scss */
 .additions-set-cont .additions-set-title .hr {
   width: 100%;
   height: 5px;
   background-color: rgba(51, 51, 51, 0.8);
 }
+/* line 19, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title section {
+  height: 100%;
+  float: right;
+}
+/* line 24, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .name p {
+  font-weight: bold;
+  font-size: 18px;
+  padding-right: 5px;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 31, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .edit {
+  margin-right: 5px;
+  width: 30px;
+}
+/* line 35, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .delete {
+  margin-right: 5px;
+  width: 30px;
+}
+/* line 38, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .delete p {
+  font-size: 21px !important;
+}
+/* line 42, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .add {
+  margin-right: 5px;
+  width: 30px;
+}
+/* line 45, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .add p {
+  font-size: 20px !important;
+}
+/* line 49, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .edit p, .additions-set-cont .additions-set-title .delete p, .additions-set-cont .additions-set-title .add p {
+  color: rgba(51, 51, 51, 0.8);
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+/* line 54, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .edit p:hover, .additions-set-cont .additions-set-title .delete p:hover, .additions-set-cont .additions-set-title .add p:hover {
+  color: #333333;
+}
+/* line 58, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .description {
+  margin-right: 5px;
+}
 
-/* line 30, ../sass/_menu-additions.scss */
+/* line 63, ../sass/_menu-additions.scss */
 .additions-set-items {
   width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 2px;
 }
-/* line 35, ../sass/_menu-additions.scss */
+/* line 68, ../sass/_menu-additions.scss */
 .additions-set-items .item-container {
   width: 19.5%;
   height: 200px;
@@ -1265,19 +1306,19 @@ footer {
   cursor: pointer;
   box-shadow: 0px 0px 1px 1px #333;
 }
-/* line 44, ../sass/_menu-additions.scss */
+/* line 77, ../sass/_menu-additions.scss */
 .additions-set-items .item-container:hover {
   box-shadow: 0px 0px 10px 1px #333;
 }
-/* line 47, ../sass/_menu-additions.scss */
+/* line 80, ../sass/_menu-additions.scss */
 .additions-set-items .item-container:last-child {
   box-shadow: none;
 }
-/* line 49, ../sass/_menu-additions.scss */
+/* line 82, ../sass/_menu-additions.scss */
 .additions-set-items .item-container:last-child:hover {
   box-shadow: 0px 0px 20px 0px grey;
 }
-/* line 53, ../sass/_menu-additions.scss */
+/* line 86, ../sass/_menu-additions.scss */
 .additions-set-items .item-container .add {
   width: 95%;
   height: 190px;
@@ -1285,11 +1326,11 @@ footer {
   border-radius: 5px;
   display: table;
 }
-/* line 59, ../sass/_menu-additions.scss */
+/* line 92, ../sass/_menu-additions.scss */
 .additions-set-items .item-container .add:hover p {
   color: rgba(51, 51, 51, 0.7);
 }
-/* line 63, ../sass/_menu-additions.scss */
+/* line 96, ../sass/_menu-additions.scss */
 .additions-set-items .item-container .add p {
   display: table-cell;
   text-align: center;
@@ -1297,13 +1338,13 @@ footer {
   font-size: 50px;
   color: rgba(51, 51, 51, 0.5);
 }
-/* line 70, ../sass/_menu-additions.scss */
+/* line 103, ../sass/_menu-additions.scss */
 .additions-set-items .header {
   width: 100%;
   height: 30%;
   background: rgba(128, 128, 128, 0.5);
 }
-/* line 74, ../sass/_menu-additions.scss */
+/* line 107, ../sass/_menu-additions.scss */
 .additions-set-items .title {
   width: 100%;
   height: 35%;
@@ -1311,12 +1352,12 @@ footer {
   text-align: center;
   box-shadow: 0px 6px 7px -7px #333;
 }
-/* line 79, ../sass/_menu-additions.scss */
+/* line 112, ../sass/_menu-additions.scss */
 .additions-set-items .title section {
   display: table-cell;
   vertical-align: middle;
 }
-/* line 84, ../sass/_menu-additions.scss */
+/* line 117, ../sass/_menu-additions.scss */
 .additions-set-items .sealed-cont {
   display: none;
   width: 100%;
@@ -1326,12 +1367,12 @@ footer {
   position: absolute;
   left: 0;
 }
-/* line 92, ../sass/_menu-additions.scss */
+/* line 125, ../sass/_menu-additions.scss */
 .additions-set-items .sealed-cont p {
   font-size: 125px;
   color: rgba(51, 51, 51, 0.4);
 }
-/* line 97, ../sass/_menu-additions.scss */
+/* line 130, ../sass/_menu-additions.scss */
 .additions-set-items .reveal-button {
   display: none;
   width: 45px;
@@ -1345,44 +1386,44 @@ footer {
   box-shadow: 0 0 2px 0 #000;
   line-height: 20px;
 }
-/* line 108, ../sass/_menu-additions.scss */
+/* line 141, ../sass/_menu-additions.scss */
 .additions-set-items .reveal-button:hover {
   box-shadow: 0 0 5px 0 #000;
 }
-/* line 111, ../sass/_menu-additions.scss */
+/* line 144, ../sass/_menu-additions.scss */
 .additions-set-items .reveal-button p {
   color: #fff;
   font-size: 13px;
   font-weight: bold;
 }
-/* line 117, ../sass/_menu-additions.scss */
+/* line 150, ../sass/_menu-additions.scss */
 .additions-set-items .name {
   width: 80%;
   height: 100%;
 }
-/* line 119, ../sass/_menu-additions.scss */
+/* line 152, ../sass/_menu-additions.scss */
 .additions-set-items .name p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 125, ../sass/_menu-additions.scss */
+/* line 158, ../sass/_menu-additions.scss */
 .additions-set-items .price {
   width: 20%;
   height: 100%;
 }
-/* line 127, ../sass/_menu-additions.scss */
+/* line 160, ../sass/_menu-additions.scss */
 .additions-set-items .price p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 133, ../sass/_menu-additions.scss */
+/* line 166, ../sass/_menu-additions.scss */
 .additions-set-items .description {
   width: 100%;
   height: 65%;
 }
-/* line 135, ../sass/_menu-additions.scss */
+/* line 168, ../sass/_menu-additions.scss */
 .additions-set-items .description p {
   display: table-cell;
   padding-right: 2px;
@@ -1392,12 +1433,12 @@ footer {
   font-weight: bold;
   color: #333333;
 }
-/* line 145, ../sass/_menu-additions.scss */
+/* line 178, ../sass/_menu-additions.scss */
 .additions-set-items .image {
   width: 100%;
   height: 70%;
 }
-/* line 148, ../sass/_menu-additions.scss */
+/* line 181, ../sass/_menu-additions.scss */
 .additions-set-items .footer {
   display: block;
   position: absolute;
@@ -1412,7 +1453,7 @@ footer {
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
-/* line 163, ../sass/_menu-additions.scss */
+/* line 196, ../sass/_menu-additions.scss */
 .additions-set-items .footer section {
   display: inline-block;
   margin-top: 3%;
@@ -1422,27 +1463,27 @@ footer {
   line-height: 31px;
   border-radius: 100px;
 }
-/* line 170, ../sass/_menu-additions.scss */
+/* line 203, ../sass/_menu-additions.scss */
 .additions-set-items .footer section p {
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
   vertical-align: middle;
   font-size: 18px;
 }
-/* line 177, ../sass/_menu-additions.scss */
+/* line 210, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:first-child p {
   font-size: 21px;
 }
-/* line 182, ../sass/_menu-additions.scss */
+/* line 215, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:last-child p {
   color: rgba(0, 0, 0, 0.8);
   font-size: 20px;
 }
-/* line 187, ../sass/_menu-additions.scss */
+/* line 220, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 189, ../sass/_menu-additions.scss */
+/* line 222, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:hover p {
   color: rgba(0, 0, 0, 0.9);
 }

@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.save').click(function(e){
+    $('.managers-cont .save').click(function(e){
         var index = $(this).parent().index()-1; // the row index
         var id = $(e.target).attr('id');
         var manager_id = id.split('-')[1]; // the manager id in the database
@@ -46,7 +46,7 @@ $(document).ready(function() {
         else get_manager_id_ajax($(this), $msg_box, index, manager_id, new_admin_state, 'save');
     });
 
-    $('.delete').click(function(e){
+    $('.managers-cont .delete').click(function(e){
         var index = $(this).parent().index()-1; // the row index
         var id = $(e.target).attr('id');
         var manager_id = id.split('-')[1]; // the manager id in the database

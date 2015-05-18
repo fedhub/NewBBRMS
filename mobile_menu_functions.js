@@ -98,8 +98,8 @@ mobile_menu_functions.menu_additions = function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });

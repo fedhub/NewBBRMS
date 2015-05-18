@@ -33,8 +33,8 @@ mobile_authentication_functions.sign_up = function(req, res){
                     else res.send(false);
                 }
                 else console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -66,8 +66,8 @@ mobile_authentication_functions.log_in = function(req, res){
                     else res.send('phone-not-exist');
                 }
                 else console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });

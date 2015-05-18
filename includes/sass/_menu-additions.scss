@@ -9,21 +9,54 @@
     @include size(100%, 45px);
     .title{
       @include size(100%, 35px);
-      display: table;
+      line-height: 35px;
       background: rgba(#333, 0.3);
-      p{
-        display: table-cell;
-        vertical-align: middle;
-        font-weight: bold;
-        font-size: 18px;
-        //color: rgba(#333, 0.8);
-        padding-right: 5px;
-        color: rgba(#333, 0.8);
-      }
     }
     .hr{
       @include size(100%, 5px);
       background-color: rgba(#333, 0.8);
+    }
+    section{
+      height: 100%;
+      float: right;
+    }
+    .name{
+      p{
+        font-weight: bold;
+        font-size: 18px;
+        padding-right: 5px;
+        color: rgba(#333, 0.8);
+      }
+    }
+    .edit{
+      margin-right: 5px;
+      width: 30px;
+    }
+    .delete{
+      margin-right: 5px;
+      width: 30px;
+      p{
+        font-size: 21px !important;
+      }
+    }
+    .add{
+      margin-right: 5px;
+      width: 30px;
+      p{
+        font-size: 20px !important;
+      }
+    }
+    .edit p, .delete p, .add p{
+      color: rgba(#333, 0.8);
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+      &:hover{
+        color: rgba(#333, 1);
+      }
+    }
+    .description{
+      margin-right: 5px;
     }
   }
 }

@@ -21,8 +21,8 @@ managers.get('/managers', function(req, res){
                 else{
                     res.status(404).render('error404');
                 }
+                conn.release();
             });
-            conn.release();
         }
         else {console.log(err);}
     });
@@ -64,8 +64,8 @@ managers.get('/update-admin&:manager_id&:admin_state', function(req, res){
                 else{
                     res.status(404).render('error404')
                 }
+                conn.release();
             });
-            conn.release();
         }
         else {console.log(err);}
     });
@@ -97,8 +97,8 @@ managers.get('/delete-manager&:manager_id', function(req, res){
             else{
                 res.status(404).render('error404');
             }
+            conn.release();
         });
-        conn.release();
     });
 
 });
@@ -145,8 +145,8 @@ managers.post('/add-manager-fire', function(req, res){
                 console.log("There was an error with MySQL Query: " + query + ' ' + err);
                 res.send(false);
             }
+            conn.release();
         });
-        conn.release();
     });
 
 });

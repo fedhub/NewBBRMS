@@ -32,8 +32,8 @@ menu_items.get('/menu-items&:menu_type_id&:menu_type_name', function(req, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send(false);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -75,11 +75,47 @@ menu_items.post('/conceal-menu-item&:menu_type_id&:menu_item_id', function(req, 
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
+});
+
+menu_items.post('/delete-menu-item&:menu_type_id&:menu_item_id', function(req, res){
+
+    var menu_item_id = req.params.menu_item_id.split('=')[1];
+    var menu_type_id = req.params.menu_type_id.split('=')[1];
+    var query = 'SELECT (SELECT COUNT(*) FROM `food_items` WHERE `food_type_id`="'+menu_type_id+'") AS tot_menu_items_count, ' +
+        '(SELECT COUNT(*) FROM `food_items` WHERE `food_type_id`="'+menu_type_id+'" AND `seal`="1") AS sealed_menu_items_count, ' +
+        '(SELECT `seal` FROM `food_items` WHERE `id`="'+menu_item_id+'") AS is_sealed;';
+    mysql.getConnection(function(err, conn){
+        if(!err) {
+            conn.query(query, function (err, result){
+                if (!err) {
+                    var tot_menu_items_count = result[0].tot_menu_items_count;
+                    var sealed_menu_items_count = result[0].sealed_menu_items_count;
+                    var is_sealed = result[0].is_sealed;
+                    if((is_sealed) || ((tot_menu_items_count - sealed_menu_items_count) >= 2)) delete_menu_item(res, menu_type_id, menu_item_id);
+                    else{
+                        var msg = 'המחיקה אסורה, ייתכן שמדובר בפריט האחרון שנותר בקטגוריה הזו ';
+                        msg += 'או שמדובר בפריט האחרון בקטגוריה הזו שאינו מוסתר ללקוח';
+                        res.send({status: false, msg: msg});
+                    }
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה במחיקת הפריט, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+            res.send({status: false, msg: 'הייתה בעיה במחיקת הפריט, אנא נסה שוב מאוחר יותר'});
+        }
+    });
+
 });
 
 menu_items.post('/reveal-menu-item&:menu_type_id&:menu_item_id', function(req, res){
@@ -97,12 +133,55 @@ menu_items.post('/reveal-menu-item&:menu_type_id&:menu_item_id', function(req, r
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בתהליך חשיפת הפריט, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
 
 });
+
+function delete_menu_item(res, menu_type_id, menu_item_id){
+    var query = 'DELETE FROM `food_items` WHERE `id`="'+menu_item_id+'";';
+    mysql.getConnection(function(err, conn){
+        if(!err) {
+            conn.query(query, function (err, result) {
+                if (!err) {
+                    query = 'DELETE FROM `food_items_additions` WHERE `food_item_id`="' + menu_item_id + '";';
+                    conn.query(query, function (err, result) {
+                        if (!err) {
+                            query = 'DELETE FROM `food_items_images` WHERE `food_item_id`="' + menu_item_id + '";';
+                            conn.query(query, function () {
+                                if (!err) {
+                                    res.send({status: true, msg: ''});
+                                }
+                                else {
+                                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                    res.send({
+                                        status: false,
+                                        msg: 'הייתה בעיה בתהליך מחיקת הפריט, אנא נשה שוב מאוחר יותר'
+                                    });
+                                }
+                            });
+                        }
+                        else {
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send({status: false, msg: 'הייתה בעיה בתהליך מחיקת הפריט, אנא נשה שוב מאוחר יותר'});
+                        }
+                    });
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בתהליך מחיקת הפריט, אנא נשה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+            res.send({status: false, msg: 'הייתה בעיה בתהליך מחיקת הפריט, אנא נשה שוב מאוחר יותר'});
+        }
+    });
+}
 
 module.exports = menu_items;

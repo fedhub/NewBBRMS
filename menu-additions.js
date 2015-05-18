@@ -58,8 +58,8 @@ menu_additions.get('/menu-additions&:menu_type_id&:menu_type_name&:menu_item_id&
                 else {
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -123,11 +123,53 @@ menu_additions.post('/conceal-addition-item&:addition_type_id&:addition_item_id'
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
+});
+
+menu_additions.post('/delete-addition-item&:addition_type_id&:addition_item_id', function(req, res){
+
+    var addition_item_id = req.params.addition_item_id.split('=')[1];
+    var addition_type_id = req.params.addition_type_id.split('=')[1];
+    var query = 'SELECT (SELECT COUNT(*) FROM `addition_items` WHERE `addition_type_id`="'+addition_type_id+'") AS tot_addition_items_count, ' +
+        '(SELECT COUNT(*) FROM `addition_items` WHERE `addition_type_id`="'+addition_type_id+'" AND `seal`="1") AS sealed_addition_items_count, ' +
+        '(SELECT `seal` FROM `addition_items` WHERE `id`="'+addition_item_id+'") AS is_sealed, ' +
+        '(SELECT `selection_type` FROM `addition_types` WHERE `id`="'+addition_type_id+'") AS selection_type, ' +
+        '(SELECT `selections_amount` FROM `addition_types` WHERE `id`="'+addition_type_id+'") AS selections_amount;';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result) {
+                if(!err){
+                    var tot_addition_items_count = result[0].tot_addition_items_count;
+                    var sealed_addition_items_count = result[0].sealed_addition_items_count;
+                    var is_sealed = result[0].is_sealed;
+                    var selection_type = result[0].selection_type;
+                    var selections_amount = result[0].selections_amount;
+                    if((is_sealed == '1') ||
+                        ((selection_type == 'required_exact' || selection_type == 'required_min') && (tot_addition_items_count - (sealed_addition_items_count + 1) >= selections_amount)) ||
+                        (selection_type == 'optional_max')){
+                        delete_addition_item(res, addition_item_id);
+                    }
+                    else{
+                        var msg = 'המחיקה אסורה, ייתכן שמדובר בפריט האחרון שנותר בקטגוריה הזו';
+                        msg += ' או שישנם פריטים אחרים שמוסתרים ולכן קיימת התנגשות עם הגרות הבחירה ';
+                        msg += 'המוגדרות ללקוח עבור סט התוספות הזה';
+                        res.send({status: false, msg: msg});
+                    }
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בתהליך המחיקה, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{console.log(err);}
+    });
+
 });
 
 menu_additions.post('/reveal-addition-item&:addition_type_id&:addition_item_id', function(req, res){
@@ -145,8 +187,8 @@ menu_additions.post('/reveal-addition-item&:addition_type_id&:addition_item_id',
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בתהליך חשיפת הפריט, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
     });
@@ -165,10 +207,41 @@ function conceal_addition_item(addition_item_id, res){
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
                     res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
                 }
+                conn.release();
             });
-            conn.release();
         }
         else{console.log(err);}
+    });
+}
+
+function delete_addition_item(res, addition_item_id){
+    var query = 'DELETE FROM `addition_items` WHERE `id`='+addition_item_id+';';
+    mysql.getConnection(function(err, conn){
+        if(!err) {
+            conn.query(query, function (err, result) {
+                if (!err) {
+                    query = 'DELETE FROM `addition_items_images` WHERE `addition_item_id`=' + addition_item_id + ';';
+                    conn.query(query, function (err, result) {
+                        if (!err) {
+                            res.send({status: true, msg: ''});
+                        }
+                        else {
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send({status: false, msg: 'הייתה בעיה בתהליך המחיקה, אנא נסה שוב מאוחר יותר'});
+                        }
+                    });
+                }
+                else {
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בתהליך המחיקה, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+            res.send({status: false, msg: 'הייתה בעיה בתהליך המחיקה, אנא נסה שוב מאוחר יותר'});
+        }
     });
 }
 

@@ -205,7 +205,7 @@ function conceal_menutype_ajax(id_params){
     });
 }
 
-// id_params: ['delete', 'menuitem', '+menu_type_id+', '+menu_item_id+'];
+// id_params: ['conceal', 'menuitem', '+menu_type_id+', '+menu_item_id+'];
 function conceal_menuitem_ajax(id_params){
     var url = base_url + '/conceal-menu-item&menu_type_id='+id_params[2]+'&menu_item_id=' + id_params[3];
     var menu_type_id = id_params[2];
@@ -220,7 +220,7 @@ function conceal_menuitem_ajax(id_params){
 }
 
 
-// id_params: ['delete', 'additionitem', '+menu_type_id+', '+menu_item_id+', '+addition_type_id+', '+addition_item_id+'];
+// id_params: ['conceal', 'additionitem', '+menu_type_id+', '+menu_item_id+', '+addition_type_id+', '+addition_item_id+'];
 function conceal_additionitem_ajax(id_params){
     var url = base_url + '/conceal-addition-item&addition_type_id=' + id_params[4]+'&addition_item_id=' + id_params[5];
     var menu_type_name = $('body .breadcrumbs-strip .breadcrumb-item a').eq(2).text();
@@ -234,11 +234,45 @@ function conceal_additionitem_ajax(id_params){
     });
 }
 
-function delete_menutype_ajax(id_params){}
+//id_params: ['delete', 'menutype', '+menu_type_id+']
+function delete_menutype_ajax(id_params){
+    var url = base_url + '/delete-menu-type&menu_type_id=' + id_params[2];
+    $.ajax({
+        url: url,
+        type: 'POST'
+    }).done(function(res){
+        if(res.status) window.location = base_url + '/menu-types';
+        else alert(res.msg);
+    });
+}
 
-function delete_menuitem_ajax(id_params){}
+// id_params: ['delete', 'menuitem', '+menu_type_id+', '+menu_item_id+'];
+function delete_menuitem_ajax(id_params){
+    var url = base_url + '/delete-menu-item&menu_type_id='+id_params[2]+'&menu_item_id=' + id_params[3];
+    var menu_type_id = id_params[2];
+    var menu_type_name = $('.menu-items-cont .item-container').attr('id').split('-')[0];
+    $.ajax({
+        url: url,
+        type: 'POST'
+    }).done(function(res){
+        if(res.status) window.location = base_url + '/menu-items&menu_type_id='+menu_type_id+'&menu_type_name='+menu_type_name;
+        else alert(res.msg);
+    });
+}
 
-function delete_additionitem_ajax(id_params){}
+// id_params: ['delete', 'additionitem', '+menu_type_id+', '+menu_item_id+', '+addition_type_id+', '+addition_item_id+'];
+function delete_additionitem_ajax(id_params){
+    var url = base_url + '/delete-addition-item&addition_type_id=' + id_params[4]+'&addition_item_id=' + id_params[5];
+    var menu_type_name = $('body .breadcrumbs-strip .breadcrumb-item a').eq(2).text();
+    var menu_item_name = $('body .breadcrumbs-strip .breadcrumb-item a').eq(3).text();
+    $.ajax({
+        url: url,
+        type: 'POST'
+    }).done(function(res){
+        if(res.status) window.location = base_url + '/menu-additions&menu_type_id='+id_params[2]+'&menu_type_name='+menu_type_name+'&menu_item_id='+id_params[3]+'&menu_item_name='+menu_item_name;
+        else alert(res.msg);
+    });
+}
 
 function reveal_menutype_ajax(menu_type_id){
     var url = base_url + '/reveal-menu-type&menu_type_id=' + menu_type_id;
