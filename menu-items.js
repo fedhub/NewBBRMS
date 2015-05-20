@@ -13,6 +13,7 @@ menu_items.get('/menu-items&:menu_type_id&:menu_type_name', function(req, res){
     query += "SELECT fi.id, fi.food_type_id, fi.name, fi.description, fi.price, fi.seal, i.image_name ";
     query += "FROM food_items fi ";
     query += "LEFT JOIN food_items_images fii ON fi.id = fii.food_item_id AND fii.active='1' ";
+    //query += "LEFT JOIN food_items_images fii ON fi.id = fii.food_item_id AND fii.active='1' ";
     query += "LEFT JOIN images i ON fii.image_id = i.id ";
     query += "WHERE fi.food_type_id='"+menu_type_id+"';";
 
