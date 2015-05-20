@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectTasksOptions" suppressed-tasks="SCSS">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="compile C:/xampp/htdocs/NewBBRMS/includes" />
+      <option name="arguments" value="compile C:/xampp/htdocs/BestBiss/NewBBRMS/includes" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" value="Compiles .scss files into .css files using compass" />
       <option name="exitCodeBehavior" value="ERROR" />
@@ -15,7 +15,7 @@
       </option>
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
-      <option name="program" value="$Ruby$" />
+      <option name="program" value="$Ruby$/compass.bat" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$PROJECT_DIR$/includes" />
@@ -23,4 +23,3 @@
     </TaskOptions>
   </component>
 </project>
-
