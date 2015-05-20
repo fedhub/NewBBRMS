@@ -10,8 +10,8 @@ menu_types.get('/menu-types', function(req, res){
     query += "SELECT ft.id, ft.name, ft.seal, i.image_name ";
     query += "FROM food_types ft ";
     query += "LEFT JOIN food_types_images fti ON ft.id = fti.food_type_id ";
-    query += "LEFT JOIN ft_images i ON fti.image_id = i.id ";
-    query += "WHERE i.active='1';";
+    query += "LEFT JOIN images i ON fti.image_id = i.id ";
+    query += "WHERE fti.active='1';";
 
     mysql.getConnection(function(err, conn){
         if(!err){

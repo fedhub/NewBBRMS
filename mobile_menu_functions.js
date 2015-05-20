@@ -9,8 +9,8 @@ mobile_menu_functions.menu_types = function(req, res){
     query += "SELECT ft.id, ft.name, i.image_name ";
     query += "FROM food_types ft ";
     query += "LEFT JOIN food_types_images fti ON ft.id = fti.food_type_id ";
-    query += "LEFT JOIN ft_images i ON fti.image_id = i.id ";
-    query += "WHERE i.active='1' AND ft.seal='0';";
+    query += "LEFT JOIN images i ON fti.image_id = i.id ";
+    query += "WHERE fti.active='1' AND ft.seal='0';";
 
     mysql.getConnection(function(err, conn){
         if(!err){
@@ -39,9 +39,9 @@ mobile_menu_functions.menu_items = function(req, res){
     var query = '';
     query += "SELECT fi.id, fi.food_type_id, fi.name, fi.description, fi.price, i.image_name ";
     query += "FROM food_items fi ";
-    query += "LEFT JOIN food_items_images fii ON fi.id = fii.food_item_id ";
-    query += "LEFT JOIN fi_images i ON fii.image_id = i.id ";
-    query += "WHERE fi.food_type_id='"+food_type_id+"' AND fi.seal='0' AND i.active='1';";
+    query += "LEFT JOIN food_items_images fii ON fi.id = fii.food_item_id AND fii.active='1' ";
+    query += "LEFT JOIN images i ON fii.image_id = i.id ";
+    query += "WHERE fi.food_type_id='"+food_type_id+"' AND fi.seal='0';";
 
     mysql.getConnection(function(err, conn){
         if(!err){
@@ -81,9 +81,9 @@ mobile_menu_functions.menu_additions = function(req, res){
     query += "FROM addition_types at ";
     query += "LEFT JOIN food_items_additions fia ON at.id = fia.addition_type_id ";
     query += "LEFT JOIN addition_items ai ON at.id=ai.addition_type_id ";
-    query += "LEFT JOIN addition_items_images aii ON ai.id = aii.addition_item_id ";
-    query += "LEFT JOIN ai_images i ON aii.image_id = i.id ";
-    query += "WHERE fia.food_item_id='"+food_item_id+"' AND ai.seal='0' AND i.active='1';";
+    query += "LEFT JOIN addition_items_images aii ON ai.id = aii.addition_item_id AND aii.active='1' ";
+    query += "LEFT JOIN images i ON aii.image_id = i.id ";
+    query += "WHERE fia.food_item_id='"+food_item_id+"' AND ai.seal='0';";
 
     //query += "LEFT JOIN fi_images i ON fii.image_id = i.id ";
     //query += "WHERE fi.food_type_id='"+food_type_id+"' AND i.active='1';";

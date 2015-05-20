@@ -29,9 +29,9 @@ menu_additions.get('/menu-additions&:menu_type_id&:menu_type_name&:menu_item_id&
     query += "FROM addition_types at ";
     query += "LEFT JOIN food_items_additions fia ON at.id = fia.addition_type_id ";
     query += "LEFT JOIN addition_items ai ON at.id=ai.addition_type_id ";
-    query += "LEFT JOIN addition_items_images aii ON ai.id = aii.addition_item_id ";
-    query += "LEFT JOIN ai_images i ON aii.image_id = i.id ";
-    query += "WHERE fia.food_item_id='"+menu_item_id+"' AND i.active='1';";
+    query += "LEFT JOIN addition_items_images aii ON ai.id = aii.addition_item_id AND aii.active='1' ";
+    query += "LEFT JOIN images i ON aii.image_id=i.id ";
+    query += "WHERE fia.food_item_id='"+menu_item_id+"';";
 
     //query += "LEFT JOIN fi_images i ON fii.image_id = i.id ";
     //query += "WHERE fi.food_type_id='"+food_type_id+"' AND i.active='1';";
