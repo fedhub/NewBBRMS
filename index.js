@@ -4,6 +4,7 @@ var server     = require('http').createServer(app);
 //var io         = require('socket.io').listen(server);
 var path       = require('path');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 
 // socket.io
 /*io.sockets.on('connection', function(socket){
@@ -30,6 +31,44 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     next();
 });
+
+//function getFiles (dir, files_){
+//    files_ = files_ || [];
+//    var files = fs.readdirSync(dir);
+//    for (var i in files){
+//        var name = dir + '/' + files[i];
+//        if (fs.statSync(name).isDirectory()){
+//            getFiles(name, files_);
+//        } else {
+//            files_.push(name);
+//        }
+//    }
+//    return files_;
+//}
+//
+//
+////var files = getFiles('includes/images');
+////var files_name = [];
+////for(var i = 0; i < files.length; i++){
+////    files_name.push(files[i].split('/')[2]);
+////}
+////for(var j = 0; j < files_name.length; j++){
+////    console.log(j + ' : ' +files_name[j]);
+////}
+////
+////mysql.getConnection(function(err, conn){
+////    for(var j = 0; j < files_name.length; j++){
+////        if(files_name[0] == 's' || files_name[0] == 't' || files_name[0] == 'v' || files_name[0] == 'w')
+////                run_query(conn, files_name[j]);
+////    }
+////});
+//
+//
+//
+//function run_query(conn, image_name){
+//    var query = 'INSERT INTO `images`(`image_name`) VALUES ("'+image_name+'");';
+//    conn.query(query, function(err, result){});
+//}
 
 app.use(require('./mysql'));
 app.use(require('./mobile_authentication_routers'));

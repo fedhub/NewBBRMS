@@ -11,6 +11,13 @@ $(document).ready(function() {
             $reveal_button.css('display', 'block');
             $reveal_button.attr('title', 'חשוף באפליקצייה');
         }
-    })
+    });
+
+    //$('.footer section').click(function(event){
+    //    var id = event.target.id.split('-');
+    //    if(id[0] == 'edit'){
+    //        console.log(id);
+    //    }
+    //});
 
 });

@@ -1,6 +1,6 @@
-var base_url = 'http://www.best-biss.com';
+//var base_url = 'http://www.best-biss.com';
 //var base_url = 'http://best-biss.herokuapp.com';
-//var base_url = 'http://localhost:3000';
+var base_url = 'http://localhost:3000';
 
 $(document).ready(function() {
 
@@ -23,6 +23,7 @@ $(document).ready(function() {
 
     var manager_details = manager_details_obj();
     $('#approve-manager-update').click(function(){
+        alert('here');
         $('#manager-update-error').empty();
         var $msg_box = $('#manager-update-error');
         var empty_msg = is_empty_input();

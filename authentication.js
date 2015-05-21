@@ -4,7 +4,6 @@ var mysql = require('./mysql');
 var settings = require('./settings');
 
 authentication.all('*', function(req, res, next){
-
     var req_url = req.originalUrl;
     if(settings.get_is_connected()
         || req_url == '/authenticate')

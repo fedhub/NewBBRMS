@@ -1570,3 +1570,21 @@ footer {
 .addition-types-cont .error p {
   font-size: 15px;
 }
+
+/* line 1, ../sass/_edit-menu-type.scss */
+.edit-menu-type-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+/* line 5, ../sass/_edit-menu-type.scss */
+.edit-menu-type-cont .image-cont {
+  width: 33%;
+  height: 300px;
+  background-color: yellow;
+  display: inline-block;
+  margin: 2px auto;
+  text-align: center;
+  box-shadow: 0 0 10px 0 #333;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
-var base_url = 'http://www.best-biss.com';
+//var base_url = 'http://www.best-biss.com';
 //var base_url = 'http://best-biss.herokuapp.com';
-//var base_url = 'http://localhost:3000';
+var base_url = 'http://localhost:3000';
 
 $(document).ready(function() {
 
@@ -151,7 +151,7 @@ function handle_item_option_req($lightbox, name, id, elm_id){
 
     if(id[0] == 'edit'){
         if(id[1] == 'menutype'){
-
+            window.location = base_url + '/edit-menu-type&id='+id[2];
         }
         if(id[1] == 'menuitem'){
 
@@ -161,9 +161,11 @@ function handle_item_option_req($lightbox, name, id, elm_id){
         }
 
     }
-    $lightbox.find('.title p').html(title);
-    $lightbox.find('.content p').html(msg);
-    $lightbox.fadeIn();
+    if(id[0] != 'edit') {
+        $lightbox.find('.title p').html(title);
+        $lightbox.find('.content p').html(msg);
+        $lightbox.fadeIn();
+    }
 }
 
 function handle_item_option_approval(id){

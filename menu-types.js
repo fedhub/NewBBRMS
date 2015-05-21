@@ -132,6 +132,37 @@ menu_types.post('/delete-menu-type&:menu_type_id', function(req, res){
 
 });
 
+menu_types.get('/edit-menu-type&:id', function(req, res){
+
+    var menu_type_id = req.params.id.split('=')[1];
+    var breadcrumbs = [{path: '/', name: 'דף הבית'}, {path: '/menu-types', name: 'ניהול תפריט'}, {path: '#', name: 'עריכת פריט'}];
+    var query = 'SELECT * FROM `images`';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.render('edit-menu-type', {
+                        username: settings.get_username(),
+                        breadcrumbs: breadcrumbs,
+                        menu_type_id: menu_type_id,
+                        images: result
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send('הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר');
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
+        }
+    });
+
+});
+
 function delete_process_menu_type(res, menu_type_id){
     var query = 'DELETE FROM `food_types` WHERE `id`="'+menu_type_id+'";';
     mysql.getConnection(function(err, conn){
