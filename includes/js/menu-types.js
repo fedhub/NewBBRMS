@@ -11,6 +11,19 @@ $(document).ready(function() {
             $reveal_button.css('display', 'block');
             $reveal_button.attr('title', 'חשוף באפליקצייה');
         }
-    })
+    });
+
+    $('.image-cont').click(function(){
+        var image_id = $(this).attr('id');
+        var menu_type_id = $('.edit-menu-type-cont').attr('id');
+        var url = base_url + '/update-image&menu_type_id='+menu_type_id+'&image_id='+image_id;
+        $.ajax({
+            url: url,
+            type: 'POST'
+        }).done(function(res){
+            if(!res.status) console.log('problem');
+            else window.location = base_url + '/menu-types';
+        });
+    });
 
 });

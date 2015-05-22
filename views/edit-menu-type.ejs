@@ -63,7 +63,7 @@
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="edit-menu-type-cont">
+            <section class="edit-menu-type-cont" id="<%= menu_type_id %>">
                 <% for(var i = 0; i < images.length; i++){ %>
                     <section class="image-cont" id="<%= images[i].id %>" style="background: url('../images/<%= images[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;"></section>
                 <% } %>
