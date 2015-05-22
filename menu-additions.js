@@ -195,6 +195,54 @@ menu_additions.post('/reveal-addition-item&:addition_type_id&:addition_item_id',
 
 });
 
+menu_additions.get('/edit-addition-item&:params', function(req, res){
+
+    var params = req.params.params.split('=')[1];
+    params = JSON.parse(params);
+    var menu_type_id = params.menu_type_id;
+    var menu_type_name = params.menu_type_name;
+    var menu_item_id = params.menu_item_id;
+    var menu_item_name = params.menu_item_name;
+    var addition_item_name = params.addition_item_name;
+    var addition_item_id = params.addition_item_id;
+    var addition_item_price = params.addition_item_price;
+    var addition_item_description = params.addition_item_description;
+
+    var name = 'עריכת ';
+    name += addition_item_name;
+    var breadcrumbs = [{path: '/', name: 'דף הבית'},
+        {path: '/menu-types', name: 'ניהול תפריט'},
+        {path: '/menu-items&menu_type_id='+menu_type_id+'&menu_type_name='+menu_type_name, name: menu_type_name},
+        {path: '/menu-additions&menu_type_id='+menu_type_id+'&menu_type_name='+menu_type_name+'&menu_item_id='+menu_item_id+'&menu_item_name='+menu_item_name, name: menu_item_name},
+        {path: '#', name: name}];
+
+    var query = 'SELECT * FROM `images`';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.render('edit-addition-item', {
+                        username: settings.get_username(),
+                        breadcrumbs: breadcrumbs,
+                        params: params,
+                        images: result
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send('הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר');
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
+        }
+    });
+
+});
+
 function conceal_addition_item(addition_item_id, res){
     var query = 'UPDATE `addition_items` SET `seal`="1" WHERE `id`='+addition_item_id+';';
     mysql.getConnection(function(err, conn){

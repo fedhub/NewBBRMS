@@ -16,7 +16,7 @@ $(document).ready(function() {
     $('.image-cont').click(function(){
         var image_id = $(this).attr('id');
         var menu_type_id = $('.edit-menu-type-cont').attr('id');
-        var url = base_url + '/update-image&menu_type_id='+menu_type_id+'&image_id='+image_id;
+        var url = base_url + '/update-food-type-image&menu_type_id='+menu_type_id+'&image_id='+image_id;
         $.ajax({
             url: url,
             type: 'POST'

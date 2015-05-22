@@ -150,16 +150,34 @@ function handle_item_option_req($lightbox, name, id, elm_id){
     }
 
     if(id[0] == 'edit'){
+        var params;
         if(id[1] == 'menutype'){
-            window.location = base_url + '/edit-menu-type&id='+id[2];
+            window.location = base_url + '/edit-menu-type&id='+id[2]+'&name='+id[3];
         }
         if(id[1] == 'menuitem'){
-
+            params = {
+                menu_type_name: id[2],
+                menu_type_id: id[3],
+                menu_item_name: id[4],
+                menu_item_id: id[5],
+                menu_item_price: id[6],
+                menu_item_description: $('.menu-items-cont').find('#desc-'+id[5]).find('p').text()
+            };
+            window.location = base_url + '/edit-menu-item&params='+encodeURIComponent(JSON.stringify(params));
         }
-        if(id[1] == 'menuaddition'){
-
+        if(id[1] == 'additionitem'){
+            params = {
+                menu_type_id: id[2],
+                menu_type_name: id[3],
+                menu_item_id: id[4],
+                menu_item_name: id[5],
+                addition_item_name: id[6],
+                addition_item_id: id[7],
+                addition_item_price: id[8],
+                addition_item_description: $('.menu-additions-cont').find('#desc-'+id[7]).find('p').text()
+            };
+            window.location = base_url + '/edit-addition-item&params='+encodeURIComponent(JSON.stringify(params));
         }
-
     }
     if(id[0] != 'edit') {
         $lightbox.find('.title p').html(title);

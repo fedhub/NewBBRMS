@@ -89,12 +89,12 @@
                                         <section class="name"><p><%= addition_types[i].addition_items[j].name %></p></section>
                                         <section class="price"><p><%= addition_types[i].addition_items[j].price %> &#8362;</p></section>
                                     </section>
-                                    <section class="description"><p><%= addition_types[i].addition_items[j].description %></p></section>
+                                    <section class="description" id="desc-<%= addition_types[i].addition_items[j].id %>"><p><%= addition_types[i].addition_items[j].description %></p></section>
                                 </section>
                                 <section class="image" style="background: url('../images/<%= addition_types[i].addition_items[j].image %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;"></section>
                                 <section class="footer">
                                     <section title="הסתר באפליקצייה"><p id="conceal-additionitem" class="flaticon-forbidden"></p></section>
-                                    <section title="ערוך"><p id="edit-additionitem" class="flaticon-edit45"></p></section>
+                                    <section title="ערוך"><p id="edit-additionitem-<%= menu_type_id %>-<%= menu_type_name %>-<%= menu_item_id %>-<%= menu_item_name %>-<%= addition_types[i].addition_items[j].name %>-<%= addition_types[i].addition_items[j].id %>-<%= addition_types[i].addition_items[j].price %>" class="flaticon-edit45"></p></section>
                                     <section title="מחק מהתפריט"><p id="delete-additionitem" class="flaticon-delete96"></p></section>
                                 </section>
                             </section>
