@@ -216,17 +216,39 @@ menu_additions.get('/edit-addition-item&:params', function(req, res){
         {path: '/menu-additions&menu_type_id='+menu_type_id+'&menu_type_name='+menu_type_name+'&menu_item_id='+menu_item_id+'&menu_item_name='+menu_item_name, name: menu_item_name},
         {path: '#', name: name}];
 
+    var all_images = [];
+    var related_images = [];
     var query = 'SELECT * FROM `images`';
-
     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
-                    res.render('edit-addition-item', {
-                        username: settings.get_username(),
-                        breadcrumbs: breadcrumbs,
-                        params: params,
-                        images: result
+                    all_images = result;
+                    query = "SELECT aii.addition_item_id, aii.image_id, aii.active, i.id, i.image_name " +
+                    "FROM addition_items_images aii " +
+                    "LEFT JOIN images i ON aii.image_id=i.id " +
+                    "WHERE aii.addition_item_id='"+addition_item_id+"';";
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            var i = 0, j = 0;
+                            related_images = result;
+                            for(i = 0; i < all_images.length; i++){
+                                for(j = 0; j < related_images.length; j++){
+                                    if(all_images[i].id == related_images[j].image_id) all_images.splice(i, 1);
+                                }
+                            }
+                            res.render('edit-addition-item', {
+                                username: settings.get_username(),
+                                breadcrumbs: breadcrumbs,
+                                params: params,
+                                related_images: related_images,
+                                all_images: all_images
+                            });
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send('הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר');
+                        }
                     });
                 }
                 else{
@@ -242,6 +264,49 @@ menu_additions.get('/edit-addition-item&:params', function(req, res){
     });
 
 });
+
+//menu_additions.post('/update-addition-item-image&:addition_item_id&:image_id', function(req, res){
+//
+//    var addition_item_id = req.params.addition_item_id.split('=')[1];
+//    var image_id = req.params.image_id.split('=')[1];
+//
+//    var query = 'UPDATE `addition_items_images` SET `active`="0" WHERE `addition_item_id`='+addition_item_id;
+//    mysql.getConnection(function(err, conn){
+//        if(!err){
+//            conn.query(query, function(err, result){
+//                if(!err){
+//                    query = 'INSERT INTO `addition_items_images`(`addition_item_id`, `image_id`, `active`) VALUES ("'+addition_item_id+'","'+image_id+'","1")';
+//                    mysql.getConnection(function(err, conn){
+//                        if(!err){
+//                            conn.query(query, function(err, result){
+//                                if(!err){
+//                                    res.send({status: true});
+//                                }
+//                                else{
+//                                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+//                                    res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
+//                                }
+//                                conn.release();
+//                            });
+//                        }
+//                        else{
+//                            res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
+//                        }
+//                    });
+//                }
+//                else{
+//                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+//                    res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
+//                }
+//                conn.release();
+//            });
+//        }
+//        else{
+//            res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
+//        }
+//    });
+//
+//});
 
 function conceal_addition_item(addition_item_id, res){
     var query = 'UPDATE `addition_items` SET `seal`="1" WHERE `id`='+addition_item_id+';';

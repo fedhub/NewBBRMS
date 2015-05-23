@@ -154,10 +154,13 @@
     font-size: 60px;
     color: #333;
 }
-.flaticon-user7:before {
+.flaticon-upload31:before {
     content: "\e021";
 }
-.flaticon-users38:before {
+.flaticon-user7:before {
     content: "\e022";
+}
+.flaticon-users38:before {
+    content: "\e023";
     font-size: 20px;
 }
