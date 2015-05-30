@@ -187,49 +187,6 @@ menu_items.get('/edit-menu-item&:params', function(req, res){
 
 });
 
-//menu_items.post('/update-food-item-image&:menu_item_id&:image_id', function(req, res){
-//
-//    var menu_item_id = req.params.menu_item_id.split('=')[1];
-//    var image_id = req.params.image_id.split('=')[1];
-//
-//    var query = 'UPDATE `food_items_images` SET `active`="0" WHERE `food_item_id`='+menu_item_id;
-//    mysql.getConnection(function(err, conn){
-//        if(!err){
-//            conn.query(query, function(err, result){
-//                if(!err){
-//                    query = 'INSERT INTO `food_items_images`(`food_item_id`, `image_id`, `active`) VALUES ("'+menu_item_id+'","'+image_id+'","1")';
-//                    mysql.getConnection(function(err, conn){
-//                        if(!err){
-//                            conn.query(query, function(err, result){
-//                                if(!err){
-//                                    res.send({status: true});
-//                                }
-//                                else{
-//                                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
-//                                    res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
-//                                }
-//                                conn.release();
-//                            });
-//                        }
-//                        else{
-//                            res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
-//                        }
-//                    });
-//                }
-//                else{
-//                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
-//                    res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
-//                }
-//                conn.release();
-//            });
-//        }
-//        else{
-//            res.send({status: false, msg: 'הייתה בעייה בהבאת הדף המבוקש, אנא נסה שוב מאוחר יותר'});
-//        }
-//    });
-//
-//});
-
 function delete_menu_item(res, menu_type_id, menu_item_id){
     var query = 'DELETE FROM `food_items` WHERE `id`="'+menu_item_id+'";';
     mysql.getConnection(function(err, conn){

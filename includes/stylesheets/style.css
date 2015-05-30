@@ -1272,29 +1272,38 @@ footer {
   font-size: 20px !important;
 }
 /* line 49, ../sass/_menu-additions.scss */
-.additions-set-cont .additions-set-title .edit p, .additions-set-cont .additions-set-title .delete p, .additions-set-cont .additions-set-title .add p {
+.additions-set-cont .additions-set-title .link {
+  margin-right: 5px;
+  width: 30px;
+}
+/* line 52, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .link p {
+  font-size: 20px !important;
+}
+/* line 56, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .edit p, .additions-set-cont .additions-set-title .delete p, .additions-set-cont .additions-set-title .add p, .additions-set-cont .additions-set-title .link p {
   color: rgba(51, 51, 51, 0.8);
   text-align: center;
   font-size: 18px;
   cursor: pointer;
 }
-/* line 54, ../sass/_menu-additions.scss */
-.additions-set-cont .additions-set-title .edit p:hover, .additions-set-cont .additions-set-title .delete p:hover, .additions-set-cont .additions-set-title .add p:hover {
+/* line 61, ../sass/_menu-additions.scss */
+.additions-set-cont .additions-set-title .edit p:hover, .additions-set-cont .additions-set-title .delete p:hover, .additions-set-cont .additions-set-title .add p:hover, .additions-set-cont .additions-set-title .link p:hover {
   color: #333333;
 }
-/* line 58, ../sass/_menu-additions.scss */
+/* line 65, ../sass/_menu-additions.scss */
 .additions-set-cont .additions-set-title .description {
   margin-right: 5px;
 }
 
-/* line 63, ../sass/_menu-additions.scss */
+/* line 70, ../sass/_menu-additions.scss */
 .additions-set-items {
   width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 2px;
 }
-/* line 68, ../sass/_menu-additions.scss */
+/* line 75, ../sass/_menu-additions.scss */
 .additions-set-items .item-container {
   width: 19.5%;
   height: 200px;
@@ -1306,19 +1315,19 @@ footer {
   cursor: pointer;
   box-shadow: 0px 0px 1px 1px #333;
 }
-/* line 77, ../sass/_menu-additions.scss */
+/* line 84, ../sass/_menu-additions.scss */
 .additions-set-items .item-container:hover {
   box-shadow: 0px 0px 10px 1px #333;
 }
-/* line 80, ../sass/_menu-additions.scss */
+/* line 87, ../sass/_menu-additions.scss */
 .additions-set-items .item-container:last-child {
   box-shadow: none;
 }
-/* line 82, ../sass/_menu-additions.scss */
+/* line 89, ../sass/_menu-additions.scss */
 .additions-set-items .item-container:last-child:hover {
   box-shadow: 0px 0px 20px 0px grey;
 }
-/* line 86, ../sass/_menu-additions.scss */
+/* line 93, ../sass/_menu-additions.scss */
 .additions-set-items .item-container .add {
   width: 95%;
   height: 190px;
@@ -1326,11 +1335,11 @@ footer {
   border-radius: 5px;
   display: table;
 }
-/* line 92, ../sass/_menu-additions.scss */
+/* line 99, ../sass/_menu-additions.scss */
 .additions-set-items .item-container .add:hover p {
   color: rgba(51, 51, 51, 0.7);
 }
-/* line 96, ../sass/_menu-additions.scss */
+/* line 103, ../sass/_menu-additions.scss */
 .additions-set-items .item-container .add p {
   display: table-cell;
   text-align: center;
@@ -1338,13 +1347,13 @@ footer {
   font-size: 50px;
   color: rgba(51, 51, 51, 0.5);
 }
-/* line 103, ../sass/_menu-additions.scss */
+/* line 110, ../sass/_menu-additions.scss */
 .additions-set-items .header {
   width: 100%;
   height: 30%;
   background: rgba(128, 128, 128, 0.5);
 }
-/* line 107, ../sass/_menu-additions.scss */
+/* line 114, ../sass/_menu-additions.scss */
 .additions-set-items .title {
   width: 100%;
   height: 35%;
@@ -1352,12 +1361,12 @@ footer {
   text-align: center;
   box-shadow: 0px 6px 7px -7px #333;
 }
-/* line 112, ../sass/_menu-additions.scss */
+/* line 119, ../sass/_menu-additions.scss */
 .additions-set-items .title section {
   display: table-cell;
   vertical-align: middle;
 }
-/* line 117, ../sass/_menu-additions.scss */
+/* line 124, ../sass/_menu-additions.scss */
 .additions-set-items .sealed-cont {
   display: none;
   width: 100%;
@@ -1367,12 +1376,12 @@ footer {
   position: absolute;
   left: 0;
 }
-/* line 125, ../sass/_menu-additions.scss */
+/* line 132, ../sass/_menu-additions.scss */
 .additions-set-items .sealed-cont p {
   font-size: 125px;
   color: rgba(51, 51, 51, 0.4);
 }
-/* line 130, ../sass/_menu-additions.scss */
+/* line 137, ../sass/_menu-additions.scss */
 .additions-set-items .reveal-button {
   display: none;
   width: 45px;
@@ -1386,44 +1395,44 @@ footer {
   box-shadow: 0 0 2px 0 #000;
   line-height: 20px;
 }
-/* line 141, ../sass/_menu-additions.scss */
+/* line 148, ../sass/_menu-additions.scss */
 .additions-set-items .reveal-button:hover {
   box-shadow: 0 0 5px 0 #000;
 }
-/* line 144, ../sass/_menu-additions.scss */
+/* line 151, ../sass/_menu-additions.scss */
 .additions-set-items .reveal-button p {
   color: #fff;
   font-size: 13px;
   font-weight: bold;
 }
-/* line 150, ../sass/_menu-additions.scss */
+/* line 157, ../sass/_menu-additions.scss */
 .additions-set-items .name {
   width: 80%;
   height: 100%;
 }
-/* line 152, ../sass/_menu-additions.scss */
+/* line 159, ../sass/_menu-additions.scss */
 .additions-set-items .name p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 158, ../sass/_menu-additions.scss */
+/* line 165, ../sass/_menu-additions.scss */
 .additions-set-items .price {
   width: 20%;
   height: 100%;
 }
-/* line 160, ../sass/_menu-additions.scss */
+/* line 167, ../sass/_menu-additions.scss */
 .additions-set-items .price p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 166, ../sass/_menu-additions.scss */
+/* line 173, ../sass/_menu-additions.scss */
 .additions-set-items .description {
   width: 100%;
   height: 65%;
 }
-/* line 168, ../sass/_menu-additions.scss */
+/* line 175, ../sass/_menu-additions.scss */
 .additions-set-items .description p {
   display: table-cell;
   padding-right: 2px;
@@ -1433,12 +1442,12 @@ footer {
   font-weight: bold;
   color: #333333;
 }
-/* line 178, ../sass/_menu-additions.scss */
+/* line 185, ../sass/_menu-additions.scss */
 .additions-set-items .image {
   width: 100%;
   height: 70%;
 }
-/* line 181, ../sass/_menu-additions.scss */
+/* line 188, ../sass/_menu-additions.scss */
 .additions-set-items .footer {
   display: block;
   position: absolute;
@@ -1453,7 +1462,7 @@ footer {
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
-/* line 196, ../sass/_menu-additions.scss */
+/* line 203, ../sass/_menu-additions.scss */
 .additions-set-items .footer section {
   display: inline-block;
   margin-top: 3%;
@@ -1463,54 +1472,54 @@ footer {
   line-height: 31px;
   border-radius: 100px;
 }
-/* line 203, ../sass/_menu-additions.scss */
+/* line 210, ../sass/_menu-additions.scss */
 .additions-set-items .footer section p {
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
   vertical-align: middle;
   font-size: 18px;
 }
-/* line 210, ../sass/_menu-additions.scss */
+/* line 217, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:first-child p {
   font-size: 21px;
 }
-/* line 215, ../sass/_menu-additions.scss */
+/* line 222, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:last-child p {
   color: rgba(0, 0, 0, 0.8);
   font-size: 20px;
 }
-/* line 220, ../sass/_menu-additions.scss */
+/* line 227, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 222, ../sass/_menu-additions.scss */
+/* line 229, ../sass/_menu-additions.scss */
 .additions-set-items .footer section:hover p {
   color: rgba(0, 0, 0, 0.9);
 }
 
-/* line 1, ../sass/_addition-types.scss */
+/* line 1, ../sass/_delete-addition-types.scss */
 .addition-types-cont {
   width: 99%;
   margin: 0 auto;
   padding-top: 5px;
   padding-right: 5px;
 }
-/* line 6, ../sass/_addition-types.scss */
+/* line 6, ../sass/_delete-addition-types.scss */
 .addition-types-cont .title {
   padding-top: 15px;
   padding-bottom: 15px;
 }
-/* line 9, ../sass/_addition-types.scss */
+/* line 9, ../sass/_delete-addition-types.scss */
 .addition-types-cont .title p {
   font-size: 18px;
   font-weight: bold;
   color: rgba(51, 51, 51, 0.8);
 }
-/* line 15, ../sass/_addition-types.scss */
+/* line 15, ../sass/_delete-addition-types.scss */
 .addition-types-cont form {
   width: 240px;
 }
-/* line 18, ../sass/_addition-types.scss */
+/* line 18, ../sass/_delete-addition-types.scss */
 .addition-types-cont label {
   display: block;
   margin-top: 10px;
@@ -1518,15 +1527,15 @@ footer {
   font-size: 15px;
   font-weight: bold;
 }
-/* line 24, ../sass/_addition-types.scss */
+/* line 24, ../sass/_delete-addition-types.scss */
 .addition-types-cont label:hover {
   color: black;
 }
-/* line 28, ../sass/_addition-types.scss */
+/* line 28, ../sass/_delete-addition-types.scss */
 .addition-types-cont label, .addition-types-cont input {
   cursor: pointer;
 }
-/* line 31, ../sass/_addition-types.scss */
+/* line 31, ../sass/_delete-addition-types.scss */
 .addition-types-cont input {
   width: 13px;
   height: 13px;
@@ -1541,23 +1550,24 @@ footer {
   /* Webkit browsers*/
   -webkit-transform: scale(1.5);
 }
-/* line 45, ../sass/_addition-types.scss */
+/* line 45, ../sass/_delete-addition-types.scss */
 .addition-types-cont label:last-child {
   color: brown;
 }
-/* line 48, ../sass/_addition-types.scss */
+/* line 48, ../sass/_delete-addition-types.scss */
 .addition-types-cont #approve-delete {
   margin-top: 30px;
   margin-right: 5px;
+  margin-bottom: 15px;
   background-color: rgba(0, 46, 2, 0.8);
   border: 1px solid grey;
   box-shadow: 0 0 5px 0 #000;
 }
-/* line 54, ../sass/_addition-types.scss */
+/* line 55, ../sass/_delete-addition-types.scss */
 .addition-types-cont #approve-delete:hover {
   background-color: rgba(0, 46, 2, 0.9);
 }
-/* line 58, ../sass/_addition-types.scss */
+/* line 59, ../sass/_delete-addition-types.scss */
 .addition-types-cont .error {
   width: 190px;
   height: 40px;
@@ -1566,7 +1576,7 @@ footer {
   margin-right: 10px;
   color: brown;
 }
-/* line 64, ../sass/_addition-types.scss */
+/* line 65, ../sass/_delete-addition-types.scss */
 .addition-types-cont .error p {
   font-size: 15px;
 }
@@ -1730,7 +1740,7 @@ footer {
   background-color: rgba(51, 51, 51, 0.8);
 }
 /* line 91, ../sass/_edit-addition-item.scss */
-.edit-addition-item-cont .title-cont section {
+.edit-addition-item-cont .title-cont section, .edit-addition-item-cont .title-cont form, .edit-addition-item-cont .title-cont input {
   height: 100%;
   float: right;
 }
@@ -1758,8 +1768,45 @@ footer {
 .edit-addition-item-cont .title-cont .upload p:hover {
   color: brown;
 }
-/* line 118, ../sass/_edit-addition-item.scss */
-.edit-addition-item-cont .image-cont {
+/* line 117, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .title-cont .choose-image-button {
+  width: 70px;
+  height: 20px;
+  background: rgba(224, 224, 224, 0.7);
+  box-shadow: 0 0 5px 0 #333333;
+  margin-right: 5px;
+  margin-top: 8px;
+  line-height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+/* line 126, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .title-cont .choose-image-button:hover {
+  background: #e0e0e0;
+}
+/* line 128, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .title-cont .choose-image-button:hover p {
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 132, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .title-cont .choose-image-button p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 139, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .title-cont .image-name {
+  margin-right: 10px;
+}
+/* line 141, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .title-cont .image-name p {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 148, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .related-image-cont, .edit-addition-item-cont .all-image-cont {
   position: relative;
   width: 33%;
   height: 300px;
@@ -1770,11 +1817,11 @@ footer {
   box-shadow: 0 0 1px 1px rgba(51, 51, 51, 0.5);
   cursor: pointer;
 }
-/* line 128, ../sass/_edit-addition-item.scss */
-.edit-addition-item-cont .image-cont:hover {
+/* line 158, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .related-image-cont:hover, .edit-addition-item-cont .all-image-cont:hover {
   box-shadow: 0 0 2px 1px #333;
 }
-/* line 132, ../sass/_edit-addition-item.scss */
+/* line 162, ../sass/_edit-addition-item.scss */
 .edit-addition-item-cont .active {
   display: none;
   position: absolute;
@@ -1784,11 +1831,642 @@ footer {
   height: 40px;
   background-color: #fff;
 }
-/* line 139, ../sass/_edit-addition-item.scss */
+/* line 169, ../sass/_edit-addition-item.scss */
 .edit-addition-item-cont .active p {
   line-height: 40px;
   font-size: 35px;
   color: green;
   text-align: center;
   text-shadow: 1px 1px 1px rgba(51, 51, 51, 0.9);
+}
+/* line 177, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .remove {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+}
+/* line 184, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .remove p {
+  line-height: 40px;
+  font-size: 35px;
+  color: rgba(51, 51, 51, 0.8);
+  text-align: center;
+}
+/* line 189, ../sass/_edit-addition-item.scss */
+.edit-addition-item-cont .remove p:hover {
+  color: #333333;
+}
+
+/* line 1, ../sass/_add-addition-item.scss */
+.add-addition-item-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+/* line 5, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .steps-container {
+  width: 35%;
+  height: 110px;
+  margin: 20px auto;
+  display: table;
+}
+/* line 11, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-cont {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+  height: 100%;
+}
+/* line 15, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 100px;
+  border: solid 5px rgba(51, 51, 51, 0.8);
+  display: table;
+}
+/* line 23, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-num {
+  display: table-cell;
+  line-height: 100px;
+  width: 41%;
+  height: 100%;
+}
+/* line 28, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-num p {
+  text-align: left;
+  font-size: 70px;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 34, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-del {
+  display: table-cell;
+  line-height: 100px;
+  width: 1%;
+  height: 100%;
+}
+/* line 40, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-del div {
+  width: 100%;
+  height: 50%;
+  background-color: rgba(51, 51, 51, 0.8);
+}
+/* line 45, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-text {
+  display: table-cell;
+  width: 48%;
+  height: 100%;
+}
+/* line 50, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .step-text p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  color: rgba(51, 51, 51, 0.8);
+  font-weight: bold;
+}
+/* line 57, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container {
+  width: 100%;
+  margin-top: 20px;
+}
+/* line 60, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container form {
+  width: 50%;
+  margin: 0 auto;
+}
+/* line 64, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container .form-row {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+}
+/* line 68, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container label {
+  float: right;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  width: 20%;
+  height: 100%;
+}
+/* line 76, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container input {
+  float: right;
+  width: 75%;
+  height: 100%;
+  font-size: 15px;
+  color: rgba(51, 51, 51, 0.9);
+  padding-right: 2px;
+}
+/* line 82, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container input:hover {
+  border-color: rgba(0, 46, 2, 0.3);
+}
+/* line 86, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container .buttons-cont {
+  width: 46%;
+  margin: 20px auto;
+}
+/* line 90, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container .forward {
+  float: left;
+  width: 70px;
+  height: 30px;
+  background-color: rgba(128, 128, 128, 0.6);
+  box-shadow: 0px 0px 1px 1px rgba(51, 51, 51, 0.7);
+  line-height: 30px;
+  cursor: pointer;
+}
+/* line 97, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container .forward:hover {
+  box-shadow: 0px 0px 3px 1px rgba(51, 51, 51, 0.9);
+}
+/* line 100, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container .forward p {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  text-align: center;
+}
+/* line 105, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .form-container .forward p:hover {
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 112, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-images {
+  display: none;
+  width: 100%;
+  margin-top: 30px;
+}
+/* line 116, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-images .backward {
+  float: right;
+  margin-right: 2px;
+  margin-bottom: 10px;
+  width: 70px;
+  height: 30px;
+  background-color: rgba(128, 128, 128, 0.6);
+  box-shadow: 0px 0px 1px 1px rgba(51, 51, 51, 0.7);
+  line-height: 30px;
+  cursor: pointer;
+}
+/* line 125, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-images .backward:hover {
+  box-shadow: 0px 0px 3px 1px rgba(51, 51, 51, 0.9);
+}
+/* line 128, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-images .backward p {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  text-align: center;
+}
+/* line 133, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-images .backward p:hover {
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 139, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .images-cont {
+  width: 100%;
+  margin-top: 10px;
+}
+/* line 143, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont {
+  width: 100%;
+  height: 45px;
+}
+/* line 145, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .title {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  background: rgba(51, 51, 51, 0.3);
+}
+/* line 150, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .hr {
+  width: 100%;
+  height: 5px;
+  background-color: rgba(51, 51, 51, 0.8);
+}
+/* line 154, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont section, .add-addition-item-cont .title-cont form, .add-addition-item-cont .title-cont input {
+  height: 100%;
+  float: right;
+}
+/* line 159, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .name p {
+  font-weight: bold;
+  font-size: 18px;
+  padding-right: 5px;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 166, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .upload {
+  margin-right: 5px;
+  width: 30px;
+}
+/* line 169, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .upload p {
+  color: rgba(51, 51, 51, 0.8);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* line 175, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .upload p:hover {
+  color: brown;
+}
+/* line 180, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .choose-image-button {
+  width: 70px;
+  height: 20px;
+  background: rgba(224, 224, 224, 0.7);
+  box-shadow: 0 0 5px 0 #333333;
+  margin-right: 5px;
+  margin-top: 8px;
+  line-height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+/* line 189, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .choose-image-button:hover {
+  background: #e0e0e0;
+}
+/* line 191, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .choose-image-button:hover p {
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 195, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .choose-image-button p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 202, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .image-name {
+  margin-right: 10px;
+}
+/* line 204, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .title-cont .image-name p {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 211, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-image-cont {
+  position: relative;
+  width: 33%;
+  height: 300px;
+  background-color: yellow;
+  display: inline-block;
+  margin: 2px auto;
+  text-align: center;
+  box-shadow: 0 0 1px 1px rgba(51, 51, 51, 0.5);
+  cursor: pointer;
+}
+/* line 221, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .all-image-cont:hover {
+  box-shadow: 0 0 2px 1px #333;
+}
+/* line 225, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .active {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+}
+/* line 232, ../sass/_add-addition-item.scss */
+.add-addition-item-cont .active p {
+  line-height: 40px;
+  font-size: 35px;
+  color: green;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(51, 51, 51, 0.9);
+}
+
+/* line 1, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+/* line 6, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont form {
+  width: 50%;
+  margin-top: 50px;
+}
+/* line 10, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .form-row {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+}
+/* line 14, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont label {
+  float: right;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  width: 20%;
+  height: 100%;
+}
+/* line 22, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont label#last {
+  width: 100px;
+}
+/* line 25, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont select {
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  width: 109px;
+  height: 100%;
+}
+/* line 32, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont input {
+  float: right;
+  width: 75%;
+  height: 100%;
+  font-size: 15px;
+  color: rgba(51, 51, 51, 0.9);
+  padding-right: 2px;
+}
+/* line 38, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont input:hover {
+  border-color: rgba(0, 46, 2, 0.3);
+}
+/* line 42, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details {
+  width: 80px;
+  height: 30px;
+  margin: 30px auto;
+  background: rgba(128, 128, 128, 0.8);
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 0 0 1px 1px #333;
+  cursor: pointer;
+}
+/* line 50, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details p {
+  color: #333;
+}
+/* line 53, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details:hover {
+  box-shadow: 0 0 3px 1px #002E02;
+}
+/* line 55, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details:hover p {
+  color: #002E02;
+}
+/* line 59, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details .icon {
+  width: 30%;
+  height: 100%;
+  float: right;
+}
+/* line 62, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details .icon p {
+  font-size: 20px;
+}
+/* line 66, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details .text {
+  width: 70%;
+  height: 100%;
+  float: right;
+}
+/* line 69, ../sass/_edit-addition-type.scss */
+.edit-addition-type-cont .approve-details .text p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* line 1, ../sass/_link-addition-type.scss */
+.link-addition-type-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+/* line 6, ../sass/_link-addition-type.scss */
+.link-addition-type-cont .title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* line 9, ../sass/_link-addition-type.scss */
+.link-addition-type-cont .title p {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 15, ../sass/_link-addition-type.scss */
+.link-addition-type-cont form {
+  width: 240px;
+}
+/* line 18, ../sass/_link-addition-type.scss */
+.link-addition-type-cont label {
+  display: block;
+  margin-top: 10px;
+  color: rgba(51, 51, 51, 0.8);
+  font-size: 15px;
+  font-weight: bold;
+}
+/* line 24, ../sass/_link-addition-type.scss */
+.link-addition-type-cont label:hover {
+  color: black;
+}
+/* line 28, ../sass/_link-addition-type.scss */
+.link-addition-type-cont label, .link-addition-type-cont input {
+  cursor: pointer;
+}
+/* line 31, ../sass/_link-addition-type.scss */
+.link-addition-type-cont input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin-left: 5px;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+  /* All browsers except webkit*/
+  transform: scale(1.5);
+  /* Webkit browsers*/
+  -webkit-transform: scale(1.5);
+}
+/* line 45, ../sass/_link-addition-type.scss */
+.link-addition-type-cont label:last-child {
+  color: brown;
+}
+/* line 48, ../sass/_link-addition-type.scss */
+.link-addition-type-cont #approve-link {
+  margin-top: 30px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  background-color: rgba(0, 46, 2, 0.8);
+  border: 1px solid grey;
+  box-shadow: 0 0 5px 0 #000;
+}
+/* line 55, ../sass/_link-addition-type.scss */
+.link-addition-type-cont #approve-link:hover {
+  background-color: rgba(0, 46, 2, 0.9);
+}
+/* line 59, ../sass/_link-addition-type.scss */
+.link-addition-type-cont .error {
+  width: 190px;
+  height: 40px;
+  margin-top: 20px;
+  float: right;
+  margin-right: 10px;
+  color: brown;
+}
+/* line 65, ../sass/_link-addition-type.scss */
+.link-addition-type-cont .error p {
+  font-size: 15px;
+}
+
+/* line 1, ../sass/_add-addition-type.scss */
+.add-addition-type-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+/* line 6, ../sass/_add-addition-type.scss */
+.add-addition-type-cont form {
+  width: 50%;
+  margin-top: 30px;
+}
+/* line 10, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .form-row {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+}
+/* line 14, ../sass/_add-addition-type.scss */
+.add-addition-type-cont label {
+  float: right;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  width: 20%;
+  height: 100%;
+}
+/* line 22, ../sass/_add-addition-type.scss */
+.add-addition-type-cont label#last {
+  width: 100px;
+}
+/* line 25, ../sass/_add-addition-type.scss */
+.add-addition-type-cont select {
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  width: 109px;
+  height: 100%;
+}
+/* line 32, ../sass/_add-addition-type.scss */
+.add-addition-type-cont input {
+  float: right;
+  width: 75%;
+  height: 100%;
+  font-size: 15px;
+  color: rgba(51, 51, 51, 0.9);
+  padding-right: 2px;
+}
+/* line 38, ../sass/_add-addition-type.scss */
+.add-addition-type-cont input:hover {
+  border-color: rgba(0, 46, 2, 0.3);
+}
+/* line 42, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .title-cont {
+  margin-top: 30px;
+  width: 100%;
+  height: 45px;
+}
+/* line 45, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .title-cont .title {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  background: rgba(51, 51, 51, 0.3);
+}
+/* line 50, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .title-cont .hr {
+  width: 100%;
+  height: 5px;
+  background-color: rgba(51, 51, 51, 0.8);
+}
+/* line 54, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .title-cont section, .add-addition-type-cont .title-cont form, .add-addition-type-cont .title-cont input {
+  height: 100%;
+  float: right;
+}
+/* line 59, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .title-cont .name p {
+  font-weight: bold;
+  font-size: 18px;
+  padding-right: 5px;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 67, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details {
+  width: 80px;
+  height: 30px;
+  margin: 50px auto;
+  background: rgba(128, 128, 128, 0.8);
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 0 0 1px 1px #333;
+  cursor: pointer;
+}
+/* line 75, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details p {
+  color: #333;
+}
+/* line 78, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details:hover {
+  box-shadow: 0 0 3px 1px #002E02;
+}
+/* line 80, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details:hover p {
+  color: #002E02;
+}
+/* line 84, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details .icon {
+  width: 30%;
+  height: 100%;
+  float: right;
+}
+/* line 87, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details .icon p {
+  font-size: 20px;
+}
+/* line 91, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details .text {
+  width: 70%;
+  height: 100%;
+  float: right;
+}
+/* line 94, ../sass/_add-addition-type.scss */
+.add-addition-type-cont .approve-details .text p {
+  font-size: 16px;
+  font-weight: bold;
 }

@@ -88,7 +88,7 @@
       @include size(100%, 5px);
       background-color: rgba(#333, 0.8);
     }
-    section {
+    section,form,input {
       height: 100%;
       float: right;
     }
@@ -114,8 +114,38 @@
         }
       }
     }
+    .choose-image-button{
+      @include size(70px, 20px);
+      background: rgba(#E0E0E0, 0.7);
+      box-shadow: 0 0 5px 0 rgba(#333, 1);
+      margin-right: 5px;
+      margin-top: 8px;
+      line-height: 20px;
+      border-radius: 3px;
+      cursor: pointer;
+      &:hover{
+        background: rgba(#E0E0E0, 1);
+        p{
+          color: rgba(#333, 0.9);
+        }
+      }
+      p{
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+        color: rgba(#333, 0.8);
+      }
+    }
+    .image-name {
+      margin-right: 10px;
+      p{
+        font-size: 15px;
+        font-weight: bold;
+        color: rgba(#333, 0.8);
+      }
+    }
   }
-  .image-cont {
+  .related-image-cont, .all-image-cont {
     position: relative;
     width: 33%;
     height: 300px;
@@ -142,6 +172,23 @@
       color: green;
       text-align: center;
       text-shadow: 1px 1px 1px rgba(#333, 0.9);
+    }
+  }
+  .remove{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include size(40px, 40px);
+    background-color: #fff;
+    p{
+      line-height: 40px;
+      font-size: 35px;
+      color: rgba(#333, 0.8);
+      text-align: center;
+      &:hover{
+        color: rgba(#333, 1);
+      }
     }
   }
 }

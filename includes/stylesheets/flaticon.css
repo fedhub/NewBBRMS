@@ -125,42 +125,45 @@
     content: "\e019";
     font-size: 42px;
 }
-.flaticon-network60:before {
+.flaticon-network19:before {
     content: "\e01a";
+}
+.flaticon-network60:before {
+    content: "\e01b";
     font-size: 20px;
 }
 .flaticon-plus25:before {
-    content: "\e01b";
+    content: "\e01c";
 }
 .flaticon-profile31:before {
-    content: "\e01c";
+    content: "\e01d";
     font-size: 20px;
 }
 .flaticon-shopping100:before {
-    content: "\e01d";
+    content: "\e01e";
     color: #333;
 }
 .flaticon-shoppingcart14:before {
-	content: "\e01e";
+	content: "\e01f";
     font-size: 31px;
     line-height: 130%;
 }
 .flaticon-symbol21:before {
-    content: "\e01f";
+    content: "\e020";
     font-size: 20px;
 }
 .flaticon-two200:before {
-    content: "\e020";
+    content: "\e021";
     font-size: 60px;
     color: #333;
 }
 .flaticon-upload31:before {
-    content: "\e021";
-}
-.flaticon-user7:before {
     content: "\e022";
 }
-.flaticon-users38:before {
+.flaticon-user7:before {
     content: "\e023";
+}
+.flaticon-users38:before {
+    content: "\e024";
     font-size: 20px;
 }

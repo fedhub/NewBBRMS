@@ -4,7 +4,9 @@ var server     = require('http').createServer(app);
 //var io         = require('socket.io').listen(server);
 var path       = require('path');
 var bodyParser = require('body-parser');
-var fs = require('fs');
+var multer = require('multer');
+app.use(multer({ dest: './includes/images/uploades'}));
+
 
 // socket.io
 /*io.sockets.on('connection', function(socket){
@@ -22,6 +24,9 @@ app.set('views', path.join(__dirname, 'views'));
 // use middleware
 app.use(express.static(path.join(__dirname, 'includes')));
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//app.use(multer({ dest: './includes/uploades'}));
+//app.use(require('multer'));
 
 // define routes
 app.use(function(req, res, next) {

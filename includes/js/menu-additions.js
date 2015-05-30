@@ -15,23 +15,95 @@ $(document).ready(function() {
         });
     });
 
-    //id="<%= params.menu_type_id %>-<%= params.menu_type_name %>-<%= params.menu_item_id %>-<%= params.menu_item_name %>">
-    //$('.image-cont').click(function(){
-    //    var image_id = $(this).attr('id');
-    //    var id_params = $('.edit-addition-item-cont').attr('id').split('-');
-    //    var menu_type_id = id_params[0];
-    //    var menu_type_name = id_params[1];
-    //    var menu_item_id = id_params[2];
-    //    var menu_item_name = id_params[3];
-    //    var addition_item_id = id_params[4];
-    //    var url = base_url + '/update-addition-item-image&addition_item_id='+addition_item_id+'&image_id='+image_id;
-    //    $.ajax({
-    //        url: url,
-    //        type: 'POST'
-    //    }).done(function(res){
-    //        if(!res.status) console.log('problem');
-    //        else window.location = base_url + '/menu-additions&menu_type_id='+menu_type_id+'&menu_type_name='+menu_type_name+'&menu_item_id='+menu_item_id+'&menu_item_name='+menu_item_name;
-    //    });
-    //});
+    $('.additions-set-title .edit').click(function () {
+        //menu_type_id, menu_type_name, menu_item_id, menu_item_name, addition_type_id
+        var id_params = $(this).attr('id').split('-');
+        var addition_type_name = $(this).parent().find('.name').text().split(' ');
+        var addition_type_name_str = '';
+        if (addition_type_name.length > 1) {
+            for (var i = 0; i < addition_type_name.length - 1; i++) {
+                addition_type_name_str += addition_type_name[i] + ' ';
+            }
+        }
+        else addition_type_name_str = addition_type_name[0];
+        addition_type_name_str = addition_type_name_str.substr(0, addition_type_name_str.length - 1);
+        edit_addition_type_ajax(id_params, addition_type_name_str);
+    });
+
+    $('.additions-set-title .delete').click(function(){
+        //menu_type_id, menu_type_name, menu_item_id, menu_item_name, addition_type_id
+        var id_params = $(this).attr('id').split('-');
+        var addition_type_name = $(this).parent().find('.name').text().split(' ');
+        var addition_type_name_str = '';
+        if(addition_type_name.length > 1){
+            for(var i = 0; i < addition_type_name.length-1; i++){
+                addition_type_name_str += addition_type_name[i] + ' ';
+            }
+        }
+        else addition_type_name_str = addition_type_name[0];
+        addition_type_name_str = addition_type_name_str.substr(0, addition_type_name_str.length-1);
+        delete_addition_type_ajax(id_params, addition_type_name_str);
+    });
+
+    $('.additions-set-title .add').click(function(){
+        //menu_type_id, menu_type_name, menu_item_id, menu_item_name, addition_type_id
+        var id_params = $(this).attr('id').split('-');
+        add_addition_type_ajax(id_params);
+    });
+
+    $('.additions-set-title .link').click(function(){
+        //menu_type_id, menu_type_name, menu_item_id, menu_item_name, addition_type_id
+        var id_params = $(this).attr('id').split('-');
+        var addition_type_name = $(this).parent().find('.name').text().split(' ');
+        var addition_type_name_str = '';
+        if(addition_type_name.length > 1){
+            for(var i = 0; i < addition_type_name.length-1; i++){
+                addition_type_name_str += addition_type_name[i] + ' ';
+            }
+        }
+        else addition_type_name_str = addition_type_name[0];
+        addition_type_name_str = addition_type_name_str.substr(0, addition_type_name_str.length-1);
+        link_addition_type_ajax(id_params, addition_type_name_str);
+    });
 
 });
+
+function edit_addition_type_ajax(id_params, addition_type_name){
+    var info = get_info(id_params, addition_type_name);
+    window.location = base_url + '/edit-addition-type-page&parameters='+encodeURIComponent(JSON.stringify(info));
+}
+
+function delete_addition_type_ajax(id_params, addition_type_name){
+    var info = get_info(id_params, addition_type_name);
+    window.location = base_url + '/delete-addition-types&parameters='+encodeURIComponent(JSON.stringify(info));
+}
+
+function link_addition_type_ajax(id_params, addition_type_name){
+    var info = get_info(id_params, addition_type_name);
+    window.location = base_url + '/link-addition-type-page&parameters='+encodeURIComponent(JSON.stringify(info));
+}
+
+function add_addition_type_ajax(id_params){
+    var info = get_data(id_params);
+    window.location = base_url + '/add-addition-type-page&parameters='+encodeURIComponent(JSON.stringify(info));
+}
+
+function get_info(id_params, addition_type_name){
+    return {
+        menu_type_id: id_params[1],
+        menu_type_name: id_params[2],
+        menu_item_id: id_params[3],
+        menu_item_name: id_params[4],
+        addition_type_id: id_params[5],
+        addition_type_name: addition_type_name
+    };
+}
+
+function get_data(id_params){
+    return {
+        menu_type_id: id_params[1],
+        menu_type_name: id_params[2],
+        menu_item_id: id_params[3],
+        menu_item_name: id_params[4]
+    };
+}

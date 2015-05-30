@@ -39,7 +39,21 @@ $(document).ready(function() {
     // click events for conceal, edit, delete
     $('.menu-types-cont .item-container, .menu-items-cont .item-container, .additions-set-items .item-container').click(function(e){
         var id = e.target.id.split('-');
-        if(id[0] == 'conceal' || id[0] == 'edit' || id[0] == 'delete'){
+        var add_params = $(this).attr('id').split('-');
+        // adding items handler
+        // add-params="add-addition-item-<%= menu_type_id %>-<%= menu_type_name %>-<%= menu_item_id %>-<%= menu_item_name %>-<%= addition_types[i].id %>-<%= addition_types[i].name %>"
+        if(add_params[0] == 'add'){
+            if(add_params[1] == 'addition' && add_params[2] == 'item'){
+                add_addition_item(add_params);
+            }
+            if(add_params[1] == 'menu' && add_params[2] == 'item'){
+                alert('add-menu-item');
+            }
+            if(add_params[1] == 'menu' && add_params[2] == 'type'){
+                alert('add-menu-type');
+            }
+        }
+        else if(id[0] == 'conceal' || id[0] == 'edit' || id[0] == 'delete'){
             var name = $(this).attr('name'); // name of the item
             var elm_id = $(this).attr('id').split('-');
             var allowed = true;
@@ -73,9 +87,9 @@ $(document).ready(function() {
                 if (class_name == 'menu-items-cont') {
                     window.location = '/menu-additions&menu_type_id=' + menu_type_id + '&menu_type_name=' + menu_type_name + '&menu_item_id=' + menu_item_id + '&menu_item_name=' + menu_item_name;
                 }
-                if (class_name == 'additions-set-items') {
-                    console.log('ok');
-                }
+                //if (class_name == 'additions-set-items') {
+                //    console.log('ok');
+                //}
             }
             else{
                 if(id[1] == 'menutype') reveal_menutype_ajax(menu_type_id);
@@ -328,4 +342,17 @@ function reveal_additionitem_ajax(menu_type_id, menu_item_id, addition_type_id, 
         if(res.status) window.location = base_url + '/menu-additions&menu_type_id='+menu_type_id+'&menu_type_name='+menu_type_name+'&menu_item_id='+menu_item_id+'&menu_item_name='+menu_item_name;
         else alert(res.msg);
     });
+}
+
+// add-params="add-addition-item-<%= menu_type_id %>-<%= menu_type_name %>-<%= menu_item_id %>-<%= menu_item_name %>-<%= addition_types[i].id %>-<%= addition_types[i].name %>"
+function add_addition_item(add_params){
+    var params = {
+        menu_type_id: add_params[3],
+        menu_type_name: add_params[4],
+        menu_item_id: add_params[5],
+        menu_item_name: add_params[6],
+        addition_type_id: add_params[7],
+        addition_type_name: add_params[8]
+    };
+    window.location = base_url + '/add-addition-item&params='+encodeURIComponent(JSON.stringify(params));
 }

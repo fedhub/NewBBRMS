@@ -1,0 +1,75 @@
+.edit-addition-type-cont{
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-right: 5px;
+  form{
+    width: 50%;
+    margin-top: 50px;
+  }
+  .form-row{
+    @include size(100%, 30px);
+    margin-top: 10px;
+  }
+  label{
+    float: right;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(#333, 0.8);
+    @include size(20%, 100%);
+  }
+  label#last{
+    width: 100px;
+  }
+  select{
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(#333, 0.8);
+    @include size(109px, 100%);
+  }
+  input{
+    float: right;
+    @include size(75%, 100%);
+    font-size: 15px;
+    color: rgba(#333, 0.9);
+    padding-right: 2px;
+    &:hover{
+      border-color: rgba($txt-color, 0.3);
+    }
+  }
+  .approve-details{
+    @include size(80px, 30px);
+    margin: 30px auto;
+    background: rgba(grey, 0.8);
+    line-height: 30px;
+    text-align: center;
+    box-shadow: 0 0 1px 1px #333;
+    cursor: pointer;
+    p{
+      color: #333;
+    }
+    &:hover{
+      box-shadow: 0 0 3px 1px $txt-color;
+      p{
+        color: $txt-color;
+      }
+    }
+    .icon{
+      @include size(30%, 100%);
+      float: right;
+      p{
+        font-size: 20px;
+      }
+    }
+    .text{
+      @include size(70%, 100%);
+      float: right;
+      p{
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}

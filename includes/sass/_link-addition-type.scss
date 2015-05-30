@@ -1,4 +1,4 @@
-.addition-types-cont{
+.link-addition-type-cont{
   width: 99%;
   margin: 0 auto;
   padding-top: 5px;
@@ -45,9 +45,10 @@
   label:last-child{
     color: brown;
   }
-  #approve-delete{
+  #approve-link{
     margin-top: 30px;
     margin-right: 5px;
+    margin-bottom: 15px;
     background-color: rgba($txt-color, 0.8);
     border: 1px solid grey;
     box-shadow: 0 0 5px 0 #000;

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Edit Addition Item</title>
+    <title>Best Biss | Add Addition Item</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
-    <script type="text/javascript" src="js/edit-addition-item.js"></script>
+    <script type="text/javascript" src="js/add-addition-item.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -63,51 +63,32 @@
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="edit-addition-item-cont" id="<%= params.menu_type_id %>-<%= params.menu_type_name %>-<%= params.menu_item_id %>-<%= params.menu_item_name %>-<%= params.addition_item_id %>">
-                <section class="update-details-cont">
-                    <section class="title-cont">
-                        <section class="hr"></section>
-                        <section class="title">
-                            <section class="name"><p>עריכת פרטי <%= params.addition_item_name %></p></section>
-                        </section>
-                        <section class="hr"></section>
-                    </section>
+            <section class="add-addition-item-cont" id="<%= params.menu_type_id %>-<%= params.menu_type_name %>-<%= params.menu_item_id %>-<%= params.menu_item_name %>-<%= params.addition_type_id %>-<%= params.addition_type_name %>">
+                <section class="steps-container">
+                    <section id="step-1" class="step-cont"><section class="step">
+                            <section class="step-num"><p>1</p></section>
+                            <section class="step-del"><div></div></section>
+                            <section class="step-text"><p>פרטי הפריט</p></section>
+                    </section></section>
+                    <section id="step-2" class="step-cont"><section class="step">
+                            <section class="step-num"><p>2</p></section>
+                            <section class="step-del"><div></div></section>
+                            <section class="step-text"><p>בחירת תמונה</p></section>
+                    </section></section>
+                </section>
+                <section class="form-container">
                     <form>
-                        <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="20" value="<%= params.addition_item_name %>" /></section>
-                        <section class="form-row"><label>מחיר: </label><input type="text" id="price" maxlength="2" value="<%= params.addition_item_price %>" /></section>
-                        <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="30" value="<%= params.addition_item_description %>" /></section>
-                        <section class="approve-details" id="save-details">
-                            <section class="msg"><p></p></section>
-                            <section class="icon"><p class="flaticon-floppy13"></p></section>
-                            <section class="text" title="שמור" ><p>שמור</p></section>
-                        </section>
+                        <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="20" value="" placeholder="שדה חובה, עד 20 תווים" /></section>
+                        <section class="form-row"><label>מחיר: </label><input type="text" id="price" maxlength="2" value="" placeholder="שדה חובה, עד 2 ספרות" /></section>
+                        <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="30" value="" placeholder="לא חובה, עד 30 תווים" /></section>
                     </form>
-                </section>
-                <section class="related-images">
-                    <section class="title-cont">
-                        <section class="hr"></section>
-                        <section class="title">
-                            <section class="name"><p>תמונות שמשוייכות ל<%= params.addition_item_name %></p></section>
-                            <form id="related-form" enctype="multipart/form-data">
-                                <section id="submit-addition-related-image" class="upload" title="העלאת תמונה"><p class="flaticon-upload31"></p></section>
-                                <section id="choose-addition-related-image" class="choose-image-button"><p>בחר קובץ</p></section>
-                                <section id="related-image-name" class="image-name"><p>לא נבחרה תמונה</p></section>
-                                <input type="file" name="addition_image_related" id="addition-image-related" style="display: none;"/>
-                                <input type="submit" style="display: none;"/>
-                            </form>
-                        </section>
-                        <section class="hr"></section>
-                    </section>
-                    <section class="images-cont">
-                        <% for(var i = 0; i < related_images.length; i++){ %>
-                        <section class="related-image-cont" id="related-images-<%= related_images[i].id %>" style="background: url('../images/<%= related_images[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;">
-                            <section class="remove"><p class="flaticon-close32"></p></section>
-                            <section class="active" id="active-<%= related_images[i].active %>"><p class="flaticon-good1"></p></section>
-                        </section>
-                        <% } %>
+                    <section class="buttons-cont">
+                        <section id="forward" class="forward"><p>המשך ></p></section>
                     </section>
                 </section>
+
                 <section class="all-images">
+                    <section id="backward" class="backward"><p>< חזרה</p></section>
                     <section class="title-cont">
                         <section class="hr"></section>
                         <section class="title">
@@ -116,7 +97,7 @@
                                 <section id="submit-addition-stock-image" class="upload" title="העלאת תמונה"><p class="flaticon-upload31"></p></section>
                                 <section id="choose-addition-stock-image" class="choose-image-button"><p>בחר קובץ</p></section>
                                 <section id="stock-image-name" class="image-name"><p>לא נבחרה תמונה</p></section>
-                                <input type="file" name="stock_image" id="addition-image-stock" style="display: none;"/>
+                                <input type="file" name="new_addition_item_stock_image" id="addition-image-stock" style="display: none;"/>
                                 <input type="submit" style="display: none;"/>
                             </form>
                         </section>
@@ -129,7 +110,7 @@
                     </section>
                 </section>
             </section>
-        </section>
+         </section>
     </section>
     <footer></footer>
 </div>
