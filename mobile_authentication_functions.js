@@ -39,9 +39,9 @@ mobile_authentication_functions.sign_up = function(req, res){
         else{console.log(err);}
     });
 
-}
+};
 
-mobile_authentication_functions.log_in = function(req, res){
+mobile_authentication_functions.log_in_private = function(req, res){
 
     var customer_details = JSON.parse(req.body.data);
     var first_name = customer_details.first_name;
@@ -72,6 +72,49 @@ mobile_authentication_functions.log_in = function(req, res){
         else{console.log(err);}
     });
 
-}
+};
+
+mobile_authentication_functions.log_in_business = function(req, res){
+
+    var customer_details = JSON.parse(req.body.data);
+    var phone_number = customer_details.phone_number;
+    var password = customer_details.password;
+
+    var query = "SELECT COUNT(id) AS val FROM `business_customers` WHERE `phone_number`='"+phone_number+"';";
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    if(result[0].val > 0) {
+                        query = "SELECT COUNT(id) AS val FROM `business_customers` WHERE `phone_number`='"+phone_number+"' AND `password`='"+password+"';";
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                if(result[0].val > 0){
+                                    query = "SELECT * FROM `business_customers` WHERE `phone_number`='"+phone_number+"' AND `password`='"+password+"';";
+                                    conn.query(query, function(err, result){
+                                        if(!err){
+                                            res.send(result[0]);
+                                        }
+                                        else{
+                                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                        }
+                                    });
+                                }
+                                else res.send('password-not-match');
+                            }
+                            else console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                        });
+                    }
+                    // phone_number is not subscribed
+                    else res.send('phone-not-exist');
+                }
+                else console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                conn.release();
+            });
+        }
+        else{console.log(err);}
+    });
+
+};
 
 module.exports = mobile_authentication_functions;

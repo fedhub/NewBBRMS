@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Home</title>
+    <title>Best Biss | Business</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
+    <script type="text/javascript" src="js/company.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -61,6 +62,33 @@
                 <% for(var i = 0; i < breadcrumbs.length; i++){ %>
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
+            </section>
+            <section class="company-cont" id="<%= company_name %>-<%= company_code %>">
+                <% for(var i = 0; i < customers.length; i++) {%>
+                <section class="customer-cont">
+                    <section class="header">
+                        <section class="customer-icon"><p class="flaticon-user7"></p></section>
+                        <section class="name-cont"><p><%= customers[i].first_name %> <%= customers[i].last_name %></p></section>
+                    </section>
+                    <section class="body">
+                        <section class="label"><p>מס' טלפון:</p></section>
+                        <section class="info"><p><%= customers[i].phone_number %></p></section>
+                        <section class="label"><p>אימייל:</p></section>
+                        <section class="info"><p><%= customers[i].email %></p></section>
+                        <section class="label"><p>רחוב:</p></section>
+                        <section class="info"><p><%= customers[i].street %></p></section>
+                        <section class="label"><p>מספר בית:</p></section>
+                        <section class="info"><p><%= customers[i].house_number %></p></section>
+                        <section class="label"><p>קומה:</p></section>
+                        <section class="info"><p><%= customers[i].floor %></p></section>
+                        <section class="label"><p>כניסה:</p></section>
+                        <section class="info"><p><%= customers[i].enter %></p></section>
+                        <section class="label"><p>יתרה:</p></section>
+                        <section class="info"><p id="budget" title="עדכן יתרה"><%= customers[i].budget %> &#8362;</p></section>
+                    </section>
+                </section>
+                <% } %>
+                <section class="add" id="add-customer"><p class="flaticon-plus25"></p></section>
             </section>
         </section>
     </section>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Add Addition Type</title>
+    <title>Best Biss | Add Menu Item</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
-    <script type="text/javascript" src="js/add-addition-type.js"></script>
+    <script type="text/javascript" src="js/add-menu-type.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -63,11 +63,33 @@
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="add-addition-type-cont" id="<%= params.menu_type_id %>-<%= params.menu_type_name %>-<%= params.menu_item_id %>-<%= params.menu_item_name %>">
+            <section class="add-menu-type-cont">
                 <section class="title-cont">
                     <section class="hr"></section>
                     <section class="title">
-                        <section class="name"><p>1. פרטי סט התוספות החדש ></p></section>
+                        <section class="name"><p>1. פרטי סוג התפריט החדש ></p></section>
+                    </section>
+                    <section class="hr"></section>
+                </section>
+                <form id="menu-type">
+                    <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="20" value="" placeholder="שדה חובה, עד 20 תווים"/></section>
+                </form>
+                <section class="title-cont">
+                    <section class="hr"></section>
+                    <section class="title">
+                        <section class="name"><p>2. פרטי פריט חדש לסוג התפריט ></p></section>
+                    </section>
+                    <section class="hr"></section>
+                </section>
+                <form id="menu-item">
+                    <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="25" value="" placeholder="שדה חובה, עד 25 תווים"/></section>
+                    <section class="form-row"><label>מחיר: </label><input type="text" id="price" maxlength="2" value="" placeholder="שדה חובה, עד 2 ספרות" /></section>
+                    <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="100" value="" placeholder="לא חובה, עד 100 תווים"/></section>
+                </form>
+                <section class="title-cont">
+                    <section class="hr"></section>
+                    <section class="title">
+                        <section class="name"><p>3. פרטי סט תוספות לפריט החדש ></p></section>
                     </section>
                     <section class="hr"></section>
                 </section>
@@ -90,7 +112,7 @@
                 <section class="title-cont">
                     <section class="hr"></section>
                     <section class="title">
-                        <section class="name"><p>2. פרטי פריט התוספות החדש של סט התוספות החדש ></p></section>
+                        <section class="name"><p>4. פרטי פריט תוספת לסט התוספות החדש ></p></section>
                     </section>
                     <section class="hr"></section>
                 </section>

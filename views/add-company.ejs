@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Home</title>
+    <title>Best Biss | Add Company</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -12,7 +12,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
-    <script type="text/javascript" src="js/managers.js"></script>
+    <script type="text/javascript" src="js/input-checks.js"></script>
+    <script type="text/javascript" src="js/add-company.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -61,6 +62,19 @@
                 <% for(var i = 0; i < breadcrumbs.length; i++){ %>
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
+            </section>
+            <section class="add-company-cont">
+                <form class="add-company-form">
+                    <% for(var i = 0; i < form_items.length; i++) {%>
+                    <section class="form-item" id="<%= form_items[i].id %>">
+                        <section class="required"><p><%= form_items[i].required %></p></section>
+                        <section class="detail-label"><p><%= form_items[i].label %></p></section>
+                        <section class="detail-input"><input type="<%= form_items[i].type %>" maxlength="<%= form_items[i].max_length %>"></section>
+                        <section class="validation"><p></p></section>
+                    </section>
+                    <% } %>
+                    <section class="approve-button" id="approve-company"><p>אישור</p></section>
+                </form>
             </section>
         </section>
     </section>

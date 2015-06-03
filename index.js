@@ -90,6 +90,7 @@ app.use(require('./menu-types'));
 app.use(require('./menu-items'));
 app.use(require('./menu-additions'));
 app.use(require('./addition-types'));
+app.use(require('./business-customers'));
 
 //app.use(require('./authentication'));
 //app.use(require('./routers'));

@@ -1,0 +1,89 @@
+.company-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-right: 5px;
+  .customer-cont, .add{
+    float: right;
+    margin: 6px;
+    @include size(31.8%, 250px);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 0 1px 1px rgba(#333, 0.8);
+    &:hover{
+      box-shadow: 0 0 2px 1px rgba(#333, 0.9);
+    }
+  }
+  .add{
+    cursor: pointer;
+    &:hover{
+      p{
+        color: rgba(#333, 0.8);
+      }
+    }
+    p{
+      line-height: 250px;
+      text-align: center;
+      font-size: 50px;
+      color: rgba(#333, 0.6);
+    }
+  }
+  .header{
+    @include size(100%, 20%);
+    background-color: rgba(#333, 0.5);
+  }
+  .customer-icon{
+    @include size(50px, 100%);
+    float: right;
+    p{
+      line-height: 50px;
+      font-size: 42px;
+      text-align: center;
+      color: rgba(#333, 0.9);
+    }
+  }
+  .name-cont{
+    @include size(230px, 100%);
+    float: right;
+    p{
+      line-height: 50px;
+      font-size: 20px;
+      padding-right: 5px;
+      font-weight: bold;
+      color: rgba(#333, 0.9);
+    }
+  }
+  .body{
+    @include size(100%, 80%);
+    background-color: rgba(#333, 0.2);
+  }
+  .label{
+    @include size(30%, 25px);
+    float: right;
+    p{
+      padding-right: 5px;
+      line-height: 25px;
+      font-size: 15px;
+      font-weight: bold;
+      color: rgba(#333, 0.8);
+    }
+  }
+  .info{
+    @include size(70%, 25px);
+    float: right;
+    p{
+      line-height: 25px;
+      font-weight: bold;
+      font-size: 15px;
+      color: rgba(#333, 0.7);
+    }
+  }
+  #budget{
+    color: rgba(blue, 0.7);
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover{
+      color: rgba(blue, 1);
+    }
+  }
+}

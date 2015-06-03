@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Menu</title>
+    <title>Best Biss | Edit Menu Item</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
-    <script type="text/javascript" src="js/menu-items.js"></script>
+    <script type="text/javascript" src="js/edit-menu-item.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -49,7 +49,7 @@
                     <li><a href="#" id="managers">מנהלים</a></li>
                     <li><a href="#">הגדרות אפליקצייה</a></li>
                     <li><a href="/menu-types">ניהול תפריט</a></li>
-                    <li><a href="#">ניהול לקוחות</a></li>
+                    <li><a href="/business-companies">לקוחות עסקיים</a></li>
                     <li><a href="#">ניהול קופונים</a></li>
                     <li><a href="#">פילוחים</a></li>
                     <li><a href="#">גיבוי מערכת</a></li>
@@ -63,10 +63,71 @@
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="edit-menu-item-cont" id="<%= params.menu_type_name %>-<%= params.menu_type_id %>-<%= params.menu_item_name %>-<%= params.menu_item_id %>">
-                <% for(var i = 0; i < images.length; i++){ %>
-                <section class="image-cont" id="<%= images[i].id %>" style="background: url('../images/<%= images[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;"></section>
-                <% } %>
+            <section class="edit-menu-item-cont" id="<%= params.menu_type_id %>-<%= params.menu_type_name %>-<%= params.menu_item_id %>-<%= params.menu_item_name %>">
+                <section class="update-details-cont">
+                    <section class="title-cont">
+                        <section class="hr"></section>
+                        <section class="title">
+                            <section class="name"><p>עריכת פרטי <%= params.menu_item_name %></p></section>
+                        </section>
+                        <section class="hr"></section>
+                    </section>
+                    <form>
+                        <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="25" value="<%= params.menu_item_name %>" /></section>
+                        <section class="form-row"><label>מחיר: </label><input type="text" id="price" maxlength="2" value="<%= params.menu_item_price %>" /></section>
+                        <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="100" value="<%= params.menu_item_description %>" /></section>
+                        <section class="approve-details" id="save-details">
+                            <section class="msg"><p></p></section>
+                            <section class="icon"><p class="flaticon-floppy13"></p></section>
+                            <section class="text" title="שמור" ><p>שמור</p></section>
+                        </section>
+                    </form>
+                </section>
+                <section class="related-images">
+                    <section class="title-cont">
+                        <section class="hr"></section>
+                        <section class="title">
+                            <section class="name"><p>תמונות שמשוייכות ל<%= params.menu_item_name %></p></section>
+                            <form id="related-form" enctype="multipart/form-data">
+                                <section id="submit-item-related-image" class="upload" title="העלאת תמונה"><p class="flaticon-upload31"></p></section>
+                                <section id="choose-item-related-image" class="choose-image-button"><p>בחר קובץ</p></section>
+                                <section id="related-image-name" class="image-name"><p>לא נבחרה תמונה</p></section>
+                                <input type="file" name="item_image_related" id="item-image-related" style="display: none;"/>
+                                <input type="submit" style="display: none;"/>
+                            </form>
+                        </section>
+                        <section class="hr"></section>
+                    </section>
+                    <section class="images-cont">
+                        <% for(var i = 0; i < related_images.length; i++){ %>
+                        <section class="related-image-cont" id="related-images-<%= related_images[i].id %>" style="background: url('../images/<%= related_images[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;">
+                            <section class="remove"><p class="flaticon-close32"></p></section>
+                            <section class="active" id="active-<%= related_images[i].active %>"><p class="flaticon-good1"></p></section>
+                        </section>
+                        <% } %>
+                    </section>
+                </section>
+                <section class="all-images">
+                    <section class="title-cont">
+                        <section class="hr"></section>
+                        <section class="title">
+                            <section class="name"><p>כל התמונות</p></section>
+                            <form id="stock-form" enctype="multipart/form-data">
+                                <section id="submit-item-stock-image" class="upload" title="העלאת תמונה"><p class="flaticon-upload31"></p></section>
+                                <section id="choose-item-stock-image" class="choose-image-button"><p>בחר קובץ</p></section>
+                                <section id="stock-image-name" class="image-name"><p>לא נבחרה תמונה</p></section>
+                                <input type="file" name="stock_image" id="item-image-stock" style="display: none;"/>
+                                <input type="submit" style="display: none;"/>
+                            </form>
+                        </section>
+                        <section class="hr"></section>
+                    </section>
+                    <section class="images-cont">
+                        <% for(var i = 0; i < all_images.length; i++){ %>
+                        <section class="all-image-cont" id="all-images-<%= all_images[i].id %>" style="background: url('../images/<%= all_images[i].image_name %>') no-repeat; background-size: contain; background-position: center center; background-color: #fff;"></section>
+                        <% } %>
+                    </section>
+                </section>
             </section>
         </section>
     </section>

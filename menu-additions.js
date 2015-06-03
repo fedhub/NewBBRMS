@@ -165,30 +165,21 @@ menu_additions.post('/delete-addition-item&:addition_type_id&:addition_item_id',
                     var is_sealed = result[0].is_sealed;
                     var selection_type = result[0].selection_type;
                     var selections_amount = result[0].selections_amount;
-                    if((is_sealed == '1') ||
-                        ((selection_type == 'required_exact' || selection_type == 'required_min') && (tot_addition_items_count - (sealed_addition_items_count + 1) >= selections_amount)) ||
-                        (selection_type == 'optional_max')){
-                        if(selection_type == 'optional_max' && is_sealed == '0'){
-                            if(selections_amount == tot_addition_items_count - sealed_addition_items_count){
-                                var new_selections_amount = selections_amount - 1;
-                                query = 'UPDATE `addition_types` SET `selections_amount`="'+new_selections_amount+'" WHERE `id`="'+addition_type_id+'";';
-                                conn.query(query, function(err, result){
-                                    if(!err){
-                                        delete_addition_item(res, addition_item_id);
-                                    }
-                                    else{
-                                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
-                                        res.send({status: false, msg: 'הייתה בעיה בהוספת הפריט, אנא נסה שוב מאוחר יותר'});
-                                    }
-                                });
-                            }
-                            else{
+                    var available_count = tot_addition_items_count - sealed_addition_items_count;
+                    if(is_sealed == '1') delete_addition_item(res, addition_item_id);
+                    else if(available_count > selections_amount && selection_type != 'optional_max') delete_addition_item(res, addition_item_id);
+                    else if(selection_type == 'optional_max' && available_count > 1){
+                        var new_selections_amount = selections_amount - 1;
+                        query = 'UPDATE `addition_types` SET `selections_amount`="'+new_selections_amount+'" WHERE `id`="'+addition_type_id+'";';
+                        conn.query(query, function(err, result){
+                            if(!err){
                                 delete_addition_item(res, addition_item_id);
                             }
-                        }
-                        else{
-                            delete_addition_item(res, addition_item_id);
-                        }
+                            else{
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send({status: false, msg: 'הייתה בעיה בהוספת הפריט, אנא נסה שוב מאוחר יותר'});
+                            }
+                        });
                     }
                     else{
                         var msg = 'המחיקה אסורה, ייתכן שמדובר בפריט האחרון שנותר בקטגוריה הזו';

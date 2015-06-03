@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Best Biss | Addition Set Deletion</title>
+    <title>Best Biss | Add Menu Item</title>
     <!--<meta name="format-detection" content="telephone=no" />-->
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
-    <script type="text/javascript" src="js/edit-addition-type.js"></script>
+    <script type="text/javascript" src="js/add-menu-item.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -63,30 +63,60 @@
                 <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
                 <% } %>
             </section>
-            <section class="edit-addition-type-cont" id="<%= params.menu_type_id %>-<%= params.menu_type_name %>-<%= params.menu_item_id %>-<%= params.menu_item_name %>-<%= params.addition_type_id %>-<%= params.addition_type_name %>">
-                <form>
-                    <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="25" value="<%= addition_type.name %>" placeholder="שדה חובה, עד 25 תווים"/></section>
-                    <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="30" value="<%= addition_type.description %>" placeholder="לא חובה, עד 30 תווים" /></section>
+            <section class="add-menu-item-cont" id="<%= menu_type_id %>-<%= menu_type_name %>">
+
+                <section class="title-cont">
+                    <section class="hr"></section>
+                    <section class="title">
+                        <section class="name"><p>1. פרטי הפריט החדש ></p></section>
+                    </section>
+                    <section class="hr"></section>
+                </section>
+                <form id="menu-item">
+                    <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="25" value="" placeholder="שדה חובה, עד 25 תווים"/></section>
+                    <section class="form-row"><label>מחיר: </label><input type="text" id="price" maxlength="2" value="" placeholder="שדה חובה, עד 2 ספרות" /></section>
+                    <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="100" value="" placeholder="לא חובה, עד 100 תווים"/></section>
+                </form>
+                <section class="title-cont">
+                    <section class="hr"></section>
+                    <section class="title">
+                        <section class="name"><p>2. פרטי סט התוספות לפריט החדש ></p></section>
+                    </section>
+                    <section class="hr"></section>
+                </section>
+                <form id="addition-type">
+                    <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="25" value="" placeholder="שדה חובה, עד 25 תווים"/></section>
+                    <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="30" value="" placeholder="לא חובה, עד 30 תווים" /></section>
                     <section class="form-row">
                         <label>הלקוח יבחר: </label>
-                        <select id="selection-type-<%= addition_type.selection_type %>">
+                        <select id="selection-type">
+                            <option id="optional_max" value="optional_max">לכל היותר</option>
                             <option id="required_exact" value="required_exact">בדיוק</option>
                             <option id="required_min" value="required_min">לפחות</option>
-                            <option id="optional_max" value="optional_max">לכל היותר</option>
                         </select>
-                        <select id="selections-amount-<%= addition_type.selections_amount %>">
-                            <% for(var i = 1; i <= addition_type.tot_unsealed_items; i++) {%>
-                            <option id="amount-<%= i %>" value="<%= i %>"><%= i %></option>
-                            <% } %>
+                        <select id="selections-amount">
+                            <option value="1">1</option>
                         </select>
                         <label id="last">פריטים מסט זה</label>
                     </section>
-                    <section class="approve-details" id="save-details">
-                        <section class="msg"><p></p></section>
-                        <section class="icon"><p class="flaticon-floppy13"></p></section>
-                        <section class="text" title="שמור" ><p>שמור</p></section>
-                    </section>
                 </form>
+                <section class="title-cont">
+                    <section class="hr"></section>
+                    <section class="title">
+                        <section class="name"><p>3. פרטי פריט התוספת לסט התוספות החדש ></p></section>
+                    </section>
+                    <section class="hr"></section>
+                </section>
+                <form id="addition-item">
+                    <section class="form-row"><label>שם: </label><input type="text" id="name" maxlength="20" value="" placeholder="שדה חובה, עד 20 תווים"/></section>
+                    <section class="form-row"><label>מחיר: </label><input type="text" id="price" maxlength="2" value="" placeholder="שדה חובה, עד 2 ספרות" /></section>
+                    <section class="form-row"><label>תיאור: </label><input type="text" id="description" maxlength="30" value="" placeholder="לא חובה, עד 30 תווים" /></section>
+                </form>
+                <section class="approve-details" id="save-details">
+                    <section class="msg"><p></p></section>
+                    <section class="icon"><p class="flaticon-floppy13"></p></section>
+                    <section class="text" title="שמור" ><p>שמור</p></section>
+                </section>
             </section>
         </section>
     </section>

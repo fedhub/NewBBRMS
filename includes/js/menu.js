@@ -46,11 +46,12 @@ $(document).ready(function() {
             if(add_params[1] == 'addition' && add_params[2] == 'item'){
                 add_addition_item(add_params);
             }
+            //add_params="add-menu-item-<%= menu_type_id %>-<%= menu_type_name %>"
             if(add_params[1] == 'menu' && add_params[2] == 'item'){
-                alert('add-menu-item');
+                window.location = base_url + '/add-menu-item-page&menu_type_id='+add_params[3]+'&menu_type_name='+add_params[4];
             }
             if(add_params[1] == 'menu' && add_params[2] == 'type'){
-                alert('add-menu-type');
+                window.location = base_url + '/add-menu-type-page';
             }
         }
         else if(id[0] == 'conceal' || id[0] == 'edit' || id[0] == 'delete'){
@@ -87,9 +88,6 @@ $(document).ready(function() {
                 if (class_name == 'menu-items-cont') {
                     window.location = '/menu-additions&menu_type_id=' + menu_type_id + '&menu_type_name=' + menu_type_name + '&menu_item_id=' + menu_item_id + '&menu_item_name=' + menu_item_name;
                 }
-                //if (class_name == 'additions-set-items') {
-                //    console.log('ok');
-                //}
             }
             else{
                 if(id[1] == 'menutype') reveal_menutype_ajax(menu_type_id);
@@ -166,7 +164,11 @@ function handle_item_option_req($lightbox, name, id, elm_id){
     if(id[0] == 'edit'){
         var params;
         if(id[1] == 'menutype'){
-            window.location = base_url + '/edit-menu-type&id='+id[2]+'&name='+id[3];
+            params = {
+                menu_type_id: id[2],
+                menu_type_name: id[3]
+            };
+            window.location = base_url + '/edit-menu-type&params='+encodeURIComponent(JSON.stringify(params));
         }
         if(id[1] == 'menuitem'){
             params = {

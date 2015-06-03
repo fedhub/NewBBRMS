@@ -4,17 +4,40 @@ var mysql                   = require('./mysql');
 
 mobile_order_functions.make_order = function(req, res){
 
-    var order_info_text = req.body.data;
-    var order_info_obj = JSON.parse(order_info_text);
-    order_info_obj.customer_details = JSON.parse(order_info_obj.customer_details);
-    order_info_obj.my_cart = JSON.parse(order_info_obj.my_cart);
-
+    var order = JSON.parse(req.body.data);
+    var customer = JSON.parse(order.customer_details);
+    var order_obj = {
+        my_cart: order.my_cart,
+        order_date: order.order_date,
+        order_time: order.order_time,
+        total_price: order.total_price
+    };
+    var order_text = JSON.stringify(order_obj);
+    var date = new Date();
     var query = 'INSERT INTO `last_orders`(' +
         '`order_json`, ' +
-        '`order_date`, ' +
-        '`order_time`, ' +
-        '`phone_number`) ' +
-        'VALUES ("'+mysql_real_escape_string(order_info_text)+'","'+order_info_obj.order_date+'","'+order_info_obj.order_time+'","'+order_info_obj.customer_details.phone_number+'");';
+        '`phone_number`, ' +
+        '`day`, ' +
+        '`month`, ' +
+        '`year`, ' +
+        '`hour`, ' +
+        '`minutes`, ' +
+        '`order_type`, ' +
+        '`customer_type`, ' +
+        '`payment_method`, ' +
+        '`total_price`) ' +
+        'VALUES (' +
+        '"'+mysql_real_escape_string(order_text)+'",' +
+        '"'+customer.phone_number+'",' +
+        '"'+date.getDay()+'",' +
+        '"'+(date.getMonth()+1)+'",' +
+        '"'+date.getFullYear()+'",' +
+        '"'+order.order_hour+'",' +
+        '"'+order.order_minutes+'",' +
+        '"'+order.order_type+'",' +
+        '"'+order.customer_type+'",' +
+        '"'+order.payment_method+'",' +
+        '"'+order.total_price+'");';
 
     mysql.getConnection(function(err, conn){
         if(!err){
@@ -36,11 +59,8 @@ mobile_order_functions.make_order = function(req, res){
 
 mobile_order_functions.last_orders = function(req, res){
 
-    var phone_number = req.params.phone_number.split('=');
-    phone_number = phone_number[phone_number.length - 1];
-
+    var phone_number = req.params.phone_number.split('=')[1];
     var query = 'SELECT `order_json` FROM `last_orders` WHERE `phone_number`="'+phone_number+'";';
-
     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
@@ -130,18 +150,31 @@ mobile_order_functions.library_items = function(req, res){
 mobile_order_functions.new_library = function(req, res){
 
     var lib_details = JSON.parse(req.body.data);
+    var date = new Date();
     var query = 'INSERT INTO `order_libraries`(' +
         '`phone_number`, ' +
         '`lib_name`, ' +
         '`lib_description`, ' +
         '`creation_date`, ' +
-        '`creation_time`) ' +
+        '`creation_time`, ' +
+        '`day`, ' +
+        '`month`, ' +
+        '`year`, ' +
+        '`hour`, ' +
+        '`minutes`, ' +
+        '`customer_type`) ' +
         'VALUES (' +
         '"'+lib_details.phone_number+'",' +
         '"'+lib_details.lib_name+'",' +
         '"'+lib_details.lib_description+'",' +
         '"'+lib_details.creation_date+'",' +
-        '"'+lib_details.creation_time+'");';
+        '"'+lib_details.creation_time+'", ' +
+        '"'+date.getDay()+'", ' +
+        '"'+(date.getMonth()+1)+'", ' +
+        '"'+date.getFullYear()+'", ' +
+        '"'+date.getHours()+'", ' +
+        '"'+date.getMinutes()+'", ' +
+        '"'+lib_details.customer_type+'");';
 
     mysql.getConnection(function(err, conn){
         if(!err){

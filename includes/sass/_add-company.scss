@@ -1,0 +1,65 @@
+.add-company-cont{
+  @include size(100%, 95%);
+  overflow: hidden;
+  .add-company-form{
+    @include size(50%, 80%);
+    margin-right: 5px;
+    margin-top: 50px;
+    .form-item{
+      @include size(100%, 40px);
+      margin-top: 10px;
+      section{
+        float: right;
+        display: table;
+      }
+    }
+    .required{
+      @include size(4%, 100%);
+      p{
+        @include cell-settings();
+        font-size: 17px;
+      }
+    }
+    .detail-label{
+      @include size(30%, 100%);
+      p{
+        font-size: 17px;
+        display: table-cell;
+        vertical-align: middle;
+        color: rgba(#333, 0.8);
+        font-weight: bold;
+      }
+    }
+    .detail-input{
+      @include size(56%, 100%);
+      input, textarea{
+        @include size(97%, 90%);
+        margin-top: 2px;
+        font-size: 12px;
+        font-weight: bold;
+        padding-right: 5px;
+        color: rgba(#333, 0.8);
+        &:hover{
+          border: 1px solid $txt-color;
+        }
+      }
+    }
+    .validation{
+      @include size(8%, 100%);
+      p{
+        font-size: 20px;
+        @include cell-settings();
+      }
+    }
+  }
+  #approve-company{
+    margin-top: 20px;
+    margin-right: 5px;
+    background-color: rgba($txt-color, 0.8);
+    border: 1px solid grey;
+    box-shadow: 0 0 5px 0 #000;
+    &:hover{
+      background-color: rgba($txt-color, 0.9);
+    }
+  }
+}

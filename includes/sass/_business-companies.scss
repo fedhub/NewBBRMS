@@ -1,0 +1,68 @@
+.business-cont{
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-right: 5px;
+  .title{
+    padding: 2px;
+    margin-top: 10px;
+    @include size(97%, 14px);
+    //background-color: rgba(orange, 0.6);
+    display: table;
+    p{
+      font-size: 13px;
+    }
+  }
+  .company-row, .add{
+    padding: 2px;
+    margin-top: 10px;
+    @include size(97%, 40px);
+    background-color: rgba(#333, 0.3);
+    box-shadow: 0 0 1px 1px #333;
+    border-radius: 5px;
+    display: table;
+    cursor: pointer;
+    &:hover{
+      background-color: rgba(#333, 0.4);
+      box-shadow: 0 0 2px 1px #333;
+    }
+  }
+  .add{
+    p{
+      @include cell-settings();
+      font-size: 25px;
+    }
+  }
+  section{
+    @include cell-settings();
+    p{
+      font-size: 15px;
+      color: rgba(#333, 0.8);
+      font-weight: bold;
+    }
+  }
+  .name{
+    width: 30%;
+  }
+  .street{
+    width: 16%;
+  }
+  .house-number{
+    width: 7%;
+  }
+  .floor{
+    width: 7%;
+  }
+  .enter{
+    width: 7%;
+  }
+  .company-code{
+    width: 9%;
+  }
+  .representative{
+    width: 12%;
+  }
+  .register-date{
+    width: 12%;
+  }
+}

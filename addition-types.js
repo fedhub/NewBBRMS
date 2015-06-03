@@ -280,4 +280,60 @@ addition_types.get('/add-addition-type-page&:parameters', function(req, res){
 
 });
 
+addition_types.post('/add-addition-type', function(req, res){
+
+// addition_type_name, addition_type_description, selection_type,
+// selections_amount, addition_item_name, addition_item_price,
+// addition_item_description, menu_type_id, menu_type_name, menu_item_id, menu_item_name
+    var info = JSON.parse(req.body.data);
+    var query = 'INSERT INTO `addition_types`(`name`, `description`, `selection_type`, `selections_amount`) VALUES ("'+info.addition_type_name+'","'+info.addition_type_description+'","'+info.selection_type+'","'+info.selections_amount+'");';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    var addition_type_id = result.insertId;
+                    query = 'INSERT INTO `addition_items`(`addition_type_id`, `name`, `description`, `price`) VALUES ("'+addition_type_id+'","'+info.addition_item_name+'","'+info.addition_item_description+'","'+info.addition_item_price+'");';
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            var addition_item_id = result.insertId;
+                            query = 'INSERT INTO `food_items_additions`(`food_item_id`, `addition_type_id`) VALUES ("'+info.menu_item_id+'","'+addition_type_id+'");';
+                            conn.query(query, function(err, result){
+                               if(!err){
+                                   query = 'INSERT INTO `addition_items_images`(`addition_item_id`, `image_id`, `active`) VALUES ("'+addition_item_id+'","55","1");';
+                                   conn.query(query, function(err, result){
+                                       if(!err){
+                                           res.send({status: true});
+                                       }
+                                       else{
+                                           console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                           res.send({status: false, msg: 'הייתה בעיה בהוספת הפריטים לפתריט, אנא נסה שוב מאוחר יותר'});
+                                       }
+                                   });
+                               }
+                               else{
+                                   console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                   res.send({status: false, msg: 'הייתה בעיה בהוספת הפריטים לפתריט, אנא נסה שוב מאוחר יותר'});
+                               }
+                            });
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send({status: false, msg: 'הייתה בעיה בהוספת הפריטים לפתריט, אנא נסה שוב מאוחר יותר'});
+                        }
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בהוספת הפריטים לפתריט, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send({status: false, msg: 'הייתה בעיה בהוספת הפריטים לפתריט, אנא נסה שוב מאוחר יותר'});
+        }
+    });
+
+});
+
 module.exports = addition_types;
