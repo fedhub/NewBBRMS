@@ -2,21 +2,21 @@ var express    = require("express");
 var app        = express();
 var server     = require('http').createServer(app);
 //var io         = require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
 var path       = require('path');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 app.use(multer({ dest: './includes/images/uploades'}));
 
-
 // socket.io
-/*io.sockets.on('connection', function(socket){
-
-    socket.on('communicate', function(info){
-        var socket_id = socket.id;
-        io.emit('new-order-arrived', info);
-    });
-
-});*/
+//io.sockets.on('connection', function(socket){
+//
+//    socket.on('communicate', function(info){
+//        var socket_id = socket.id;
+//    });
+//
+//});
+exports.io = io;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -91,6 +91,8 @@ app.use(require('./menu-items'));
 app.use(require('./menu-additions'));
 app.use(require('./addition-types'));
 app.use(require('./business-customers'));
+app.use(require('./pending-orders'));
+app.use(require('./application-settings'));
 
 //app.use(require('./authentication'));
 //app.use(require('./routers'));

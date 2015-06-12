@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="300; URL=http://localhost:3000/pending-orders">
+    <title>Best Biss | Pending</title>
+    <!--<meta name="format-detection" content="telephone=no" />-->
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta name="viewport" width=device-width, height=device-height" />
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/flaticon.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="js/javascript.js"></script>-->
+    <script type="text/javascript" src="js/authentication.js"></script>
+    <script type="text/javascript" src="js/pending-orders.js"></script>
+</head>
+<body>
+    <section class="pending-orders-cont">
+        <section class="lightbox" id="lightbox">
+            <section class="container">
+                <section class="close" id="close"><p class="flaticon-close32"></p></section>
+                <section class="content"><p></p></section>
+                <section class="approve" id="approve"><p>אישור</p></section>
+            </section>
+        </section>
+        <section class="close-window" id="close-window">
+            <section class="icon"><p class="flaticon-close32"></p></section>
+            <section class="text"><p>סגור</p></section>
+        </section>
+        <section class="statistics-panel">
+            <section class="stat-cont"><p>לקוחות עסקיים: <%= business_count %></p></section>
+            <section class="stat-cont"><p>לקוחות פרטיים: <%= private_count %></p></section>
+            <section class="stat-cont"><p>סה"כ משלוחים: <%= delivery_count %></p></section>
+            <section class="stat-cont"><p>סה"כ לקחת: <%= take_away_count %></p></section>
+            <section class="stat-cont"><p>סה"כ לשבת: <%= sit_count %></p></section>
+            <section class="stat-cont"><p>סה"כ עסקאות במזומן: <%= cash_count %></p></section>
+            <section class="stat-cont"><p>סה"כ עסקאות באשראי: <%= credit_count %></p></section>
+        </section>
+        <div class="clear"></div>
+        <% for(var i = 0; i < order_arr.length; i++) { %>
+        <section class="order-cont">
+            <section class="order-details-cont">
+                <section class="serial-number"><p><%= order_arr[i].serial_number %></p></section>
+                <section class="order-detail-cont background" id="customer-type"><p><%= order_arr[i].customer_type %></p></section>
+                <section class="order-detail-cont background" id="order-type"><p><%= order_arr[i].order_type %></p></section>
+                <section class="order-detail-cont background" id="payment-method"><p><%= order_arr[i].payment_method %></p></section>
+                <section class="order-detail-cont background" id="order-time">
+                    <p class="blink_me"><%= order_arr[i].order_time %></p>
+                    <section class="order-time-edit"><input type="text" /></section>
+                </section>
+            </section>
+            <section class="customer-details-cont background">
+                <section class="column">
+                    <% for(var j = 0; j < 5; j++) { %>
+                    <section class="row">
+                        <section class="label"><p><%= order_arr[i].customer[j].label %></p></section>
+                        <section class="info"><p><%= order_arr[i].customer[j].info %></p></section>
+                    </section>
+                    <% } %>
+                </section>
+                <section class="column">
+                    <% for(var j = 5; j < 10; j++) { %>
+                    <section class="row">
+                        <section class="label"><p><%= order_arr[i].customer[j].label %></p></section>
+                        <section class="info"><p><%= order_arr[i].customer[j].info %></p></section>
+                    </section>
+                    <% } %>
+                </section>
+            </section>
+            <section class="cart-cont background">
+                <% for(var j = 0; j < order_arr[i].cart.length; j++) {%>
+                <section class="cart-item-cont">
+                    <section class="food-item background"><p><%= j+1 %>. <%= order_arr[i].cart[j].name %></p></section>
+                    <section class="description background"><p><%= order_arr[i].cart[j].description %></p></section>
+                    <% for(var k = 0; k < order_arr[i].cart[j].addition_types.length; k++){ %>
+                    <section class="description background">
+                        <p><span class="blink_me" style="font-size: 40px;"><%= order_arr[i].cart[j].addition_types[k].name %>: </span>
+                        <% for(var x = 0; x < order_arr[i].cart[j].addition_types[k].addition_items.length; x++){ %>
+                            <%= order_arr[i].cart[j].addition_types[k].addition_items[x].name %>
+                            <% if(x == order_arr[i].cart[j].addition_types[k].addition_items.length - 1) { %>
+                            .
+                            <%}else{%>,
+                            <%}%>
+                            <%}%>
+                        </p>
+                    </section>
+                    <% } %>
+                </section>
+                <% } %>
+            </section>
+            <footer class="background">
+                <section class="settings-cont">
+                    <section class="button" id="close-order-<%= order_arr[i].id %>" title="סגור הזמנה">
+                        <section class="icon"><p class="flaticon-close32"></p></section>
+                        <section class="text"><p>סגור</p></section>
+                    </section>
+                    <section class="button" id="cancel-order" title="ביטול הזמנה">
+                        <section class="icon"><p class="flaticon-forbidden"></p></section>
+                        <section class="text"><p>ביטול</p></section>
+                    </section>
+                </section>
+                <section class="status-cont" name="<%= order_arr[i].phone_number %>" id="<%= order_arr[i].status %>">
+                    <section class="status-item background-before" id="status-1"><p>הזמנה התקבלה</p></section>
+                    <section class="status-item background-before" id="status-2"><p>בהכנה</p></section>
+                    <section class="status-item background-before" id="status-3"><p><%= order_arr[i].status_text[0] %></p></section>
+                    <section class="status-item background-before" id="status-4"><p><%= order_arr[i].status_text[1] %></p></section>
+                </section>
+                <section class="total-price-cont">
+                    <p>סה"כ: <%= order_arr[i].total_price %> &#8362;</p>
+                </section>
+            </footer>
+        </section>
+        <% } %>
+    </section>
+</body>
+</html>

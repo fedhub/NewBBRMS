@@ -3570,3 +3570,607 @@ footer {
 .add-customer-cont #approve-customer:hover {
   background-color: rgba(0, 46, 2, 0.9);
 }
+
+/* line 1, ../sass/_pending-orders.scss */
+.pending-orders-cont {
+  width: 100%;
+  margin: 0 auto;
+  overflow: auto;
+}
+/* line 2, ../sass/_pending-orders.scss */
+.pending-orders-cont ::-webkit-scrollbar {
+  display: none;
+}
+/* line 9, ../sass/_pending-orders.scss */
+.pending-orders-cont #lightbox .container {
+  margin-top: 290px !important;
+  height: 200px;
+  position: relative;
+}
+/* line 14, ../sass/_pending-orders.scss */
+.pending-orders-cont #lightbox .content p {
+  font-size: 25px;
+  color: #002E02;
+  font-weight: bold;
+}
+/* line 19, ../sass/_pending-orders.scss */
+.pending-orders-cont #lightbox .close {
+  background-color: #fff;
+  border-radius: 100px;
+  position: absolute;
+  top: -30px;
+  right: -20px;
+}
+/* line 25, ../sass/_pending-orders.scss */
+.pending-orders-cont #lightbox .close p {
+  font-size: 30px;
+  padding-top: 2px;
+}
+/* line 30, ../sass/_pending-orders.scss */
+.pending-orders-cont #lightbox .approve:hover {
+  box-shadow: 0 0 2px 1px rgba(51, 51, 51, 0.8);
+}
+/* line 34, ../sass/_pending-orders.scss */
+.pending-orders-cont .statistics-panel {
+  width: 95.3%;
+  height: 25px;
+  background-color: rgba(0, 46, 2, 0.8);
+  box-shadow: 0px 0px 2px 1px rgba(51, 51, 51, 0.8);
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  float: right;
+}
+/* line 43, ../sass/_pending-orders.scss */
+.pending-orders-cont .stat-cont {
+  width: 14.2%;
+  height: 25px;
+  float: right;
+}
+/* line 46, ../sass/_pending-orders.scss */
+.pending-orders-cont .stat-cont p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: orange;
+  line-height: 25px;
+  padding-right: 5px;
+}
+/* line 55, ../sass/_pending-orders.scss */
+.pending-orders-cont .clear {
+  clear: both;
+}
+/* line 58, ../sass/_pending-orders.scss */
+.pending-orders-cont .close-window {
+  width: 60px;
+  height: 25px;
+  background-color: rgba(128, 128, 128, 0.6);
+  box-shadow: 0 0 2px 1px rgba(51, 51, 51, 0.8);
+  margin-top: 5px;
+  margin-right: 10px;
+  float: right;
+  cursor: pointer;
+}
+/* line 66, ../sass/_pending-orders.scss */
+.pending-orders-cont .close-window .icon {
+  float: right;
+  width: 40%;
+  height: 100%;
+}
+/* line 69, ../sass/_pending-orders.scss */
+.pending-orders-cont .close-window .icon p {
+  line-height: 22px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 77, ../sass/_pending-orders.scss */
+.pending-orders-cont .close-window .text {
+  float: right;
+  width: 60%;
+  height: 100%;
+}
+/* line 80, ../sass/_pending-orders.scss */
+.pending-orders-cont .close-window .text p {
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 88, ../sass/_pending-orders.scss */
+.pending-orders-cont .close-window:hover {
+  background-color: rgba(128, 128, 128, 0.8);
+  box-shadow: 0 0 2px 1px rgba(51, 51, 51, 0.9);
+}
+/* line 93, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-cont {
+  display: none;
+  width: 32.65%;
+  background-color: rgba(51, 51, 51, 0.3);
+  float: right;
+  margin-right: 10px;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 3px 1px #333333;
+  position: relative;
+}
+/* line 105, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-details-cont {
+  width: 100%;
+  height: 80px;
+  box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
+}
+/* line 108, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-details-cont section {
+  float: right;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 5px;
+  padding: 5px;
+}
+/* line 114, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-details-cont section p {
+  line-height: 50px;
+  font-weight: bold;
+}
+/* line 120, ../sass/_pending-orders.scss */
+.pending-orders-cont .serial-number {
+  width: 80px;
+  height: 70px !important;
+}
+/* line 123, ../sass/_pending-orders.scss */
+.pending-orders-cont .serial-number p {
+  line-height: 70px !important;
+  margin-right: -5px;
+  font-size: 80px;
+  color: #333333;
+}
+/* line 130, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-detail-cont {
+  border: solid 1px rgba(51, 51, 51, 0.6);
+  box-shadow: 0 0 1px 1px rgba(51, 51, 51, 0.8);
+  margin-top: 10px;
+}
+/* line 135, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-detail-cont p {
+  font-size: 45px;
+  text-align: center;
+  color: #333333;
+}
+/* line 141, ../sass/_pending-orders.scss */
+.pending-orders-cont .customer-details-cont {
+  width: 100%;
+  height: 110px;
+  margin-top: 15px;
+  display: table;
+  box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
+}
+/* line 147, ../sass/_pending-orders.scss */
+.pending-orders-cont .column {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+  height: 100%;
+}
+/* line 151, ../sass/_pending-orders.scss */
+.pending-orders-cont .row {
+  width: 99%;
+  height: 20px;
+  margin: 0 auto;
+  display: table;
+}
+/* line 156, ../sass/_pending-orders.scss */
+.pending-orders-cont .row section {
+  display: table-cell;
+  text-align: right;
+}
+/* line 161, ../sass/_pending-orders.scss */
+.pending-orders-cont .label {
+  width: 40%;
+  height: 100%;
+}
+/* line 163, ../sass/_pending-orders.scss */
+.pending-orders-cont .label p {
+  font-size: 16px;
+  font-weight: bold;
+  padding-right: 2px;
+  color: #333333;
+}
+/* line 170, ../sass/_pending-orders.scss */
+.pending-orders-cont .info {
+  width: 60%;
+  height: 100%;
+}
+/* line 172, ../sass/_pending-orders.scss */
+.pending-orders-cont .info p {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333333;
+}
+/* line 178, ../sass/_pending-orders.scss */
+.pending-orders-cont footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  margin-top: 15px;
+  box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
+}
+/* line 186, ../sass/_pending-orders.scss */
+.pending-orders-cont .settings-cont {
+  float: right;
+  width: 15%;
+  height: 100%;
+}
+/* line 190, ../sass/_pending-orders.scss */
+.pending-orders-cont .status-cont {
+  float: right;
+  width: 70%;
+  height: 100%;
+}
+/* line 194, ../sass/_pending-orders.scss */
+.pending-orders-cont .total-price-cont {
+  float: right;
+  width: 15%;
+  height: 100%;
+}
+/* line 197, ../sass/_pending-orders.scss */
+.pending-orders-cont .total-price-cont p {
+  line-height: 35px;
+  font-size: 25px;
+  text-align: center;
+  color: rgba(0, 46, 2, 0.9);
+  text-shadow: 0 1px 0 rgba(51, 51, 51, 0.8);
+  font-weight: bold;
+}
+/* line 206, ../sass/_pending-orders.scss */
+.pending-orders-cont .button {
+  width: 90%;
+  height: 40%;
+  margin: 5px auto;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 1px rgba(51, 51, 51, 0.8);
+  background-color: rgba(51, 51, 51, 0.5);
+  border-radius: 5px;
+}
+/* line 213, ../sass/_pending-orders.scss */
+.pending-orders-cont .button:nth-child(1) {
+  font-weight: bold;
+}
+/* line 216, ../sass/_pending-orders.scss */
+.pending-orders-cont .button:hover {
+  background-color: rgba(51, 51, 51, 0.7);
+}
+/* line 218, ../sass/_pending-orders.scss */
+.pending-orders-cont .button:hover p {
+  color: #000;
+}
+/* line 223, ../sass/_pending-orders.scss */
+.pending-orders-cont .icon {
+  float: right;
+  width: 30%;
+  height: 100%;
+}
+/* line 226, ../sass/_pending-orders.scss */
+.pending-orders-cont .icon p {
+  padding-top: 2px;
+  line-height: 23px;
+  font-size: 23px;
+  text-align: center;
+  color: #333;
+}
+/* line 234, ../sass/_pending-orders.scss */
+.pending-orders-cont .text {
+  float: right;
+  width: 70%;
+  height: 100%;
+}
+/* line 237, ../sass/_pending-orders.scss */
+.pending-orders-cont .text p {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+/* line 245, ../sass/_pending-orders.scss */
+.pending-orders-cont .cart-cont {
+  width: 100%;
+  margin-top: 15px;
+  box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+/* line 252, ../sass/_pending-orders.scss */
+.pending-orders-cont .cart-item-cont {
+  width: 97%;
+  padding: 5px;
+  box-shadow: 1px 1px 6px 1px rgba(51, 51, 51, 0.8);
+  margin: 10px auto;
+  margin-bottom: 40px;
+  background: #627d4d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #627d4d), color-stop(100%, #1f3b08));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #627d4d 0%, #1f3b08 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08',GradientType=0 );
+  /* IE6-9 */
+}
+/* line 270, ../sass/_pending-orders.scss */
+.pending-orders-cont .description, .pending-orders-cont .addition-cont, .pending-orders-cont .food-item {
+  width: 95%;
+  margin: 2px auto;
+  padding: 5px;
+  box-shadow: 1px 1px 6px 1px rgba(51, 51, 51, 0.8);
+}
+/* line 275, ../sass/_pending-orders.scss */
+.pending-orders-cont .description p, .pending-orders-cont .addition-cont p, .pending-orders-cont .food-item p {
+  font-size: 35px;
+  font-weight: bold;
+  color: #333333;
+}
+/* line 282, ../sass/_pending-orders.scss */
+.pending-orders-cont .description span {
+  color: #333333 !important;
+}
+/* line 287, ../sass/_pending-orders.scss */
+.pending-orders-cont .food-item p {
+  font-size: 50px;
+  font-weight: bold;
+  color: #002e02;
+}
+/* line 293, ../sass/_pending-orders.scss */
+.pending-orders-cont #order-time {
+  cursor: pointer;
+  position: relative;
+}
+/* line 297, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-time-edit {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 92%;
+  height: 100%;
+  background-color: #FFF;
+}
+/* line 304, ../sass/_pending-orders.scss */
+.pending-orders-cont .order-time-edit input {
+  width: 100%;
+  height: 100%;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* line 313, ../sass/_pending-orders.scss */
+.background {
+  background: #fcfff4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfff4), color-stop(40%, #dfe5d7), color-stop(100%, #b3bead));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 324, ../sass/_pending-orders.scss */
+.button-background {
+  background: #627d4d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #627d4d), color-stop(100%, #1f3b08));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #627d4d 0%, #1f3b08 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 335, ../sass/_pending-orders.scss */
+.blink_me {
+  color: brown !important;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 2s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@-webkit-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+/* line 2, ../sass/_order-status-bar.scss */
+.status-cont .status-item {
+  display: table;
+  float: right;
+  width: 22%;
+  height: 80%;
+  margin-top: 7px;
+  margin-right: 10px;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  box-shadow: 2px -1px 2px 1px rgba(51, 51, 51, 0.8);
+  border: solid 1px rgba(51, 51, 51, 0.2);
+  cursor: pointer;
+}
+/* line 13, ../sass/_order-status-bar.scss */
+.status-cont .status-item p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* line 23, ../sass/_order-status-bar.scss */
+.background-before {
+  background: #b5bdc8;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b5bdc8), color-stop(36%, #828c95), color-stop(100%, #28343b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 34, ../sass/_order-status-bar.scss */
+.background-after {
+  background: #627d4d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #627d4d), color-stop(100%, #1f3b08));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #627d4d 0%, #1f3b08 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 1, ../sass/_application-settings.scss */
+.application-settings-cont {
+  width: 100%;
+  height: 95%;
+  overflow: hidden;
+}
+/* line 4, ../sass/_application-settings.scss */
+.application-settings-cont form {
+  margin-top: 40px;
+  margin-right: 5px;
+  width: 35%;
+}
+/* line 9, ../sass/_application-settings.scss */
+.application-settings-cont .row {
+  width: 100%;
+  height: 35px;
+  margin-top: 10px;
+  display: table;
+}
+/* line 15, ../sass/_application-settings.scss */
+.application-settings-cont .label {
+  width: 50%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 19, ../sass/_application-settings.scss */
+.application-settings-cont .label p {
+  font-size: 17px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 25, ../sass/_application-settings.scss */
+.application-settings-cont .inputs {
+  width: 50%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+  text-align: right;
+}
+/* line 34, ../sass/_application-settings.scss */
+.application-settings-cont select {
+  width: 43%;
+  height: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 40, ../sass/_application-settings.scss */
+.application-settings-cont #approve-application-settings {
+  margin: 20px auto;
+  background-color: rgba(0, 46, 2, 0.8);
+  border: 1px solid grey;
+  box-shadow: 0 0 5px 0 #000;
+}
+/* line 45, ../sass/_application-settings.scss */
+.application-settings-cont #approve-application-settings:hover {
+  background-color: rgba(0, 46, 2, 0.9);
+}

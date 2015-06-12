@@ -60,4 +60,68 @@ settings.reset_sys = function(){
     settings.reset_manager();
 };
 
+// pending_orders
+
+var delivery_count = 0;
+var take_away_count = 0;
+var sit_count = 0;
+var business_count = 0;
+var private_count = 0;
+var credit_count = 0;
+var cash_count = 0;
+// increment
+settings.inc_delivery_count = function(){
+    delivery_count++;
+};
+settings.inc_take_away_count = function(){
+    take_away_count++;
+};
+settings.inc_sit_count = function(){
+    sit_count++;
+};
+settings.inc_business_count = function(){
+    business_count++;
+};
+settings.inc_private_count = function(){
+    private_count++;
+};
+settings.inc_credit_count = function(){
+    credit_count++;
+};
+settings.inc_cash_count = function(){
+    cash_count++;
+};
+//getters
+settings.get_delivery_count = function(){
+    return delivery_count;
+};
+settings.get_take_away_count = function(){
+    return take_away_count;
+};
+settings.get_sit_count = function(){
+    return sit_count;
+};
+settings.get_business_count = function(){
+    return business_count;
+};
+settings.get_private_count = function(){
+    return private_count;
+};
+settings.get_credit_count = function(){
+    return credit_count;
+};
+settings.get_cash_count = function(){
+    return cash_count;
+};
+// reset
+settings.reset_stats = function(){
+    delivery_count = 0;
+    take_away_count = 0;
+    sit_count = 0;
+    business_count = 0;
+    private_count = 0;
+    credit_count = 0;
+    cash_count = 0;
+};
+
 module.exports = settings;

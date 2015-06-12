@@ -1,0 +1,52 @@
+.application-settings-cont{
+  @include size(100%, 95%);
+  overflow: hidden;
+  form {
+    margin-top: 40px;
+    margin-right: 5px;
+    width: 35%;
+  }
+  .row {
+    @include size(100%, 35px);
+    margin-top: 10px;
+    //background-color: yellow;
+    display: table;
+  }
+  .label{
+    @include size(50%, 100%);
+    display: table-cell;
+    vertical-align: middle;
+    p{
+      font-size: 17px;
+      font-weight: bold;
+      color: rgba(#333, 0.8);
+    }
+  }
+  .inputs{
+    @include size(50%, 100%);
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(#333, 0.8);
+    text-align: right;
+  }
+  select{
+    @include size(43%, 100%);
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(#333, 0.8);
+  }
+  #approve-application-settings{
+    margin: 20px auto;
+    background-color: rgba($txt-color, 0.8);
+    border: 1px solid grey;
+    box-shadow: 0 0 5px 0 #000;
+    &:hover{
+      background-color: rgba($txt-color, 0.9);
+    }
+  }
+//  #delivery, #sit, #take-away{
+//    @include size(100%, 100%);
+//  }
+}

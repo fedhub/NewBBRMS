@@ -2,6 +2,12 @@ var express                 = require('express');
 var mobile_order_functions  = express.Router();
 var mysql                   = require('./mysql');
 
+
+var app = require('./index');
+var io = app.io;
+io.sockets.on('connection', function(socket){});
+
+
 mobile_order_functions.make_order = function(req, res){
 
     var order = JSON.parse(req.body.data);
@@ -43,7 +49,97 @@ mobile_order_functions.make_order = function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
-                    res.send(true);
+                    query = 'SELECT COUNT(id) AS val FROM `pending_orders`;';
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            var phone_number = customer.phone_number;
+                            if(result[0].val > 0){
+                                query = 'SELECT MAX(serial_number) AS max_val FROM `pending_orders`;';
+                                conn.query(query, function(err, result){
+                                    if(!err){
+                                        var serial_number = result[0].max_val + 1;
+                                        query = 'INSERT INTO `pending_orders`(`cart`, `customer_details`, `phone_number`, `order_type`, `customer_type`, `payment_method`, `total_price`, `hour`, `minutes`, `status`, `serial_number`) ' +
+                                        'VALUES ' +
+                                        '("'+mysql_real_escape_string(order_text)+'",' +
+                                        '"'+mysql_real_escape_string(JSON.stringify(customer))+'",' +
+                                        '"'+phone_number+'",' +
+                                        '"'+order.order_type+'",' +
+                                        '"'+order.customer_type+'",' +
+                                        '"'+order.payment_method+'",' +
+                                        '"'+order.total_price+'",' +
+                                        '"'+order.order_hour+'",' +
+                                        '"'+order.order_minutes+'",' +
+                                        '"1",' +
+                                        '"'+serial_number+'");';
+                                        conn.query(query, function(err, result){
+                                            if(!err){
+                                                if(is_follow_hour_order(order.order_hour, order.order_minutes)){
+                                                    var data = {
+                                                        order: order,
+                                                        order_text: order_text,
+                                                        customer: customer,
+                                                        serial_number: serial_number,
+                                                        order_id: result.insertId,
+                                                        status: 1
+                                                    };
+                                                    io.emit('real-time-order', data);
+                                                }
+                                                res.send(true);
+                                            }
+                                            else{
+                                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                                res.send(false);
+                                            }
+                                        });
+                                    }
+                                    else{
+                                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                        res.send(false);
+                                    }
+                                });
+                            }
+                            else{
+                                query = 'INSERT INTO `pending_orders`(`cart`, `customer_details`, `phone_number`, `order_type`, `customer_type`, `payment_method`, `total_price`, `hour`, `minutes`, `status`, `serial_number`) ' +
+                                'VALUES ' +
+                                '("'+mysql_real_escape_string(order_text)+'",' +
+                                '"'+mysql_real_escape_string(JSON.stringify(customer))+'",' +
+                                '"'+phone_number+'",' +
+                                '"'+order.order_type+'",' +
+                                '"'+order.customer_type+'",' +
+                                '"'+order.payment_method+'",' +
+                                '"'+order.total_price+'",' +
+                                '"'+order.order_hour+'",' +
+                                '"'+order.order_minutes+'",' +
+                                '"1",' +
+                                '"1");';
+                                conn.query(query, function(err, result){
+                                    if(!err){
+                                        if(is_follow_hour_order(order.order_hour, order.order_minutes)){
+                                            var data = {
+                                                order: order,
+                                                order_text: order_text,
+                                                customer: customer,
+                                                serial_number: 1,
+                                                order_id: result.insertId,
+                                                status: 1
+                                            };
+                                            io.emit('real-time-order', data);
+                                        }
+                                        res.send(true);
+                                    }
+                                    else{
+                                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                        res.send(false);
+                                    }
+                                });
+                            }
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send(false);
+                        }
+                    });
+
                 }
                 else {
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
@@ -401,7 +497,16 @@ function get_unlocked_libraries(res, conn, lib_phone_number){
     });
 }
 
-
+function is_follow_hour_order(order_hour, order_minutes){
+    var date = new Date();
+    var curr_minutes = date.getMinutes();
+    var curr_hour = date.getHours();
+    if(order_hour == curr_hour) return true;
+    if(order_hour == (curr_hour + 1)){
+        if(order_minutes <= curr_minutes) return true;
+    }
+    return false;
+}
 
 function mysql_real_escape_string (str) {
     return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {

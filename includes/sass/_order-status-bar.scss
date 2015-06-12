@@ -1,0 +1,43 @@
+.status-cont{
+  .status-item{
+    display: table;
+    float: right;
+    @include size(22%, 80%);
+    margin-top: 7px;
+    margin-right: 10px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    box-shadow: 2px -1px 2px 1px rgba(#333, 0.8);
+    border: solid 1px rgba(#333, 0.2);
+    cursor: pointer;
+    p{
+      @include cell-settings();
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: rgba(#000, 0.9);
+    }
+  }
+}
+
+.background-before{
+  background: #b5bdc8; /* Old browsers */
+  background: -moz-linear-gradient(top,  #b5bdc8 0%, #828c95 36%, #28343b 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(36%,#828c95), color-stop(100%,#28343b)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #b5bdc8 0%,#828c95 36%,#28343b 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #b5bdc8 0%,#828c95 36%,#28343b 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #b5bdc8 0%,#828c95 36%,#28343b 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #b5bdc8 0%,#828c95 36%,#28343b 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
+}
+
+.background-after{
+  background: #627d4d; /* Old browsers */
+  background: -moz-linear-gradient(top,  #627d4d 0%, #1f3b08 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#627d4d), color-stop(100%,#1f3b08)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #627d4d 0%,#1f3b08 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #627d4d 0%,#1f3b08 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #627d4d 0%,#1f3b08 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #627d4d 0%,#1f3b08 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08',GradientType=0 ); /* IE6-9 */
+}
