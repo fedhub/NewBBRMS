@@ -77,7 +77,7 @@ business.post('/add-company', function(req, res){
         '"'+company.enter+'",' +
         '"'+company.company_code+'",' +
         '"'+company.representative+'",' +
-        '"'+date.getDay()+'",' +
+        '"'+date.getDate()+'",' +
         '"'+(date.getMonth()+1)+'",' +
         '"'+date.getFullYear()+'")';
     mysql.getConnection(function(err, conn){
@@ -144,12 +144,29 @@ business.get('/add-customer-page&:company_name&:company_code', function(req, res
         {path: '/company&company_name='+company_name+'&company_code='+company_code, name: company_name},
         {path: '#', name: 'הוספת לקוח עסקי'}];
 
-    res.render('add-customer', {
-        username: settings.get_username(),
-        breadcrumbs: breadcrumbs,
-        company_name: company_name,
-        company_code: company_code,
-        form_items: add_customer_form()
+    var query = 'SELECT * FROM `business_companies` WHERE `company_code`="'+company_code+'";';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.render('add-customer', {
+                        username: settings.get_username(),
+                        breadcrumbs: breadcrumbs,
+                        company_name: company_name,
+                        company_code: company_code,
+                        form_items: add_customer_form(result[0])
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send('404 not found');
+                }
+                conn.release()
+            });
+        }
+        else{
+            res.send('404 not found');
+        }
     });
 
 });
@@ -158,7 +175,7 @@ business.post('/add-customer', function(req, res){
 
     var customer = JSON.parse(req.body.data);
     var date = new Date();
-    var query = 'INSERT INTO `business_customers`(`first_name`,`last_name`,`phone_number`,`email`,`street`,`house_number`,`floor`,`enter`,`budget`,`password`,`company_code`,`register_day`,`register_month`,`register_year`) ' +
+    var query = 'INSERT INTO `business_customers`(`first_name`,`last_name`,`phone_number`,`email`,`street`,`house_number`,`floor`,`enter`,`budget`,`password`,`company_code`,`company_name`,`register_day`,`register_month`,`register_year`) ' +
         'VALUES (' +
         '"'+customer.first_name+'",' +
         '"'+customer.last_name+'",' +
@@ -171,7 +188,8 @@ business.post('/add-customer', function(req, res){
         '"'+customer.budget+'",' +
         '"'+customer.password+'",' +
         '"'+customer.company_code+'",' +
-        '"'+date.getDay()+'",' +
+        '"'+customer.company_name+'",' +
+        '"'+date.getDate()+'",' +
         '"'+(date.getMonth()+1)+'",' +
         '"'+date.getFullYear()+'")';
     mysql.getConnection(function(err, conn){
@@ -181,7 +199,7 @@ business.post('/add-customer', function(req, res){
                     if(customer.budget > 0){
                         query = 'INSERT INTO `business_budgets`(`phone_number`, `company_code`, `budget`, `budget_day`, `budget_month`, `budget_year`) ' +
                         'VALUES ' +
-                        '("'+customer.phone_number+'","'+customer.company_code+'","'+customer.budget+'","'+date.getDay()+'","'+(date.getMonth()+1)+'","'+date.getFullYear()+'")';
+                        '("'+customer.phone_number+'","'+customer.company_code+'","'+customer.budget+'","'+date.getDate()+'","'+(date.getMonth()+1)+'","'+date.getFullYear()+'")';
                         conn.query(query, function(err, result){
                             if(!err){
                                 res.send({status: true});
@@ -210,6 +228,107 @@ business.post('/add-customer', function(req, res){
 
 });
 
+business.get('/customer-deposits&:customer_id', function(req, res){
+
+    var customer_id = req.params.customer_id.split('=')[1];
+    var query = 'SELECT * FROM `business_customers` WHERE `id`='+customer_id;
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    var customer = result[0];
+                    var query = 'SELECT * FROM `business_budgets` WHERE `phone_number`="'+customer.phone_number+'";';
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            var breadcrumbs = [{path: '/', name: 'דף הבית'},
+                                {path: '/business-companies', name: 'חברות'},
+                                {path: '/company&company_name='+customer.company_name+'&company_code='+customer.company_code, name: customer.company_name},
+                                {path: '#', name: 'הפקדות ללקוח'}];
+                            res.render('customer-deposits', {
+                                username: settings.get_username(),
+                                breadcrumbs: breadcrumbs,
+                                customer: customer,
+                                budgets: normalize_dates(result)
+                            });
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send('404 not found');
+                        }
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send('404 not found');
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send('404 not found');
+        }
+    });
+
+});
+
+business.post('/make-deposit&:phone_number&:company_code&:deposit&:budget', function(req, res){
+
+    var phone_number = req.params.phone_number.split('=')[1];
+    var company_code = req.params.company_code.split('=')[1];
+    var deposit = req.params.deposit.split('=')[1];
+    var budget = req.params.budget.split('=')[1];
+    var date = new Date();
+    var query = 'INSERT INTO `business_budgets`(`phone_number`, `company_code`, `budget`, `budget_day`, `budget_month`, `budget_year`) ' +
+        'VALUES ' +
+        '("'+phone_number+'",' +
+        '"'+company_code+'",' +
+        '"'+deposit+'",' +
+        '"'+date.getDate()+'",' +
+        '"'+(date.getMonth()+1)+'",' +
+        '"'+date.getFullYear()+'");';
+
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    var new_budget = parseInt(deposit) + parseInt(budget);
+                    query = 'UPDATE `business_customers` SET `budget`="'+new_budget+'" WHERE `phone_number`="'+phone_number+'";';
+                    conn.query(query, function(err, result){
+                        if(!err){
+                            res.send({status: true});
+                        }
+                        else{
+                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                            res.send({status: false, msg: 'הייתה בעיה בתהליך ההפקדה, אנא נסה שוב מאוחר יותר'});
+                        }
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בתהליך ההפקדה, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send({status: false, msg: 'הייתה בעיה בתהליך ההפקדה, אנא נסה שוב מאוחר יותר'});
+        }
+    });
+
+});
+
+function normalize_dates(result){
+    for(var i = 0; i < result.length; i++){
+        if(result[i].budget_day < 10){
+            result[i].budget_day = '0' + result[i].budget_day;
+        }
+        if(result[i].budget_month < 10){
+            result[i].budget_month = '0' + result[i].budget_month;
+        }
+    }
+    return result;
+}
+
 function add_manager_form(){
     return [
         {required: '*', type: 'text', label: 'שם החברה:', max_length: 35, id: 'company-name'},
@@ -223,18 +342,18 @@ function add_manager_form(){
     ];
 }
 
-function add_customer_form(){
+function add_customer_form(address){
     return [
-        {required: '*', type: 'text', label: 'שם פרטי:', max_length: 20, id: 'first-name'},
-        {required: '*', type: 'text', label: 'שם משפחה:', max_length: 20, id: 'last-name'},
-        {required: '*', type: 'text', label: 'מספר טלפון:', max_length: 10, id: 'phone-number'},
-        {required: '', type: 'text', label: 'דוא"ל:', max_length: 50, id: 'email'},
-        {required: '*', type: 'text', label: 'רחוב:', max_length: 20, id: 'street'},
-        {required: '*', type: 'text', label: 'מספר בית:', max_length: 3, id: 'house-number'},
-        {required: '*', type: 'text', label: 'קומה:', max_length: 2, id: 'floor'},
-        {required: '', type: 'text', label: 'כניסה:', max_length: 1, id: 'enter'},
-        {required: '*', type: 'text', label: 'יתרה:', max_length: 4, id: 'budget'},
-        {required: '*', type: 'password', label: 'סיסמה:', max_length: 15, id: 'password'}
+        {required: '*', type: 'text', label: 'שם פרטי:', max_length: 20, id: 'first-name', value: ''},
+        {required: '*', type: 'text', label: 'שם משפחה:', max_length: 20, id: 'last-name', value: ''},
+        {required: '*', type: 'text', label: 'מספר טלפון:', max_length: 10, id: 'phone-number', value: ''},
+        {required: '', type: 'text', label: 'דוא"ל:', max_length: 50, id: 'email', value: ''},
+        {required: '*', type: 'text', label: 'רחוב:', max_length: 20, id: 'street', value: address.street},
+        {required: '*', type: 'text', label: 'מספר בית:', max_length: 3, id: 'house-number', value: address.house_number},
+        {required: '*', type: 'text', label: 'קומה:', max_length: 2, id: 'floor', value: address.floor},
+        {required: '', type: 'text', label: 'כניסה:', max_length: 1, id: 'enter', value: address.enter},
+        {required: '*', type: 'text', label: 'יתרה:', max_length: 4, id: 'budget', value: ''},
+        {required: '*', type: 'password', label: 'סיסמה:', max_length: 15, id: 'password', value: ''}
     ];
 }
 

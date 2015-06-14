@@ -38,4 +38,8 @@ mobile_order_routers.post('/delete-library', function(req, res){
     mobile_order_functions.delete_library(req, res);
 });
 
+mobile_order_routers.post('/decrease-from-budget', function(req, res){
+    mobile_order_functions.decrease_from_budget(req, res);
+});
+
 module.exports = mobile_order_routers;

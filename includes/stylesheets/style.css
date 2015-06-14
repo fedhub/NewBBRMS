@@ -3467,13 +3467,13 @@ footer {
   color: rgba(51, 51, 51, 0.7);
 }
 /* line 81, ../sass/_company.scss */
-.company-cont #budget {
-  color: rgba(0, 0, 255, 0.7);
+.company-cont .budget {
+  color: rgba(0, 0, 255, 0.7) !important;
   text-decoration: underline;
   cursor: pointer;
 }
 /* line 85, ../sass/_company.scss */
-.company-cont #budget:hover {
+.company-cont .budget:hover {
   color: blue;
 }
 
@@ -4173,4 +4173,76 @@ footer {
 /* line 45, ../sass/_application-settings.scss */
 .application-settings-cont #approve-application-settings:hover {
   background-color: rgba(0, 46, 2, 0.9);
+}
+
+/* line 1, ../sass/_customer-deposits.scss */
+.customer-deposits-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-right: 5px;
+}
+/* line 6, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .row {
+  height: 15px;
+  margin-top: 15px;
+}
+/* line 9, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .row p {
+  font-size: 15px;
+  color: rgba(51, 51, 51, 0.8);
+  font-weight: bold;
+}
+/* line 15, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .deposit-cont {
+  width: 30%;
+  height: 35px;
+  display: table;
+}
+/* line 18, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .deposit-cont section {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 23, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .label {
+  width: 43%;
+}
+/* line 25, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .label p {
+  font-size: 17px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 31, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .input {
+  width: 43%;
+}
+/* line 33, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .input input {
+  width: 90%;
+  height: 100%;
+  padding-right: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.8);
+}
+/* line 39, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .input input:hover {
+  border: solid 1px rgba(51, 51, 51, 0.7);
+}
+/* line 44, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .save {
+  width: 14%;
+  cursor: pointer;
+}
+/* line 47, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .save p {
+  font-size: 25px;
+  color: rgba(51, 51, 51, 0.8);
+  text-align: center;
+}
+/* line 53, ../sass/_customer-deposits.scss */
+.customer-deposits-cont .save:hover p {
+  color: #333333;
 }

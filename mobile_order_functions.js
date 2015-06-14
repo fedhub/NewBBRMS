@@ -35,7 +35,7 @@ mobile_order_functions.make_order = function(req, res){
         'VALUES (' +
         '"'+mysql_real_escape_string(order_text)+'",' +
         '"'+customer.phone_number+'",' +
-        '"'+date.getDay()+'",' +
+        '"'+date.getDate()+'",' +
         '"'+(date.getMonth()+1)+'",' +
         '"'+date.getFullYear()+'",' +
         '"'+order.order_hour+'",' +
@@ -265,7 +265,7 @@ mobile_order_functions.new_library = function(req, res){
         '"'+lib_details.lib_description+'",' +
         '"'+lib_details.creation_date+'",' +
         '"'+lib_details.creation_time+'", ' +
-        '"'+date.getDay()+'", ' +
+        '"'+date.getDate()+'", ' +
         '"'+(date.getMonth()+1)+'", ' +
         '"'+date.getFullYear()+'", ' +
         '"'+date.getHours()+'", ' +
@@ -461,6 +461,30 @@ mobile_order_functions.delete_library = function(req, res){
             });
         }
         else{console.log(err);}
+    });
+
+};
+
+mobile_order_functions.decrease_from_budget = function(req, res){
+
+    var info = JSON.parse(req.body.data);
+    var query = 'UPDATE `business_customers` SET `budget`="'+info.new_budget+'" WHERE `phone_number`="'+info.phone_number+'";';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    res.send(true);
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send(false);
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send(false);
+        }
     });
 
 };

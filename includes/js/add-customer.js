@@ -37,7 +37,8 @@ function get_customer_obj(){
         enter: $('input').eq(7).val(),
         budget: $('input').eq(8).val(),
         password: $('input').eq(9).val(),
-        company_code: $('.add-customer-cont').attr('id').split('-')[1]
+        company_code: $('.add-customer-cont').attr('id').split('-')[1],
+        company_name: $('.add-customer-cont').attr('id').split('-')[0]
     }
 }
 

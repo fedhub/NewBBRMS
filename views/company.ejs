@@ -84,7 +84,7 @@
                         <section class="label"><p>כניסה:</p></section>
                         <section class="info"><p><%= customers[i].enter %></p></section>
                         <section class="label"><p>יתרה:</p></section>
-                        <section class="info"><p id="budget" title="עדכן יתרה"><%= customers[i].budget %> &#8362;</p></section>
+                        <section class="info" id="<%= customers[i].id %>"><p class="budget" title="עדכן יתרה"><%= customers[i].budget %> &#8362;</p></section>
                     </section>
                 </section>
                 <% } %>

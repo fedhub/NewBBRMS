@@ -9,7 +9,7 @@ $(document).ready(function(){
         var id = $(event.target).parent().parent().attr('id');
         var $val = $('#'+id+' input').val();
         var $p = $('#'+id+' .validation p');
-        if(id == 'first-name' || id == 'last-name') regex = /^[a-zא-תA-Z\s]+$/;
+        if(id == 'first-name' || id == 'last-name') regex = /^['a-zא-תA-Z\s]+$/;
         if(id == 'company-name') regex = /^[\s'"a-zא-תA-Z0-9!@#$%&*-]+$/;
         if(id == 'street') regex = /^[\sa-zא-תA-Z-'"]+$/;
         if(id == 'house-number') regex = /^[1-9]+$/;

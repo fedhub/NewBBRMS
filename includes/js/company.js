@@ -11,4 +11,8 @@ $(document).ready(function() {
         window.location = base_url + '/add-customer-page&company_name='+company_name+'&company_code='+company_code;
     });
 
+    $('.budget').click(function(){
+        window.location = base_url + '/customer-deposits&customer_id='+$(this).parent().attr('id');
+    });
+
 });

@@ -27,6 +27,35 @@ app_settings.post('/get-closing-time', function(req, res){
 
 });
 
+app_settings.post('/get-working-hours', function(req, res){
+
+    var query = 'SELECT `opening_hour`, `opening_minutes`, `closing_hour`, `closing_minutes` FROM `application_settings` WHERE `id`="1";';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                var working_time = {
+                    open_hour: result[0].opening_hour,
+                    open_minutes: result[0].opening_minutes,
+                    close_hour: result[0].closing_hour,
+                    close_minutes: result[0].closing_minutes
+                };
+                if(!err){
+                    res.send({status: true, working_time: working_time});
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'לקוח יקר, אירעה תקלה בתהליך ההזמנה, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send({status: false, msg: 'לקוח יקר, אירעה תקלה בתהליך ההזמנה, אנא נסה שוב מאוחר יותר'});
+        }
+    })
+
+});
+
 app_settings.get('/application-settings', function(req, res){
 
     var breadcrumbs = [{path: '/', name: 'דף הבית'}, {path: '#', name: 'הגדרות אפליקצייה'}];

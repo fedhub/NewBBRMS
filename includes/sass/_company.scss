@@ -78,8 +78,8 @@
       color: rgba(#333, 0.7);
     }
   }
-  #budget{
-    color: rgba(blue, 0.7);
+  .budget{
+    color: rgba(blue, 0.7) !important;
     text-decoration: underline;
     cursor: pointer;
     &:hover{
