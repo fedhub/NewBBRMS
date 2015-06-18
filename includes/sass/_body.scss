@@ -1,9 +1,10 @@
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
 .main{
   width: 100%;
   overflow: hidden;
   .content{
     width: 80%;
-    //@include size(80%, 100%);
+    //@include size(100%, 100%);
     //min-height: 100%;
     float: right;
   }
@@ -29,6 +30,138 @@
       text-decoration: none;
       color: #333;
       font-weight: bold;
+    }
+  }
+  #content{
+    width: 100% !important;
+    height: 100% !important;
+    font-family: "Alef Hebrew",
+    “Helvetica Neue”,
+    Helvetica,
+    Arial,
+    sans-serif;
+    //background-color: #fff;
+    .menu-item{
+      cursor: pointer;
+      float: right;
+      margin-right: 20px;
+      margin-top: 20px;
+      p{
+        font-size: 30px;
+        line-height: 30px;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+    #managers{
+      background: #97A778 url('../images/home_page/Man_in_suit_and_tie_256.png') 80% center no-repeat;
+      background-size: 50%;
+     //round-position: center center;
+      position: relative;
+      @include size(30%, 30%);
+      p{
+        position: absolute;
+        top: 40%;
+        left: 10%;
+        color: #5E2612;
+        font-size: 35px
+      }
+    }
+    #application-settings{
+      background: #795548 url('../images/home_page/Mobile_app_developing_256.png') 20% center no-repeat;
+      background-size: 50%;
+      position: relative;
+      @include size(31%, 30%);
+      p{
+        position: absolute;
+        word-spacing: 500px;
+        bottom: 20%;
+        right: 5%;
+      }
+    }
+    #menu-management{
+      background: #5D4360 url('../images/home_page/Open_Menu_256.png') 80% center no-repeat;
+      background-size: 50%;
+      position: relative;
+      @include size(32%, 30%);
+      p{
+        word-spacing: 500px;
+        position: absolute;
+        top: 40%;
+        right: 60%;
+      }
+    }
+    #business-customers{
+      background: #22313F url('../images/home_page/Business_meeting_256.png') center -100% no-repeat;
+      background-size: 80%;
+      position: relative;
+      @include size(18%, 27%);
+      p{
+        position: absolute;
+        font-size: 25px;
+        bottom: 5%;
+        right: 10%;
+      }
+    }
+    #coupons{
+      background: #C76E06 url('../images/home_page/Commercial_coupon_scissors_in_broken_line_square_256.png') 90% center no-repeat;
+      background-size: 40%;
+      position: relative;
+      @include size(30%, 27%);
+      p{
+        font-size: 35px;
+        position: absolute;
+        top: 40%;
+        right: 60%;
+        color: #fff;
+      }
+    }
+    #control-panel{
+      background: #96281B url('../images/home_page/Responsive_website_design_on_monitor_screen_256.png') center 300% no-repeat;
+      background-size: 80%;
+      position: relative;
+      @include size(18.5%, 27%);
+      p{
+        position: absolute;
+        font-size: 25px;
+        top: 3%;
+        right: 15%;
+      }
+    }
+    #statistics{
+      background: grey url('../images/home_page/Pie_Chart_Stats_256.png') 10% center no-repeat;
+      background-size: 50%;
+      position: relative;
+      @include size(25%, 27%);
+      p{
+        position: absolute;
+        top: 10%;
+        right: 5%;
+      }
+    }
+    #queries{
+      background: #1E824C url('../images/home_page/Question_mark_on_a_circular_black_background_256.png') center 80% no-repeat;
+      background-size: 40%;
+      position: relative;
+      @include size(30%, 30%);
+      p{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+      }
+    }
+    #system-backup{
+      background: #8B5742 url('../images/home_page/Download_database_256.png') 20% center no-repeat;
+      background-size: 50%;
+      position: relative;
+      @include size(30%, 30%);
+      p{
+        position: absolute;
+        font-size: 35px;
+        top: 15%;
+        right: 10%;
+        word-spacing: 500px;
+      }
     }
   }
 }

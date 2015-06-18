@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <script type="text/javascript" src="js/authentication.js"></script>
     <script type="text/javascript" src="js/managers.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -42,27 +43,16 @@
         <section class="nav-strip"></section>
     </header>
     <section class="main">
-        <section class="side-nav">
-            <nav>
-                <ul>
-                    <li><a href="#" id="managers">מנהלים</a></li>
-                    <li><a href="/application-settings">הגדרות אפליקצייה</a></li>
-                    <li><a href="/menu-types">ניהול תפריט</a></li>
-                    <li><a href="/business-companies">לקוחות עסקיים</a></li>
-                    <li><a href="/pending-orders">חלון ההזמנות</a></li>
-                    <li><a href="#">ניהול קופונים</a></li>
-                    <li><a href="#">פילוחים</a></li>
-                    <li><a href="#">גיבוי מערכת</a></li>
-                    <li><a href="#">לקוחות זהב</a></li>
-                </ul>
-            </nav>
-        </section>
-        <section class="content">
-            <section class="breadcrumbs-strip">
-                <% for(var i = 0; i < breadcrumbs.length; i++){ %>
-                <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
-                <% } %>
-            </section>
+        <section class="content" id="content">
+            <section class="menu-item" id="managers" title="מנהלים"><p>מנהלים</p></section>
+            <section class="menu-item" id="application-settings" title="הגדרות אפליקצייה"><p>הגדרות אפליקצייה</p></section>
+            <section class="menu-item" id="menu-management" title="ניהול תפריט"><p>ניהול תפריט</p></section>
+            <section class="menu-item" id="business-customers" title="לקוחות עסקיים"><p>לקוחות עסקיים</p></section>
+            <section class="menu-item" id="coupons" title="קופונים"><p>קופונים</p></section>
+            <section class="menu-item" id="control-panel" title="חלון ההזמנות"><p>חלון ההזמנות</p></section>
+            <section class="menu-item" id="statistics" title="סטטיסטיקות"><p>פילוחים</p></section>
+            <section class="menu-item" id="queries" title="שאילתות"><p>שאילתות</p></section>
+            <section class="menu-item" id="system-backup" title="גיבוי מערכת"><p>גיבוי מערכת</p></section>
         </section>
     </section>
     <footer></footer>

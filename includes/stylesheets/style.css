@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
 /* line 1, ../sass/_lightbox.scss */
 .lightbox {
   display: none;
@@ -501,23 +503,23 @@ header .logo {
     width: 255px;
   }
 }
-/* line 1, ../sass/_body.scss */
+/* line 2, ../sass/_body.scss */
 .main {
   width: 100%;
   overflow: hidden;
 }
-/* line 4, ../sass/_body.scss */
+/* line 5, ../sass/_body.scss */
 .main .content {
   width: 80%;
   float: right;
 }
-/* line 10, ../sass/_body.scss */
+/* line 11, ../sass/_body.scss */
 .main .breadcrumbs-strip {
   width: 100%;
   height: 5%;
   line-height: 27px;
 }
-/* line 14, ../sass/_body.scss */
+/* line 15, ../sass/_body.scss */
 .main .breadcrumb-item {
   display: inline-block;
   vertical-align: middle;
@@ -529,16 +531,172 @@ header .logo {
   border-bottom-left-radius: 100px;
   background: rgba(123, 124, 121, 0.8);
 }
-/* line 24, ../sass/_body.scss */
+/* line 25, ../sass/_body.scss */
 .main .breadcrumb-item:nth-of-type(1) {
   margin-right: 5px;
 }
-/* line 27, ../sass/_body.scss */
+/* line 28, ../sass/_body.scss */
 .main .breadcrumb-item a {
   font-size: 15px;
   text-decoration: none;
   color: #333;
   font-weight: bold;
+}
+/* line 35, ../sass/_body.scss */
+.main #content {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: "Alef Hebrew", ΓÇ£Helvetica NeueΓÇ¥, Helvetica, Arial, sans-serif;
+}
+/* line 44, ../sass/_body.scss */
+.main #content .menu-item {
+  cursor: pointer;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+/* line 49, ../sass/_body.scss */
+.main #content .menu-item p {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  color: #fff;
+}
+/* line 56, ../sass/_body.scss */
+.main #content #managers {
+  background: #97A778 url("../images/home_page/Man_in_suit_and_tie_256.png") 80% center no-repeat;
+  background-size: 50%;
+  position: relative;
+  width: 30%;
+  height: 30%;
+}
+/* line 62, ../sass/_body.scss */
+.main #content #managers p {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  color: #5E2612;
+  font-size: 35px;
+}
+/* line 70, ../sass/_body.scss */
+.main #content #application-settings {
+  background: #795548 url("../images/home_page/Mobile_app_developing_256.png") 20% center no-repeat;
+  background-size: 50%;
+  position: relative;
+  width: 31%;
+  height: 30%;
+}
+/* line 75, ../sass/_body.scss */
+.main #content #application-settings p {
+  position: absolute;
+  word-spacing: 500px;
+  bottom: 20%;
+  right: 5%;
+}
+/* line 82, ../sass/_body.scss */
+.main #content #menu-management {
+  background: #5D4360 url("../images/home_page/Open_Menu_256.png") 80% center no-repeat;
+  background-size: 50%;
+  position: relative;
+  width: 32%;
+  height: 30%;
+}
+/* line 87, ../sass/_body.scss */
+.main #content #menu-management p {
+  word-spacing: 500px;
+  position: absolute;
+  top: 40%;
+  right: 60%;
+}
+/* line 94, ../sass/_body.scss */
+.main #content #business-customers {
+  background: #22313F url("../images/home_page/Business_meeting_256.png") center -100% no-repeat;
+  background-size: 80%;
+  position: relative;
+  width: 18%;
+  height: 27%;
+}
+/* line 99, ../sass/_body.scss */
+.main #content #business-customers p {
+  position: absolute;
+  font-size: 25px;
+  bottom: 5%;
+  right: 10%;
+}
+/* line 106, ../sass/_body.scss */
+.main #content #coupons {
+  background: #C76E06 url("../images/home_page/Commercial_coupon_scissors_in_broken_line_square_256.png") 90% center no-repeat;
+  background-size: 40%;
+  position: relative;
+  width: 30%;
+  height: 27%;
+}
+/* line 111, ../sass/_body.scss */
+.main #content #coupons p {
+  font-size: 35px;
+  position: absolute;
+  top: 40%;
+  right: 60%;
+  color: #fff;
+}
+/* line 119, ../sass/_body.scss */
+.main #content #control-panel {
+  background: #96281B url("../images/home_page/Responsive_website_design_on_monitor_screen_256.png") center 300% no-repeat;
+  background-size: 80%;
+  position: relative;
+  width: 18.5%;
+  height: 27%;
+}
+/* line 124, ../sass/_body.scss */
+.main #content #control-panel p {
+  position: absolute;
+  font-size: 25px;
+  top: 3%;
+  right: 15%;
+}
+/* line 131, ../sass/_body.scss */
+.main #content #statistics {
+  background: grey url("../images/home_page/Pie_Chart_Stats_256.png") 10% center no-repeat;
+  background-size: 50%;
+  position: relative;
+  width: 25%;
+  height: 27%;
+}
+/* line 136, ../sass/_body.scss */
+.main #content #statistics p {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+/* line 142, ../sass/_body.scss */
+.main #content #queries {
+  background: #1E824C url("../images/home_page/Question_mark_on_a_circular_black_background_256.png") center 80% no-repeat;
+  background-size: 40%;
+  position: relative;
+  width: 30%;
+  height: 30%;
+}
+/* line 147, ../sass/_body.scss */
+.main #content #queries p {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+/* line 153, ../sass/_body.scss */
+.main #content #system-backup {
+  background: #8B5742 url("../images/home_page/Download_database_256.png") 20% center no-repeat;
+  background-size: 50%;
+  position: relative;
+  width: 30%;
+  height: 30%;
+}
+/* line 158, ../sass/_body.scss */
+.main #content #system-backup p {
+  position: absolute;
+  font-size: 35px;
+  top: 15%;
+  right: 10%;
+  word-spacing: 500px;
 }
 
 /* line 1, ../sass/_side-nav.scss */

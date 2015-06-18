@@ -23,7 +23,7 @@ mobile_authentication_functions.sign_up = function(req, res){
                         query = "INSERT INTO `private_customers`" +
                         "(`first_name`, `last_name`, `phone_number`, `email`, `street`, `house_number`, `floor`, `enter`) " +
                         "VALUES " +
-                        "('" + first_name + "', '" + last_name + "', '" + phone_number + "', '" + email + "', '" + mysql_real_escape_string(street) + "', '" + house_number + "', '" + floor + "', '" + enter + "');";
+                        "('" + mysql_real_escape_string(first_name) + "', '" + mysql_real_escape_string(last_name) + "', '" + phone_number + "', '" + email + "', '" + mysql_real_escape_string(street) + "', '" + house_number + "', '" + floor + "', '" + enter + "');";
                         conn.query(query, function(err, result){
                             if(!err) res.send(true);
                             else console.log("There was an error with MySQL Query: " + query + ' ' + err);
@@ -124,7 +124,7 @@ mobile_authentication_functions.update_customer_phone_same = function(req, res){
     var table = '';
     if(customer_type == 'business') table = 'business_customers';
     if(customer_type == 'private') table = 'private_customers';
-    var query = 'UPDATE `'+table+'` SET `first_name`="'+customer_details.first_name+'",`last_name`="'+customer_details.last_name+'",`email`="'+customer_details.email+'",`street`="'+mysql_real_escape_string(customer_details.street)+'",`house_number`="'+customer_details.house_number+'",`floor`="'+customer_details.floor+'",`enter`="'+customer_details.enter+'",`password`="'+customer_details.password+'" WHERE `phone_number`="'+customer_details.phone_number+'";';
+    var query = 'UPDATE `'+table+'` SET `first_name`="'+mysql_real_escape_string(customer_details.first_name)+'",`last_name`="'+mysql_real_escape_string(customer_details.last_name)+'",`email`="'+customer_details.email+'",`street`="'+mysql_real_escape_string(customer_details.street)+'",`house_number`="'+customer_details.house_number+'",`floor`="'+customer_details.floor+'",`enter`="'+customer_details.enter+'",`password`="'+customer_details.password+'" WHERE `phone_number`="'+customer_details.phone_number+'";';
     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
@@ -149,39 +149,66 @@ mobile_authentication_functions.update_customer_phone_changed = function(req, re
 
     var customer_type = req.params.customer_type.split('=')[1];
     var customer_details = JSON.parse(req.body.data);
-    var query = '';
-    if(customer_type == 'business') query = 'UPDATE `business_customers` SET `first_name`="'+customer_details.first_name+'",`last_name`="'+customer_details.last_name+'",`phone_number`="'+customer_details.phone_number+'",`email`="'+customer_details.email+'",`street`="'+mysql_real_escape_string(customer_details.street)+'",`house_number`="'+customer_details.house_number+'",`floor`="'+customer_details.floor+'",`enter`="'+customer_details.enter+'",`password`="'+customer_details.password+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
-    if(customer_type == 'private') query = 'UPDATE `private_customers` SET `first_name`="'+customer_details.first_name+'",`last_name`="'+customer_details.last_name+'",`phone_number`="'+customer_details.phone_number+'",`email`="'+customer_details.email+'",`street`="'+mysql_real_escape_string(customer_details.street)+'",`house_number`="'+customer_details.house_number+'",`floor`="'+customer_details.floor+'",`enter`="'+customer_details.enter+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
-    mysql.getConnection(function(err, conn){
+    var query = 'SELECT COUNT(id) AS val FROM `business_customers` WHERE `phone_number`="'+customer_details.phone_number+'";';
+     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
-                    if(customer_type == 'business') query = 'SELECT COUNT(id) AS val FROM `private_customers` WHERE `phone_number`="'+customer_details.old_phone_number+'";';
-                    if(customer_type == 'private') query = 'SELECT COUNT(id) AS val FROM `business_customers` WHERE `phone_number`="'+customer_details.old_phone_number+'";';
-                    conn.query(query, function(err, result){
-                        if(!err){
-                            if(result[0].val > 0){
-                                if(customer_type == 'business') query = 'UPDATE `private_customers` SET `phone_number`="'+customer_details.phone_number+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
-                                if(customer_type == 'private') query = 'UPDATE `business_customers` SET `phone_number`="'+customer_details.phone_number+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
-                                conn.query(query, function(err, result){
-                                    if(!err){
-                                        update_last_orders(customer_details, res);
-                                    }
-                                    else{
-                                        console.log("There was an error with MySQL Query: " + query + ' ' + err);
-                                        res.send({status: false, msg: 'הייתה בעיה בעדכון הפרטים האישיים, אנא נסה שוב מאוחר יותר'});
-                                    }
-                                });
+                    if(result[0].val > 0){
+                        res.send({status: false, msg: 'מספר הטלפון החדש שהזנת כבר קיים במערכת, עדכון הפרטים נכשל'});
+                    }
+                    else{
+                        query = 'SELECT COUNT(id) AS val FROM `private_customers` WHERE `phone_number`="'+customer_details.phone_number+'";';
+                        conn.query(query, function(err, result){
+                            if(!err){
+                                if(result[0].val > 0){
+                                    res.send({status: false, msg: 'מספר הטלפון החדש שהזנת כבר קיים במערכת, עדכון הפרטים נכשל'});
+                                }
+                                else{
+                                    if(customer_type == 'business') query = 'UPDATE `business_customers` SET `first_name`="'+customer_details.first_name+'",`last_name`="'+customer_details.last_name+'",`phone_number`="'+customer_details.phone_number+'",`email`="'+customer_details.email+'",`street`="'+mysql_real_escape_string(customer_details.street)+'",`house_number`="'+customer_details.house_number+'",`floor`="'+customer_details.floor+'",`enter`="'+customer_details.enter+'",`password`="'+customer_details.password+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
+                                    if(customer_type == 'private') query = 'UPDATE `private_customers` SET `first_name`="'+customer_details.first_name+'",`last_name`="'+customer_details.last_name+'",`phone_number`="'+customer_details.phone_number+'",`email`="'+customer_details.email+'",`street`="'+mysql_real_escape_string(customer_details.street)+'",`house_number`="'+customer_details.house_number+'",`floor`="'+customer_details.floor+'",`enter`="'+customer_details.enter+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
+                                    conn.query(query, function(err, result){
+                                        if(!err){
+                                            if(customer_type == 'business') query = 'SELECT COUNT(id) AS val FROM `private_customers` WHERE `phone_number`="'+customer_details.old_phone_number+'";';
+                                            if(customer_type == 'private') query = 'SELECT COUNT(id) AS val FROM `business_customers` WHERE `phone_number`="'+customer_details.old_phone_number+'";';
+                                            conn.query(query, function(err, result){
+                                                if(!err){
+                                                    if(result[0].val > 0){
+                                                        if(customer_type == 'business') query = 'UPDATE `private_customers` SET `phone_number`="'+customer_details.phone_number+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
+                                                        if(customer_type == 'private') query = 'UPDATE `business_customers` SET `phone_number`="'+customer_details.phone_number+'" WHERE `phone_number`="'+customer_details.old_phone_number+'";';
+                                                        conn.query(query, function(err, result){
+                                                            if(!err){
+                                                                update_last_orders(customer_details, res);
+                                                            }
+                                                            else{
+                                                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                                                res.send({status: false, msg: 'הייתה בעיה בעדכון הפרטים האישיים, אנא נסה שוב מאוחר יותר'});
+                                                            }
+                                                        });
+                                                    }
+                                                    else{
+                                                        update_last_orders(customer_details, res);
+                                                    }
+                                                }
+                                                else{
+                                                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                                    res.send({status: false, msg: 'הייתה בעיה בעדכון הפרטים האישיים, אנא נסה שוב מאוחר יותר'});
+                                                }
+                                            });
+                                        }
+                                        else{
+                                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                            res.send({status: false, msg: 'הייתה בעיה בעדכון הפרטים האישיים, אנא נסה שוב מאוחר יותר'});
+                                        }
+                                    });
+                                }
                             }
                             else{
-                                update_last_orders(customer_details, res);
+                                console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                                res.send({status: false, msg: 'הייתה בעיה בעדכון הפרטים האישיים, אנא נסה שוב מאוחר יותר'});
                             }
-                        }
-                        else{
-                            console.log("There was an error with MySQL Query: " + query + ' ' + err);
-                            res.send({status: false, msg: 'הייתה בעיה בעדכון הפרטים האישיים, אנא נסה שוב מאוחר יותר'});
-                        }
-                    });
+                        });
+                    }
                 }
                 else{
                     console.log("There was an error with MySQL Query: " + query + ' ' + err);
