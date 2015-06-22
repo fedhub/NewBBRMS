@@ -48,7 +48,9 @@
                 <section class="order-detail-cont background" id="payment-method"><p><%= order_arr[i].payment_method %></p></section>
                 <section class="order-detail-cont background" id="order-time">
                     <p class="blink_me"><%= order_arr[i].order_time %></p>
-                    <section class="order-time-edit"><input type="text" /></section>
+                    <section class="order-time-edit">
+                        <select class="minutes"></select>:<select class="hours"></select>
+                    </section>
                 </section>
             </section>
             <section class="customer-details-cont background">

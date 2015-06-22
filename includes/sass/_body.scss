@@ -92,7 +92,7 @@
       }
     }
     #business-customers{
-      background: #22313F url('../images/home_page/Business_meeting_256.png') center -100% no-repeat;
+      background: #22313F url('../images/home_page/Business_meeting_256.png') center -50% no-repeat;
       background-size: 80%;
       position: relative;
       @include size(18%, 27%);
@@ -117,7 +117,7 @@
       }
     }
     #control-panel{
-      background: #96281B url('../images/home_page/Responsive_website_design_on_monitor_screen_256.png') center 300% no-repeat;
+      background: #96281B url('../images/home_page/Responsive_website_design_on_monitor_screen_256.png') center 150% no-repeat;
       background-size: 80%;
       position: relative;
       @include size(18.5%, 27%);
@@ -160,6 +160,19 @@
         font-size: 35px;
         top: 15%;
         right: 10%;
+        word-spacing: 500px;
+      }
+    }
+    #pending-orders{
+      background: #22313F url('../images/home_page/Logistics_delivery_truck_and_clock_256.png') 85% center no-repeat;
+      background-size: 50%;
+      position: relative;
+      @include size(30%, 30%);
+      p{
+        position: absolute;
+        font-size: 35px;
+        top: 15%;
+        right: 55%;
         word-spacing: 500px;
       }
     }

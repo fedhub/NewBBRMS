@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Best Biss | Pending Orders</title>
+    <!--<meta name="format-detection" content="telephone=no" />-->
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta name="viewport" width=device-width, height=device-height" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/flaticon.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="js/authentication.js"></script>
+    <script type="text/javascript" src="js/managers.js"></script>
+    <script type="text/javascript" src="js/manager-pending-orders.js"></script>
+</head>
+<body>
+<section class="lightbox">
+    <section class="container">
+        <section class="close"><p class="flaticon-close32"></p></section>
+        <section class="title"><p></p></section>
+        <section class="content"><p></p></section>
+        <section class="approve" id="approve"><p>אישור</p></section>
+    </section>
+</section>
+<div class="wrapper">
+    <section class="error-cont" id="error-page">
+        <section class="container">
+            <section class="close" id="close-error-page"><p class="flaticon-close32"></p></section>
+            <section class="content"><p id="error-msg"></p></section>
+        </section>
+    </section>
+    <header>
+        <section class="top-strip">
+            <section class="authentication-cont">
+                <section class="user-icon" id="user-icon"><p class="flaticon-user7"></p></section>
+                <section class="options-cont" id="options-cont">
+                    <section id="log-out"><p class="flaticon-symbol21"></p><p>התנתק</p></section>
+                    <hr class="hr">
+                    <section id="update-manager-details"><p class="flaticon-profile31"></p><p>עדכן פרטים</p></section>
+                    <hr class="hr">
+                    <section id="switch-user"><p class="flaticon-users38"></p><p>החלף משתמש</p></section>
+                </section>
+                <section class="logged-cont"><p><%= username %></p></section>
+            </section>
+        </section>
+        <section class="logo-cont">
+            <section class="logo"></section>
+        </section>
+        <section class="nav-strip"></section>
+    </header>
+    <section class="main">
+        <section class="side-nav">
+            <nav>
+                <ul>
+                    <li><a href="#" id="managers">מנהלים</a></li>
+                    <li><a href="#">הגדרות אפליקצייה</a></li>
+                    <li><a href="/menu-types">ניהול תפריט</a></li>
+                    <li><a href="/business-companies">לקוחות עסקיים</a></li>
+                    <li><a href="#">ניהול קופונים</a></li>
+                    <li><a href="#">פילוחים</a></li>
+                    <li><a href="#">גיבוי מערכת</a></li>
+                    <li><a href="#">לקוחות זהב</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="content">
+            <section class="breadcrumbs-strip">
+                <% for(var i = 0; i < breadcrumbs.length; i++){ %>
+                <section class="breadcrumb-item"><a href="<%= breadcrumbs[i].path %>"><%= breadcrumbs[i].name %></a></section>
+                <% } %>
+            </section>
+            <section class="manager-pending-orders-cont">
+
+                <section class="past-orders-cont">
+                    <% if(past_orders.length > 0) {%>
+                    <section class="title"><p>הזמנות מאחרות ></p></section>
+                    <section class="header">
+                        <section class="order-number"><p>מס' הזמנה</p></section>
+                        <section class="order-for"><p>הזמנה עבור</p></section>
+                        <section class="cusromer-type"><p>סוג לקוח</p></section>
+                        <section class="order-type"><p>סוג הזמנה</p></section>
+                        <section class="order-status"><p>סטטוס</p></section>
+                        <section class="order-items"><p>פריטים</p></section>
+                        <section class="order-time" id="order-time-title"><p>שעת הזמנה</p></section>
+                        <section class="close-order"><p>סגור</p></section>
+                        <section class="cancel-order"><p>בטל</p></section>
+                    </section>
+                    <% for(var i = 0; i < past_orders.length; i++) {%>
+                    <section class="row" id="<%= past_orders[i].id %>">
+                        <section class="order-number"><p><%= past_orders[i].serial_number %></p></section>
+                        <section class="order-for"><p><%= past_orders[i].customer_details.first_name %> <%= past_orders[i].customer_details.last_name %></p></section>
+                        <section class="cusromer-type"><p><%= past_orders[i].customer_type %></p></section>
+                        <section class="order-type"><p><%= past_orders[i].order_type %></p></section>
+                        <section class="order-status"><p><%= past_orders[i].status %></p></section>
+                        <section class="order-items" id="order-items" title="פריטים"><p><%= past_orders[i].cart.my_cart[0].name %>...</p></section>
+                        <section class="order-time" id="order-time"><p class="blink_me"><%= past_orders[i].hour %>:<%= past_orders[i].minutes %></p>
+                            <section class="order-time-edit">
+                                <select class="minutes"></select>:<select class="hours"></select>
+                            </section>
+                        </section>
+                        <section class="close-order" title="סגור הזמנה"><p id="close-icon" class="flaticon-close32"></p></section>
+                        <section class="cancel-order" title="בטל הזמנה"><p id="cancel-icon" class="flaticon-forbidden"></p></section>
+                    </section>
+                    <% } %>
+                    <%}%>
+                </section>
+
+                <section class="current-orders-cont">
+                    <% if(current_orders.length > 0) {%>
+                    <section class="title"><p>הזמנות לשעה הקרובה ></p></section>
+                    <section class="header">
+                        <section class="order-number"><p>מס' הזמנה</p></section>
+                        <section class="order-for"><p>הזמנה עבור</p></section>
+                        <section class="cusromer-type"><p>סוג לקוח</p></section>
+                        <section class="order-type"><p>סוג הזמנה</p></section>
+                        <section class="order-status"><p>סטטוס</p></section>
+                        <section class="order-items"><p>פריטים</p></section>
+                        <section class="order-time" id="order-time-title"><p>שעת הזמנה</p></section>
+                        <section class="close-order"><p>סגור</p></section>
+                        <section class="cancel-order"><p>בטל</p></section>
+                    </section>
+                    <% for(var i = 0; i < current_orders.length; i++) {%>
+                    <section class="row" id="<%= current_orders[i].id %>">
+                        <section class="order-number"><p><%= current_orders[i].serial_number %></p></section>
+                        <section class="order-for"><p><%= current_orders[i].customer_details.first_name %> <%= current_orders[i].customer_details.last_name %></p></section>
+                        <section class="cusromer-type"><p><%= current_orders[i].customer_type %></p></section>
+                        <section class="order-type"><p><%= current_orders[i].order_type %></p></section>
+                        <section class="order-status"><p><%= current_orders[i].status %></p></section>
+                        <section class="order-items" id="order-items" title="פריטים"><p><%= current_orders[i].cart.my_cart[0].name %>...</p></section>
+                        <section class="order-time" id="order-time"><p class="blink_me"><%= current_orders[i].hour %>:<%= current_orders[i].minutes %></p>
+                            <section class="order-time-edit">
+                                <select class="minutes"></select>:<select class="hours"></select>
+                            </section>
+                        </section>
+                        <section class="close-order" title="סגור הזמנה"><p id="close-icon" class="flaticon-close32"></p></section>
+                        <section class="cancel-order" title="בטל הזמנה"><p id="cancel-icon" class="flaticon-forbidden"></p></section>
+                    </section>
+                    <% } %>
+                    <%}%>
+                </section>
+
+                <section class="future-orders-cont">
+                    <% if(future_orders.length > 0) {%>
+                    <section class="title"><p>הזמנות לאחר השעה הקרובה ></p></section>
+                    <section class="header">
+                        <section class="order-number"><p>מס' הזמנה</p></section>
+                        <section class="order-for"><p>הזמנה עבור</p></section>
+                        <section class="cusromer-type"><p>סוג לקוח</p></section>
+                        <section class="order-type"><p>סוג הזמנה</p></section>
+                        <section class="order-status"><p>סטטוס</p></section>
+                        <section class="order-items"><p>פריטים</p></section>
+                        <section class="order-time" id="order-time-title"><p>שעת הזמנה</p></section>
+                        <section class="close-order"><p>סגור</p></section>
+                        <section class="cancel-order"><p>בטל</p></section>
+                    </section>
+                    <% for(var i = 0; i < future_orders.length; i++) {%>
+                    <section class="row" id="<%= future_orders[i].id %>">
+                        <section class="order-number"><p><%= future_orders[i].serial_number %></p></section>
+                        <section class="order-for"><p><%= future_orders[i].customer_details.first_name %> <%= future_orders[i].customer_details.last_name %></p></section>
+                        <section class="cusromer-type"><p><%= future_orders[i].customer_type %></p></section>
+                        <section class="order-type"><p><%= future_orders[i].order_type %></p></section>
+                        <section class="order-status"><p><%= future_orders[i].status %></p></section>
+                        <section class="order-items" id="order-items" title="פריטים"><p><%= future_orders[i].cart.my_cart[0].name %>...</p></section>
+                        <section class="order-time" id="order-time"><p class="blink_me"><%= future_orders[i].hour %>:<%= future_orders[i].minutes %></p>
+                            <section class="order-time-edit">
+                                <select class="minutes"></select>:<select class="hours"></select>
+                            </section>
+                        </section>
+                        <section class="close-order" title="סגור הזמנה"><p id="close-icon" class="flaticon-close32"></p></section>
+                        <section class="cancel-order" title="בטל הזמנה"><p id="cancel-icon" class="flaticon-forbidden"></p></section>
+                    </section>
+                    <% } %>
+                    <%}%>
+                </section>
+            </section>
+        </section>
+    </section>
+    <footer></footer>
+</div>
+</body>
+</html>

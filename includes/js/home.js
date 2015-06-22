@@ -13,5 +13,6 @@ $(document).ready(function() {
     $('#statistics').click(function(){window.location = '#';});
     $('#queries').click(function(){window.location = '#';});
     $('#system-backup').click(function(){window.location = '#';});
+    $('#pending-orders').click(function(){window.location = '/manager-pending-orders';});
 
 });

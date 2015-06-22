@@ -219,6 +219,156 @@ pending.post('/update-order-time', function(req, res){
 
 });
 
+pending.get('/manager-pending-orders', function(req, res){
+
+    var breadcrumbs = [{path: '/', name: 'דף הבית'},
+        {path: '#', name: 'הזמנות ממתינות'}];
+
+    var query = 'SELECT * FROM `pending_orders` ORDER BY `hour`,`minutes`;';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    var past_orders = get_past_orders(result);
+                    var current_orders = get_current_orders(result);
+                    var future_orders = get_future_orders(result);
+                    res.render('manager-pending-orders', {
+                        username: settings.get_username(),
+                        breadcrumbs: breadcrumbs,
+                        past_orders: past_orders,
+                        current_orders: current_orders,
+                        future_orders: future_orders
+                    });
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send('404 not found');
+                }
+                conn.release();
+            });
+        }
+        else{
+            res.send('404 not found');
+        }
+    });
+
+});
+
+pending.post('/get-cart-details&:order_id', function(req, res){
+
+    var order_id = req.params.order_id.split('=')[1];
+    var query = 'SELECT `cart` AS cart FROM `pending_orders` WHERE `id`="'+order_id+'";';
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            conn.query(query, function(err, result){
+                if(!err){
+                    result[0].cart = JSON.parse(result[0].cart);
+                    result[0].cart.my_cart = JSON.parse(result[0].cart.my_cart);
+                    var cart = result[0].cart.my_cart;
+                    res.send({status: true, cart: cart});
+                }
+                else{
+                    console.log("There was an error with MySQL Query: " + query + ' ' + err);
+                    res.send({status: false, msg: 'הייתה בעיה בהבאת פרטי ההזמנה הממתינה, אנא נסה שוב מאוחר יותר'});
+                }
+                conn.release();
+            });
+        }
+        else{
+            console.log("There was an error with MySQL Query: " + query + ' ' + err);
+            res.send({status: false, msg: 'הייתה בעיה בהבאת פרטי ההזמנה הממתינה, אנא נסה שוב מאוחר יותר'});
+        }
+    });
+
+});
+
+function get_past_orders(result){
+    var arr = [];
+    var date = new Date();
+    var push = false;
+    for(var i = 0; i < result.length; i++){
+        if(result[i].hour < date.getHours()) push = true;
+        if(result[i].hour == date.getHours()){
+            if(result[i].minutes < date.getMinutes()) push = true;
+        }
+        if(push) arr.push(render_order_arr(result[i]));
+        push = false;
+    }
+    return arr;
+}
+
+function get_current_orders(result){
+    var arr = [];
+    var date = new Date();
+    var curr_hour = date.getHours();
+    var next_hour = curr_hour + 1;
+    var minutes = date.getMinutes();
+    var push = false;
+    for(var i = 0; i < result.length; i++){
+        if(result[i].hour == curr_hour){
+            if(result[i].minutes >= minutes) push = true;
+        }
+        if(result[i].hour == next_hour){
+            if(result[i].minutes <= minutes) push = true;
+        }
+        if(push) arr.push(render_order_arr(result[i]));
+        push = false;
+    }
+    return arr;
+}
+
+function get_future_orders(result){
+    var arr = [];
+    var date = new Date();
+    var curr_hour = date.getHours();
+    var next_hour = curr_hour + 1;
+    var minutes = date.getMinutes();
+    var push = false;
+    for(var i = 0; i < result.length; i++){
+        if(result[i].hour == next_hour){
+            if(result[i].minutes > minutes) push = true;
+        }
+        if(result[i].hour > next_hour) push = true;
+        if(push) arr.push(render_order_arr(result[i]));
+        push = false;
+    }
+    return arr;
+}
+
+function render_order_arr(obj){
+    obj.cart = JSON.parse(obj.cart);
+    obj.cart.my_cart = JSON.parse(obj.cart.my_cart);
+    obj.customer_details = JSON.parse(obj.customer_details);
+    if(obj.status == 1) obj.status = 'הזמנה התקבלה';
+    if(obj.status == 2) obj.status = 'בהכנה';
+    if(obj.order_type == 'delivery') {
+        obj.order_type = 'משלוח';
+        if(obj.status == 3) obj.status = 'אריזה';
+        if(obj.status == 4) obj.status = 'בדרך ללקוח';
+    }
+    if(obj.order_type == 'take-away'){
+        obj.order_type = 'לקחת';
+        if(obj.status == 3) obj.status = 'אריזה';
+        if(obj.status == 4) obj.status = 'מחכה לאיסוף';
+    }
+    if(obj.order_type == 'sit'){
+        obj.order_type = 'לשבת';
+        if(obj.status == 3) obj.status = 'בצלחת';
+        if(obj.status == 4) obj.status = 'מחכה ללקוח';
+    }
+    if(obj.customer_type == 'business') obj.customer_type = 'עסקי';
+    if(obj.customer_type == 'private') obj.customer_type = 'פרטי';
+    obj.hour = add_zero_before(obj.hour);
+    obj.minutes = add_zero_before(obj.minutes);
+    obj.order_time = obj.hour + ':' +obj.minutes;
+    return obj;
+}
+
+function add_zero_before(i) {
+    if (i < 10) {i = "0" + i}  // add zero in front of numbers < 10
+    return i;
+}
+
 function get_order_arr(result){
     var order_arr = [];
     var status_text = [];

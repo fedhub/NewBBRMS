@@ -8,7 +8,12 @@ var socket = io.connect(base_url,{
     'max reconnection attempts': 10
 });
 
+var first_hour_mins = [], last_hour_mins = [], rest_hours_mins = [], hours = [];
+var work_hours = {};
+var now_open = false;
+var order_time_changed = false;
 var order_id, $order_cont;
+var index;
 
 $(document).ready(function() {
 
@@ -47,16 +52,48 @@ $(document).ready(function() {
     $(document).on('click', function (e) {
         if($(this).find('.order-time-edit:visible').length > 0){
             //var index = $(this).find('.order-time-edit:visible').index();
+            var new_time = [];
             var old_time = $('.order-time-edit:visible').parent().find('p').text().split(':');
-            var new_time = $('.order-time-edit:visible').find('input').val().split(':');
+            new_time.push($('.order-time-edit:visible').find('.hours').val());
+            new_time.push($('.order-time-edit:visible').find('.minutes').val());
             var order_id = $('.order-time-edit:visible').parent().parent().parent().find('.button').attr('id').split('-')[2];
             //alert('new-time: ' + new_time + ' old-time: ' + old_time);
-            if(new_time.length > 0) update_order_time(new_time, old_time, order_id);
-            else $('.order-time-edit').css('display', 'none');
+            if((new_time[0] == old_time[0] && new_time[1] == old_time[1]) || !order_time_changed) $('.order-time-edit').css('display', 'none');
+            else{
+                order_time_changed = false;
+                update_order_time(new_time, old_time, order_id);
+            }
         }
     });
 
+    $('.hours').change(function() {
+        hour_changed($(this), index);
+    });
+    $('.minutes').change(function() {
+        order_time_changed = true;
+    });
+
 });
+
+function hour_changed(elm, index){
+    var date = new Date();
+    var hour = $(elm).val();
+    parseInt(hour);
+    if(hour == work_hours.open_hour) time_options_creation('.minutes', first_hour_mins, index);
+    else if(hour == work_hours.close_hour){
+        time_options_creation('.minutes', last_hour_mins, index);
+        $('.minutes').val('00');
+    }
+    else{
+        time_options_creation('.minutes', rest_hours_mins, index);
+        $('.minutes').val('00');
+    }
+    if(hours.length >= 2 && date.getHours() == hour && date.getHours() != work_hours.open_hour && now_open){
+        if(date.getMinutes() <= 55) time_options_creation('.minutes', get_curr_hour_mins(), index);
+        else time_options_creation('.minutes', rest_hours_mins, index);
+    }
+    order_time_changed = true;
+}
 
 function update_order_time(new_time, old_time, order_id){
     var info = {
@@ -78,21 +115,45 @@ function update_order_time(new_time, old_time, order_id){
 }
 
 function get_closing_time(order_cont_index){
-    var url = base_url + '/get-closing-time';
+    var url = base_url + '/get-working-hours';
     $.ajax({
         url: url,
         type: 'POST'
     }).done(function(res){
         if(!res.status) alert(res.msg);
-        else set_time_selection(res.closing_time, order_cont_index);
+        else set_time_selection(res.working_time, order_cont_index);
     });
 }
 
-function set_time_selection(closing_time, order_cont_index){
-    //alert('here');
+function set_time_selection(working_time, order_cont_index){
+    var date = new Date();
+    set_time_widget(working_time);
+    time_options_creation('.hours', hours, order_cont_index);
+    if(hours.length == 1) time_options_creation('.minutes', get_curr_hour_mins(), order_cont_index);
+    // more then one hour open store left
+    if(hours.length >= 2){
+        if(date.getHours() == working_time.open_hour) time_options_creation('.minutes', first_hour_mins, order_cont_index);
+        else {
+            if(now_open && date.getMinutes() <= 55) time_options_creation('.minutes', get_curr_hour_mins(), order_cont_index);
+            else if(now_open && date.getMinutes() > 55) time_options_creation('.minutes', rest_hours_mins, order_cont_index);
+            else time_options_creation('.minutes', first_hour_mins, order_cont_index);
+        }
+    }
+    index = order_cont_index;
     $('.order-time-edit').eq(order_cont_index).css('display', 'block').on('click', function(e) {
         e.stopPropagation();
     });
+}
+
+function time_options_creation(elm_id, time_arr, order_cont_index){
+    $('.order-time-edit').eq(order_cont_index).find(elm_id).find('option').remove();
+    for(var i = 0; i < time_arr.length; i++){
+        var $option = $('<option>', {
+            value: time_arr[i],
+            text: time_arr[i]
+        });
+        $('.order-time-edit').eq(order_cont_index).find(elm_id).append($option);
+    }
 }
 
 function status_handler($status){
@@ -193,6 +254,8 @@ function real_time_order_handler(data){
         $('.order-cont').eq(0).find('.button').click(function(){button_handler(this)});
         $('.order-cont').eq(0).find('.status-item').click(function(){status_handler($(this))});
         $('.order-cont').eq(0).find('#order-time').click(function(){get_closing_time(0)});
+        $('.order-cont').eq(0).find('.hours').change(function(){hour_changed($(this), 0)});
+        $('.order-cont').eq(0).find('.minutes').change(function(){order_time_changed = true;});
         set_status_text($('.order-cont').eq(0).find('.status-item'), data.order.order_type);
         set_dynamic_status($('.order-cont').eq(0));
     }
@@ -208,6 +271,8 @@ function real_time_order_handler(data){
                     $('.order-cont').eq(i).find('.button').click(function(){button_handler(this)});
                     $('.order-cont').eq(i).find('.status-item').click(function(){status_handler($(this))});
                     $('.order-cont').eq(i).find('#order-time').click(function(){get_closing_time(i)});
+                    $('.order-cont').eq(i).find('.hours').change(function(){hour_changed($(this), i)});
+                    $('.order-cont').eq(i).find('.minutes').change(function(){order_time_changed = true;});
                     set_status_text($('.order-cont').eq(i).find('.status-item'), data.order.order_type);
                     set_dynamic_status($('.order-cont').eq(i));
                     return false;
@@ -218,6 +283,8 @@ function real_time_order_handler(data){
                     $('.order-cont').eq(orders_count).find('.button').click(function(){button_handler(this)});
                     $('.order-cont').eq(orders_count).find('.status-item').click(function(){status_handler($(this))});
                     $('.order-cont').eq(orders_count).find('#order-time').click(function(){get_closing_time(orders_count)});
+                    $('.order-cont').eq(orders_count).find('.hours').change(function(){hour_changed($(this), orders_count)});
+                    $('.order-cont').eq(orders_count).find('.minutes').change(function(){order_time_changed = true;});
                     set_status_text($('.order-cont').eq(orders_count).find('.status-item'), data.order.order_type);
                     set_dynamic_status($('.order-cont').eq(orders_count));
                 }
@@ -228,6 +295,8 @@ function real_time_order_handler(data){
                 $('.order-cont').eq(i).find('.button').click(function(){button_handler(this)});
                 $('.order-cont').eq(i).find('.status-item').click(function(){status_handler($(this))});
                 $('.order-cont').eq(i).find('#order-time').click(function(){get_closing_time(i)});
+                $('.order-cont').eq(i).find('.hours').change(function(){hour_changed($(this), i)});
+                $('.order-cont').eq(i).find('.minutes').change(function(){order_time_changed = true;});
                 set_status_text($('.order-cont').eq(i).find('.status-item'), data.order.order_type);
                 set_dynamic_status($('.order-cont').eq(i));
                 return false;
@@ -353,7 +422,7 @@ function get_order_cont_elm(data){
         '<section class="order-detail-cont background" id="payment-method"><p>'+order_details.payment_method+'</p></section>' +
         '<section class="order-detail-cont background" id="order-time">' +
         '<p class="blink_me">'+order_details.order_time+'</p>' +
-        '<section class="order-time-edit"><input type="text" /></section>' +
+        '<section class="order-time-edit"><select class="minutes"></select>:<select class="hours"></select></section>' +
         '</section>' +
         '</section>' +
         '<section class="customer-details-cont background">' +
@@ -424,4 +493,72 @@ function get_order_cont_elm(data){
     '</section>';
 
     return html;
+}
+
+function set_time_widget(working_time){
+    var date = new Date();
+    work_hours = working_time;
+    var curr_hour = date.getHours();
+    var curr_mins = date.getMinutes();
+    // if we are out of the working time range
+    if(curr_hour > working_time.close_hour || curr_hour < working_time.open_hour
+        || (curr_hour == working_time.open_hour && curr_mins < working_time.open_minutes)
+        || (curr_hour == working_time.close_hour && curr_mins > working_time.close_minutes)){
+        if(working_time.close_minutes == 0) hours = get_hours(working_time.open_hour, (working_time.close_hour-1));
+        if(working_time.close_minutes != 0) hours = get_hours(working_time.open_hour, working_time.close_hour);
+        first_hour_mins = get_mins(working_time.open_minutes, 55);
+        rest_hours_mins = get_mins(0, 55);
+        last_hour_mins = get_mins(0, working_time.close_minutes);
+    }
+    // if we are within the working time range
+    if((curr_hour < working_time.close_hour && curr_hour > working_time.open_hour)
+        || (curr_hour == working_time.open_hour && curr_mins >= working_time.open_minutes)
+        || (curr_hour == working_time.close_hour && curr_mins <= working_time.close_minutes)){
+        if(working_time.close_minutes == 0) hours = get_hours(curr_hour, (working_time.close_hour-1));
+        if(working_time.close_minutes != 0) hours = get_hours(curr_hour, working_time.close_hour);
+        first_hour_mins = get_mins(round5(curr_mins), 55);
+        rest_hours_mins = get_mins(0, 55);
+        last_hour_mins = get_mins(0, working_time.close_minutes);
+        if(curr_hour == working_time.close_hour && curr_mins <= working_time.close_minutes){
+            last_hour_mins = get_mins(round5(curr_mins), working_time.close_minutes);
+        }
+        if(curr_mins > 55){
+            if(working_time.close_minutes == 0) hours = get_hours((curr_hour + 1), (working_time.close_hour-1));
+            if(working_time.close_minutes != 0) hours = get_hours((curr_hour + 1), working_time.close_hour);
+            first_hour_mins = get_mins(0, 55);
+            rest_hours_mins = get_mins(0, 55);
+            last_hour_mins = get_mins(0, working_time.close_minutes);
+        }
+        now_open = true;
+    }
+}
+
+function round5(x) {
+    return Math.ceil(x/5)*5;
+}
+
+function add_zero_before(i) {
+    if (i < 10) {i = "0" + i}  // add zero in front of numbers < 10
+    return i;
+}
+
+function get_mins(starting_mins, ending_mins){
+    var mins = [];
+    for(var i = starting_mins; i <= ending_mins; i += 5){
+        mins.push(add_zero_before(i));
+    }
+    return mins;
+}
+
+function get_hours(starting_hour, ending_hour){
+    var hours = [];
+    for(var i = starting_hour; i <= ending_hour; i++){
+        hours.push(i);
+    }
+    return hours;
+}
+
+function get_curr_hour_mins(){
+    var date = new Date();
+    return get_mins(round5(date.getMinutes()), 55);
 }
