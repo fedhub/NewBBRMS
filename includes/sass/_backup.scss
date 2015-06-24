@@ -1,0 +1,164 @@
+.backup-cont{
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+  .header{
+    @include size(100%, 40px);
+    background: url('../images/home_page/brown_light_pattern.png');
+    display: table;
+    box-shadow: 0px 0px 1px 1px rgba(#333, 0.8);
+    section{
+      @include cell-settings();
+      p{
+        padding-right: 5px;
+        font-size: 15px;
+        font-weight: bold;
+        color: rgba($txt-color, 1);
+      }
+    }
+  }
+
+  .backups-table-cont{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .row{
+    @include size(100%, 35px);
+    display: table;
+    section{
+      @include cell-settings();
+      p{
+        padding-right: 5px;
+        font-size: 15px;
+        color: rgba(#000, 1);
+      }
+      &:hover{
+        background-color: #FCE4CC;
+      }
+    }
+  }
+  .serial-number{
+    @include size(5%, 100%);
+  }
+  .name{
+    @include size(15%, 100%);
+    position: relative;
+  }
+  .description{
+    @include size(35%, 100%);
+    position: relative;
+  }
+  #name{
+    cursor: pointer;
+  }
+  #description{
+    cursor: pointer;
+  }
+  .date{
+    @include size(10%, 100%);
+  }
+  .time{
+    @include size(10%, 100%);
+  }
+  .file-name{
+    @include size(15%, 100%);
+  }
+  .delete{
+    @include size(5%, 100%);
+    cursor: pointer;
+  }
+  #delete, #download{
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: auto;
+  }
+  #delete{
+    color: rgba(#5E2612, 0.8);
+    &:hover{
+      color: rgba(#5E2612, 1);
+    }
+  }
+  #download{
+    color: rgba($txt-color, 0.8);
+    &:hover{
+      color: rgba($txt-color, 1);
+    }
+  }
+  .download{
+    @include size(5%, 100%);
+    cursor: pointer;
+  }
+  .row:nth-child(odd){
+    background-color: #FFF;
+    &:hover{
+      background-color: #D9D9D9;
+    }
+  }
+  .row:nth-child(even){
+    background-color: #EEF3F5;
+    &:hover{
+      background-color: #D0DFE5;
+    }
+  }
+  .backup-button{
+    @include size(120px, 30px);
+    margin-top: 50px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background: rgba(grey, 0.6);
+    line-height: 30px;
+    text-align: center;
+    box-shadow: 0 0 1px 1px #333;
+    cursor: pointer;
+    p{
+      color: #333;
+    }
+    &:hover{
+      box-shadow: 0 0 3px 1px $txt-color;
+      p{
+        color: $txt-color;
+      }
+    }
+    .icon{
+      @include size(30%, 100%);
+      float: right;
+      p{
+        font-size: 30px;
+      }
+    }
+    .text{
+      @include size(70%, 100%);
+      float: right;
+      p{
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+  input{
+    @include size(97%, 97%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 15px;
+    padding-right: 5px;
+    display: none;
+  }
+  .blink_me {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}

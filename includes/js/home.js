@@ -1,7 +1,3 @@
-//var base_url = 'http://www.best-biss.com';
-//var base_url = 'http://best-biss.herokuapp.com';
-var base_url = 'http://localhost:3000';
-
 $(document).ready(function() {
 
     $('#managers').click(function(){window.location = base_url+'/managers';});
@@ -12,7 +8,7 @@ $(document).ready(function() {
     $('#coupons').click(function(){window.location = '#';});
     $('#statistics').click(function(){window.location = '#';});
     $('#queries').click(function(){window.location = '#';});
-    $('#system-backup').click(function(){window.location = '#';});
+    $('#system-backup').click(function(){window.location = '/backup';});
     $('#pending-orders').click(function(){window.location = '/manager-pending-orders';});
 
 });

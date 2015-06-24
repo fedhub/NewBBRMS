@@ -1,7 +1,3 @@
-//var base_url = 'http://www.best-biss.com';
-//var base_url = 'http://best-biss.herokuapp.com';
-var base_url = 'http://localhost:3000';
-
 var new_open_minutes, new_open_hour, new_close_minutes, new_close_hour,
     new_delivery, new_sit, new_take_away;
 var open_minutes, open_hour, close_minutes, close_hour, delivery, sit, take_away;
