@@ -39,10 +39,16 @@
     margin-right: 5px;
     margin-bottom: 5px;
     float: right;
+    @include medium_1366(){
+      @include size(93%, 35px);
+    }
   }
   .stat-cont{
     @include size(14.2%, 25px);
     float: right;
+    @include medium_1366(){
+      @include size(14.2%, 35px);
+    }
     p{
       text-align: center;
       font-size: 20px;
@@ -50,6 +56,10 @@
       color: orange;
       line-height: 25px;
       padding-right: 5px;
+      @include medium_1366(){
+        font-size: 16px;
+        line-height: 35px;
+      }
     }
   }
   .clear{
@@ -63,6 +73,9 @@
     margin-right: 10px;
     float: right;
     cursor: pointer;
+    @include medium_1366(){
+      @include size(60px, 35px);
+    }
     .icon{
       float: right;
       @include size(40%, 100%);
@@ -72,6 +85,9 @@
         font-size: 20px;
         font-weight: bold;
         color: rgba(#333, 0.8);
+        @include medium_1366(){
+          line-height: 28px;
+        }
       }
     }
     .text{
@@ -83,6 +99,9 @@
         font-size: 15px;
         font-weight: bold;
         color: rgba(#333, 0.8);
+        @include medium_1366(){
+          line-height: 35px;
+        }
       }
     }
     &:hover{
@@ -101,6 +120,10 @@
     border-radius: 8px;
     box-shadow: 0 0 3px 1px rgba(#333, 1);
     position: relative;
+    @include medium_1366(){
+      margin-right: 25px;
+      width: 47.5%;
+    }
   }
   .order-details-cont{
     @include size(100%, 80px);
@@ -293,6 +316,9 @@
   #order-time{
     cursor: pointer;
     position: relative;
+    @include medium_1366(){
+      width: 25%;
+    }
   }
   .order-time-edit{
     display: none;

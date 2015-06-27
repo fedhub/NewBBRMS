@@ -349,13 +349,13 @@ hr {
   }
 }
 @media only screen and (max-width: 1366px) {
-  /* line 89, ../sass/_structure.scss */
+  /* line 88, ../sass/_structure.scss */
   .wrapper {
     width: 83%;
   }
 }
 @media only screen and (max-width: 360px) {
-  /* line 95, ../sass/_structure.scss */
+  /* line 94, ../sass/_structure.scss */
   .wrapper {
     width: 100%;
   }
@@ -492,17 +492,6 @@ header .logo {
   background-size: contain;
 }
 
-@media only screen and (max-width: 1366px) {
-  /* line 100, ../sass/_header.scss */
-  header .user-icon p {
-    font-size: 25px;
-    padding-top: 2px;
-  }
-  /* line 105, ../sass/_header.scss */
-  header .logo {
-    width: 255px;
-  }
-}
 /* line 2, ../sass/_body.scss */
 .main {
   width: 100%;
@@ -546,23 +535,30 @@ header .logo {
 .main #content {
   width: 100% !important;
   height: 100% !important;
-  font-family: "Alef Hebrew", ΓÇ£Helvetica NeueΓÇ¥, Helvetica, Arial, sans-serif;
+  font-family: "Alef Hebrew", ∩┐╜Helvetica Neue∩┐╜, Helvetica, Arial, sans-serif;
 }
-/* line 44, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 35, ../sass/_body.scss */
+  .main #content {
+    margin-bottom: 20px;
+    height: auto;
+  }
+}
+/* line 48, ../sass/_body.scss */
 .main #content .menu-item {
   cursor: pointer;
   float: right;
   margin-right: 20px;
   margin-top: 20px;
 }
-/* line 49, ../sass/_body.scss */
+/* line 53, ../sass/_body.scss */
 .main #content .menu-item p {
   font-size: 30px;
   line-height: 30px;
   font-weight: bold;
   color: #fff;
 }
-/* line 56, ../sass/_body.scss */
+/* line 60, ../sass/_body.scss */
 .main #content #managers {
   background: #97A778 url("../images/home_page/Man_in_suit_and_tie_256.png") 80% center no-repeat;
   background-size: 50%;
@@ -570,7 +566,7 @@ header .logo {
   width: 30%;
   height: 30%;
 }
-/* line 62, ../sass/_body.scss */
+/* line 66, ../sass/_body.scss */
 .main #content #managers p {
   position: absolute;
   top: 40%;
@@ -578,7 +574,14 @@ header .logo {
   color: #5E2612;
   font-size: 35px;
 }
-/* line 70, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 60, ../sass/_body.scss */
+  .main #content #managers {
+    width: 30%;
+    height: 209px;
+  }
+}
+/* line 78, ../sass/_body.scss */
 .main #content #application-settings {
   background: #795548 url("../images/home_page/Mobile_app_developing_256.png") 20% center no-repeat;
   background-size: 50%;
@@ -586,14 +589,21 @@ header .logo {
   width: 31%;
   height: 30%;
 }
-/* line 75, ../sass/_body.scss */
+/* line 83, ../sass/_body.scss */
 .main #content #application-settings p {
   position: absolute;
   word-spacing: 500px;
   bottom: 20%;
   right: 5%;
 }
-/* line 82, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 78, ../sass/_body.scss */
+  .main #content #application-settings {
+    width: 31%;
+    height: 209px;
+  }
+}
+/* line 93, ../sass/_body.scss */
 .main #content #menu-management {
   background: #5D4360 url("../images/home_page/Open_Menu_256.png") 80% center no-repeat;
   background-size: 50%;
@@ -601,14 +611,21 @@ header .logo {
   width: 32%;
   height: 30%;
 }
-/* line 87, ../sass/_body.scss */
+/* line 98, ../sass/_body.scss */
 .main #content #menu-management p {
   word-spacing: 500px;
   position: absolute;
   top: 40%;
   right: 60%;
 }
-/* line 94, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 93, ../sass/_body.scss */
+  .main #content #menu-management {
+    width: 32%;
+    height: 209px;
+  }
+}
+/* line 108, ../sass/_body.scss */
 .main #content #business-customers {
   background: #22313F url("../images/home_page/Business_meeting_256.png") center -50% no-repeat;
   background-size: 80%;
@@ -616,14 +633,21 @@ header .logo {
   width: 18%;
   height: 27%;
 }
-/* line 99, ../sass/_body.scss */
+/* line 113, ../sass/_body.scss */
 .main #content #business-customers p {
   position: absolute;
   font-size: 25px;
   bottom: 5%;
   right: 10%;
 }
-/* line 106, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 108, ../sass/_body.scss */
+  .main #content #business-customers {
+    width: 18%;
+    height: 188px;
+  }
+}
+/* line 123, ../sass/_body.scss */
 .main #content #coupons {
   background: #C76E06 url("../images/home_page/Commercial_coupon_scissors_in_broken_line_square_256.png") 90% center no-repeat;
   background-size: 40%;
@@ -631,7 +655,7 @@ header .logo {
   width: 30%;
   height: 27%;
 }
-/* line 111, ../sass/_body.scss */
+/* line 128, ../sass/_body.scss */
 .main #content #coupons p {
   font-size: 35px;
   position: absolute;
@@ -639,7 +663,14 @@ header .logo {
   right: 60%;
   color: #fff;
 }
-/* line 119, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 123, ../sass/_body.scss */
+  .main #content #coupons {
+    width: 30%;
+    height: 188px;
+  }
+}
+/* line 139, ../sass/_body.scss */
 .main #content #control-panel {
   background: #96281B url("../images/home_page/Responsive_website_design_on_monitor_screen_256.png") center 150% no-repeat;
   background-size: 80%;
@@ -647,14 +678,21 @@ header .logo {
   width: 18.5%;
   height: 27%;
 }
-/* line 124, ../sass/_body.scss */
+/* line 144, ../sass/_body.scss */
 .main #content #control-panel p {
   position: absolute;
   font-size: 25px;
   top: 3%;
   right: 15%;
 }
-/* line 131, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 139, ../sass/_body.scss */
+  .main #content #control-panel {
+    width: 18.5%;
+    height: 188px;
+  }
+}
+/* line 154, ../sass/_body.scss */
 .main #content #statistics {
   background: grey url("../images/home_page/Pie_Chart_Stats_256.png") 10% center no-repeat;
   background-size: 50%;
@@ -662,13 +700,20 @@ header .logo {
   width: 25%;
   height: 27%;
 }
-/* line 136, ../sass/_body.scss */
+/* line 159, ../sass/_body.scss */
 .main #content #statistics p {
   position: absolute;
   top: 10%;
   right: 5%;
 }
-/* line 142, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 154, ../sass/_body.scss */
+  .main #content #statistics {
+    width: 25%;
+    height: 188px;
+  }
+}
+/* line 168, ../sass/_body.scss */
 .main #content #queries {
   background: #1E824C url("../images/home_page/Question_mark_on_a_circular_black_background_256.png") center 80% no-repeat;
   background-size: 40%;
@@ -676,13 +721,20 @@ header .logo {
   width: 30%;
   height: 30%;
 }
-/* line 147, ../sass/_body.scss */
+/* line 173, ../sass/_body.scss */
 .main #content #queries p {
   position: absolute;
   top: 5%;
   right: 5%;
 }
-/* line 153, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 168, ../sass/_body.scss */
+  .main #content #queries {
+    width: 30%;
+    height: 209px;
+  }
+}
+/* line 182, ../sass/_body.scss */
 .main #content #system-backup {
   background: #8B5742 url("../images/home_page/Download_database_256.png") 20% center no-repeat;
   background-size: 50%;
@@ -690,7 +742,7 @@ header .logo {
   width: 30%;
   height: 30%;
 }
-/* line 158, ../sass/_body.scss */
+/* line 187, ../sass/_body.scss */
 .main #content #system-backup p {
   position: absolute;
   font-size: 35px;
@@ -698,7 +750,14 @@ header .logo {
   right: 10%;
   word-spacing: 500px;
 }
-/* line 166, ../sass/_body.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 182, ../sass/_body.scss */
+  .main #content #system-backup {
+    width: 30%;
+    height: 209px;
+  }
+}
+/* line 198, ../sass/_body.scss */
 .main #content #pending-orders {
   background: #22313F url("../images/home_page/Logistics_delivery_truck_and_clock_256.png") 85% center no-repeat;
   background-size: 50%;
@@ -706,13 +765,20 @@ header .logo {
   width: 30%;
   height: 30%;
 }
-/* line 171, ../sass/_body.scss */
+/* line 203, ../sass/_body.scss */
 .main #content #pending-orders p {
   position: absolute;
   font-size: 35px;
   top: 15%;
   right: 55%;
   word-spacing: 500px;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 198, ../sass/_body.scss */
+  .main #content #pending-orders {
+    width: 30%;
+    height: 209px;
+  }
 }
 
 /* line 1, ../sass/_side-nav.scss */
@@ -743,12 +809,6 @@ header .logo {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 1366px) {
-  /* line 25, ../sass/_side-nav.scss */
-  .side-nav a {
-    font-size: 15px;
-  }
-}
 /* line 1, ../sass/_footer.scss */
 footer {
   width: 100%;
@@ -1021,12 +1081,6 @@ footer {
   color: grey;
 }
 
-@media only screen and (max-width: 1366px) {
-  /* line 114, ../sass/_managers.scss */
-  .managers-cont .manager-item section p {
-    font-size: 11px;
-  }
-}
 /* line 1, ../sass/_menu-types.scss */
 .menu-types-cont {
   width: 99%;
@@ -3795,13 +3849,27 @@ footer {
   margin-bottom: 5px;
   float: right;
 }
-/* line 43, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 34, ../sass/_pending-orders.scss */
+  .pending-orders-cont .statistics-panel {
+    width: 93%;
+    height: 35px;
+  }
+}
+/* line 46, ../sass/_pending-orders.scss */
 .pending-orders-cont .stat-cont {
   width: 14.2%;
   height: 25px;
   float: right;
 }
-/* line 46, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 46, ../sass/_pending-orders.scss */
+  .pending-orders-cont .stat-cont {
+    width: 14.2%;
+    height: 35px;
+  }
+}
+/* line 52, ../sass/_pending-orders.scss */
 .pending-orders-cont .stat-cont p {
   text-align: center;
   font-size: 20px;
@@ -3810,11 +3878,18 @@ footer {
   line-height: 25px;
   padding-right: 5px;
 }
-/* line 55, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 52, ../sass/_pending-orders.scss */
+  .pending-orders-cont .stat-cont p {
+    font-size: 16px;
+    line-height: 35px;
+  }
+}
+/* line 65, ../sass/_pending-orders.scss */
 .pending-orders-cont .clear {
   clear: both;
 }
-/* line 58, ../sass/_pending-orders.scss */
+/* line 68, ../sass/_pending-orders.scss */
 .pending-orders-cont .close-window {
   width: 60px;
   height: 25px;
@@ -3825,13 +3900,20 @@ footer {
   float: right;
   cursor: pointer;
 }
-/* line 66, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 68, ../sass/_pending-orders.scss */
+  .pending-orders-cont .close-window {
+    width: 60px;
+    height: 35px;
+  }
+}
+/* line 79, ../sass/_pending-orders.scss */
 .pending-orders-cont .close-window .icon {
   float: right;
   width: 40%;
   height: 100%;
 }
-/* line 69, ../sass/_pending-orders.scss */
+/* line 82, ../sass/_pending-orders.scss */
 .pending-orders-cont .close-window .icon p {
   line-height: 22px;
   text-align: center;
@@ -3839,13 +3921,19 @@ footer {
   font-weight: bold;
   color: rgba(51, 51, 51, 0.8);
 }
-/* line 77, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 82, ../sass/_pending-orders.scss */
+  .pending-orders-cont .close-window .icon p {
+    line-height: 28px;
+  }
+}
+/* line 93, ../sass/_pending-orders.scss */
 .pending-orders-cont .close-window .text {
   float: right;
   width: 60%;
   height: 100%;
 }
-/* line 80, ../sass/_pending-orders.scss */
+/* line 96, ../sass/_pending-orders.scss */
 .pending-orders-cont .close-window .text p {
   line-height: 25px;
   text-align: center;
@@ -3853,12 +3941,18 @@ footer {
   font-weight: bold;
   color: rgba(51, 51, 51, 0.8);
 }
-/* line 88, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 96, ../sass/_pending-orders.scss */
+  .pending-orders-cont .close-window .text p {
+    line-height: 35px;
+  }
+}
+/* line 107, ../sass/_pending-orders.scss */
 .pending-orders-cont .close-window:hover {
   background-color: rgba(128, 128, 128, 0.8);
   box-shadow: 0 0 2px 1px rgba(51, 51, 51, 0.9);
 }
-/* line 93, ../sass/_pending-orders.scss */
+/* line 112, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-cont {
   display: none;
   width: 32.65%;
@@ -3871,13 +3965,20 @@ footer {
   box-shadow: 0 0 3px 1px #333333;
   position: relative;
 }
-/* line 105, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 112, ../sass/_pending-orders.scss */
+  .pending-orders-cont .order-cont {
+    margin-right: 25px;
+    width: 47.5%;
+  }
+}
+/* line 128, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-details-cont {
   width: 100%;
   height: 80px;
   box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
 }
-/* line 108, ../sass/_pending-orders.scss */
+/* line 131, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-details-cont section {
   float: right;
   height: 50px;
@@ -3885,36 +3986,36 @@ footer {
   margin-right: 5px;
   padding: 5px;
 }
-/* line 114, ../sass/_pending-orders.scss */
+/* line 137, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-details-cont section p {
   line-height: 50px;
   font-weight: bold;
 }
-/* line 120, ../sass/_pending-orders.scss */
+/* line 143, ../sass/_pending-orders.scss */
 .pending-orders-cont .serial-number {
   width: 80px;
   height: 70px !important;
 }
-/* line 123, ../sass/_pending-orders.scss */
+/* line 146, ../sass/_pending-orders.scss */
 .pending-orders-cont .serial-number p {
   line-height: 70px !important;
   margin-right: -5px;
   font-size: 80px;
   color: #333333;
 }
-/* line 130, ../sass/_pending-orders.scss */
+/* line 153, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-detail-cont {
   border: solid 1px rgba(51, 51, 51, 0.6);
   box-shadow: 0 0 1px 1px rgba(51, 51, 51, 0.8);
   margin-top: 10px;
 }
-/* line 135, ../sass/_pending-orders.scss */
+/* line 158, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-detail-cont p {
   font-size: 45px;
   text-align: center;
   color: #333333;
 }
-/* line 141, ../sass/_pending-orders.scss */
+/* line 164, ../sass/_pending-orders.scss */
 .pending-orders-cont .customer-details-cont {
   width: 100%;
   height: 110px;
@@ -3922,7 +4023,7 @@ footer {
   display: table;
   box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
 }
-/* line 147, ../sass/_pending-orders.scss */
+/* line 170, ../sass/_pending-orders.scss */
 .pending-orders-cont .column {
   display: table-cell;
   text-align: center;
@@ -3930,42 +4031,42 @@ footer {
   width: 50%;
   height: 100%;
 }
-/* line 151, ../sass/_pending-orders.scss */
+/* line 174, ../sass/_pending-orders.scss */
 .pending-orders-cont .row {
   width: 99%;
   height: 20px;
   margin: 0 auto;
   display: table;
 }
-/* line 156, ../sass/_pending-orders.scss */
+/* line 179, ../sass/_pending-orders.scss */
 .pending-orders-cont .row section {
   display: table-cell;
   text-align: right;
 }
-/* line 161, ../sass/_pending-orders.scss */
+/* line 184, ../sass/_pending-orders.scss */
 .pending-orders-cont .label {
   width: 40%;
   height: 100%;
 }
-/* line 163, ../sass/_pending-orders.scss */
+/* line 186, ../sass/_pending-orders.scss */
 .pending-orders-cont .label p {
   font-size: 16px;
   font-weight: bold;
   padding-right: 2px;
   color: #333333;
 }
-/* line 170, ../sass/_pending-orders.scss */
+/* line 193, ../sass/_pending-orders.scss */
 .pending-orders-cont .info {
   width: 60%;
   height: 100%;
 }
-/* line 172, ../sass/_pending-orders.scss */
+/* line 195, ../sass/_pending-orders.scss */
 .pending-orders-cont .info p {
   font-size: 15px;
   font-weight: bold;
   color: #333333;
 }
-/* line 178, ../sass/_pending-orders.scss */
+/* line 201, ../sass/_pending-orders.scss */
 .pending-orders-cont footer {
   position: absolute;
   bottom: 0;
@@ -3975,25 +4076,25 @@ footer {
   margin-top: 15px;
   box-shadow: 0px 6px 12px 1px rgba(51, 51, 51, 0.8);
 }
-/* line 186, ../sass/_pending-orders.scss */
+/* line 209, ../sass/_pending-orders.scss */
 .pending-orders-cont .settings-cont {
   float: right;
   width: 15%;
   height: 100%;
 }
-/* line 190, ../sass/_pending-orders.scss */
+/* line 213, ../sass/_pending-orders.scss */
 .pending-orders-cont .status-cont {
   float: right;
   width: 70%;
   height: 100%;
 }
-/* line 194, ../sass/_pending-orders.scss */
+/* line 217, ../sass/_pending-orders.scss */
 .pending-orders-cont .total-price-cont {
   float: right;
   width: 15%;
   height: 100%;
 }
-/* line 197, ../sass/_pending-orders.scss */
+/* line 220, ../sass/_pending-orders.scss */
 .pending-orders-cont .total-price-cont p {
   line-height: 35px;
   font-size: 25px;
@@ -4002,7 +4103,7 @@ footer {
   text-shadow: 0 1px 0 rgba(51, 51, 51, 0.8);
   font-weight: bold;
 }
-/* line 206, ../sass/_pending-orders.scss */
+/* line 229, ../sass/_pending-orders.scss */
 .pending-orders-cont .button {
   width: 90%;
   height: 40%;
@@ -4012,25 +4113,25 @@ footer {
   background-color: rgba(51, 51, 51, 0.5);
   border-radius: 5px;
 }
-/* line 213, ../sass/_pending-orders.scss */
+/* line 236, ../sass/_pending-orders.scss */
 .pending-orders-cont .button:nth-child(1) {
   font-weight: bold;
 }
-/* line 216, ../sass/_pending-orders.scss */
+/* line 239, ../sass/_pending-orders.scss */
 .pending-orders-cont .button:hover {
   background-color: rgba(51, 51, 51, 0.7);
 }
-/* line 218, ../sass/_pending-orders.scss */
+/* line 241, ../sass/_pending-orders.scss */
 .pending-orders-cont .button:hover p {
   color: #000;
 }
-/* line 223, ../sass/_pending-orders.scss */
+/* line 246, ../sass/_pending-orders.scss */
 .pending-orders-cont .icon {
   float: right;
   width: 30%;
   height: 100%;
 }
-/* line 226, ../sass/_pending-orders.scss */
+/* line 249, ../sass/_pending-orders.scss */
 .pending-orders-cont .icon p {
   padding-top: 2px;
   line-height: 23px;
@@ -4038,13 +4139,13 @@ footer {
   text-align: center;
   color: #333;
 }
-/* line 234, ../sass/_pending-orders.scss */
+/* line 257, ../sass/_pending-orders.scss */
 .pending-orders-cont .text {
   float: right;
   width: 70%;
   height: 100%;
 }
-/* line 237, ../sass/_pending-orders.scss */
+/* line 260, ../sass/_pending-orders.scss */
 .pending-orders-cont .text p {
   font-size: 18px;
   line-height: 26px;
@@ -4052,7 +4153,7 @@ footer {
   color: #333;
   text-align: center;
 }
-/* line 245, ../sass/_pending-orders.scss */
+/* line 268, ../sass/_pending-orders.scss */
 .pending-orders-cont .cart-cont {
   width: 100%;
   margin-top: 15px;
@@ -4060,7 +4161,7 @@ footer {
   overflow: scroll;
   overflow-x: hidden;
 }
-/* line 252, ../sass/_pending-orders.scss */
+/* line 275, ../sass/_pending-orders.scss */
 .pending-orders-cont .cart-item-cont {
   width: 97%;
   padding: 5px;
@@ -4084,35 +4185,41 @@ footer {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08',GradientType=0 );
   /* IE6-9 */
 }
-/* line 270, ../sass/_pending-orders.scss */
+/* line 293, ../sass/_pending-orders.scss */
 .pending-orders-cont .description, .pending-orders-cont .addition-cont, .pending-orders-cont .food-item {
   width: 95%;
   margin: 2px auto;
   padding: 5px;
   box-shadow: 1px 1px 6px 1px rgba(51, 51, 51, 0.8);
 }
-/* line 275, ../sass/_pending-orders.scss */
+/* line 298, ../sass/_pending-orders.scss */
 .pending-orders-cont .description p, .pending-orders-cont .addition-cont p, .pending-orders-cont .food-item p {
   font-size: 35px;
   font-weight: bold;
   color: #333333;
 }
-/* line 282, ../sass/_pending-orders.scss */
+/* line 305, ../sass/_pending-orders.scss */
 .pending-orders-cont .description span {
   color: #333333 !important;
 }
-/* line 287, ../sass/_pending-orders.scss */
+/* line 310, ../sass/_pending-orders.scss */
 .pending-orders-cont .food-item p {
   font-size: 50px;
   font-weight: bold;
   color: #002e02;
 }
-/* line 293, ../sass/_pending-orders.scss */
+/* line 316, ../sass/_pending-orders.scss */
 .pending-orders-cont #order-time {
   cursor: pointer;
   position: relative;
 }
-/* line 297, ../sass/_pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 316, ../sass/_pending-orders.scss */
+  .pending-orders-cont #order-time {
+    width: 25%;
+  }
+}
+/* line 323, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-time-edit {
   display: none;
   position: absolute;
@@ -4122,7 +4229,7 @@ footer {
   height: 100%;
   background-color: #FFF;
 }
-/* line 304, ../sass/_pending-orders.scss */
+/* line 330, ../sass/_pending-orders.scss */
 .pending-orders-cont .order-time-edit select {
   width: 44%;
   height: 100%;
@@ -4132,7 +4239,7 @@ footer {
   font-weight: bold;
 }
 
-/* line 314, ../sass/_pending-orders.scss */
+/* line 340, ../sass/_pending-orders.scss */
 .background {
   background: #fcfff4;
   /* Old browsers */
@@ -4152,7 +4259,7 @@ footer {
   /* IE6-9 */
 }
 
-/* line 325, ../sass/_pending-orders.scss */
+/* line 351, ../sass/_pending-orders.scss */
 .button-background {
   background: #627d4d;
   /* Old browsers */
@@ -4172,7 +4279,7 @@ footer {
   /* IE6-9 */
 }
 
-/* line 336, ../sass/_pending-orders.scss */
+/* line 362, ../sass/_pending-orders.scss */
 .blink_me {
   color: brown !important;
   -webkit-animation-name: blinker;
@@ -4570,52 +4677,58 @@ footer {
   text-align: center;
   font-weight: bold;
 }
-/* line 111, ../sass/_manager-pending-orders.scss */
+@media only screen and (max-width: 1366px) {
+  /* line 103, ../sass/_manager-pending-orders.scss */
+  .manager-pending-orders-cont .order-time-edit select {
+    font-size: 16px;
+  }
+}
+/* line 114, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .close-order {
   width: 4%;
   height: 100%;
 }
-/* line 114, ../sass/_manager-pending-orders.scss */
+/* line 117, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .cancel-order {
   width: 4%;
   height: 100%;
 }
-/* line 117, ../sass/_manager-pending-orders.scss */
+/* line 120, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .row:nth-child(odd) {
   background-color: #FFF;
 }
-/* line 119, ../sass/_manager-pending-orders.scss */
+/* line 122, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .row:nth-child(odd):hover {
   background-color: #D9D9D9;
 }
-/* line 123, ../sass/_manager-pending-orders.scss */
+/* line 126, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .row:nth-child(even) {
   background-color: #EEF3F5;
 }
-/* line 125, ../sass/_manager-pending-orders.scss */
+/* line 128, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .row:nth-child(even):hover {
   background-color: #D0DFE5;
 }
-/* line 130, ../sass/_manager-pending-orders.scss */
+/* line 133, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont #order-time-title {
   cursor: default;
 }
-/* line 132, ../sass/_manager-pending-orders.scss */
+/* line 135, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont #order-time-title p {
   color: #002e02 !important;
 }
-/* line 137, ../sass/_manager-pending-orders.scss */
+/* line 140, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont #close-icon, .manager-pending-orders-cont #cancel-icon {
   color: rgba(94, 38, 18, 0.8);
   font-size: 22px;
   cursor: pointer;
   font-weight: auto;
 }
-/* line 142, ../sass/_manager-pending-orders.scss */
+/* line 145, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont #close-icon:hover, .manager-pending-orders-cont #cancel-icon:hover {
   color: #5e2612;
 }
-/* line 147, ../sass/_manager-pending-orders.scss */
+/* line 150, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .more-details {
   display: none !important;
   position: absolute;
@@ -4627,7 +4740,7 @@ footer {
   border: solid 1px rgba(51, 51, 51, 0.8);
   box-shadow: 0px 0px 1px 1px rgba(51, 51, 51, 0.9);
 }
-/* line 158, ../sass/_manager-pending-orders.scss */
+/* line 161, ../sass/_manager-pending-orders.scss */
 .manager-pending-orders-cont .blink_me {
   -webkit-animation-name: blinker;
   -webkit-animation-duration: 2s;
@@ -4859,4 +4972,231 @@ footer {
   animation-duration: 2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+/* line 1, ../sass/_queries.scss */
+.queries-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+/* line 5, ../sass/_queries.scss */
+.queries-cont .links-cont {
+  margin-top: 20px;
+}
+/* line 8, ../sass/_queries.scss */
+.queries-cont a {
+  font-size: 15px;
+}
+/* line 10, ../sass/_queries.scss */
+.queries-cont a:hover {
+  color: brown;
+}
+
+/* line 1, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont {
+  width: 99%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+/* line 5, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .filter-cont {
+  width: 100%;
+  height: 50px;
+  background: url("../images/home_page/brown_light_pattern.png");
+  border-radius: 10px;
+  border: solid 1px rgba(51, 51, 51, 0.3);
+  box-shadow: 0 0 1px 0px rgba(51, 51, 51, 0.8);
+  margin-bottom: 15px;
+}
+/* line 13, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .filter-by {
+  float: right;
+  font-size: 16px;
+  padding-right: 5px;
+  line-height: 50px;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 21, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont select {
+  float: right;
+  margin-top: 10px;
+  background-color: #D8DDCD;
+  margin-right: 5px;
+  width: 150px;
+  height: 30px;
+}
+/* line 28, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont input {
+  float: right;
+  padding-right: 5px;
+}
+/* line 32, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .phone-input, .private-customers-queries-cont .first-name-input, .private-customers-queries-cont .last-name-input {
+  display: none;
+  width: 150px;
+  height: 25px;
+  margin-top: 10px;
+  float: right;
+  margin-right: 15px;
+  background-color: #D8DDCD;
+}
+/* line 40, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .date-input {
+  width: 70px;
+  height: 25px;
+  margin-top: 10px;
+  float: right;
+  margin-right: 15px;
+  background-color: #D8DDCD;
+}
+/* line 47, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .datepicker-cont, .private-customers-queries-cont .sub-selection {
+  display: none;
+  float: right;
+}
+/* line 51, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .sub-filter-tool {
+  display: none;
+}
+/* line 54, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont #datepicker-from, .private-customers-queries-cont #datepicker-to {
+  margin-right: 5px;
+}
+/* line 57, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .datepicker-search {
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  float: right;
+  background: url("../images/home_page/search_32.png");
+}
+/* line 65, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .header {
+  width: 100%;
+  height: 40px;
+  background: url("../images/home_page/brown_light_pattern.png");
+  display: table;
+  box-shadow: 0px 0px 1px 1px rgba(51, 51, 51, 0.8);
+}
+/* line 70, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .header section {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 72, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .header section p {
+  padding-right: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #002e02;
+}
+/* line 80, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .customers-table-cont {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+/* line 85, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .total {
+  background-color: rgba(192, 192, 192, 0.8);
+}
+/* line 87, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .total p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 94, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row {
+  width: 100%;
+  height: 35px;
+  display: table;
+}
+/* line 97, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row section {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 99, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row section p {
+  padding-right: 5px;
+  font-size: 15px;
+  color: black;
+}
+/* line 104, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row section:hover {
+  background-color: #FCE4CC;
+}
+/* line 109, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .serial-number {
+  width: 5%;
+  height: 100%;
+}
+/* line 112, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .first-name {
+  width: 10%;
+  height: 100%;
+}
+/* line 115, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .last-name {
+  width: 10%;
+  height: 100%;
+}
+/* line 118, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .phone-number {
+  width: 15%;
+  height: 100%;
+}
+/* line 121, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .email {
+  width: 20%;
+  height: 100%;
+}
+/* line 124, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .street {
+  width: 15%;
+  height: 100%;
+}
+/* line 127, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .house-number {
+  width: 5%;
+  height: 100%;
+}
+/* line 130, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .floor {
+  width: 5%;
+  height: 100%;
+}
+/* line 133, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .enter {
+  width: 5%;
+  height: 100%;
+}
+/* line 136, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .registration-date {
+  width: 10%;
+  height: 100%;
+}
+/* line 139, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row:nth-child(odd) {
+  background-color: #FFF;
+}
+/* line 141, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row:nth-child(odd):hover {
+  background-color: #D9D9D9;
+}
+/* line 145, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row:nth-child(even) {
+  background-color: #EEF3F5;
+}
+/* line 147, ../sass/_private-customers-queries.scss */
+.private-customers-queries-cont .row:nth-child(even):hover {
+  background-color: #D0DFE5;
 }

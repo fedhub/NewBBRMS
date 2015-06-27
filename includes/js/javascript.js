@@ -4,9 +4,9 @@ var base_url = 'http://www.best-biss.com';
 
 $(document).ready(function() {
 
-    //if (document.documentElement.clientWidth <= 1366) {
-    //    $('html').css('zoom', '75%');
-    //}
+    if (document.documentElement.clientWidth <= 1024) {
+        $('html').css('zoom', '75%');
+    }
 
     var $header_height;
     var $footer_height;

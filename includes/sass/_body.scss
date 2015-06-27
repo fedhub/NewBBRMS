@@ -36,11 +36,15 @@
     width: 100% !important;
     height: 100% !important;
     font-family: "Alef Hebrew",
-    “Helvetica Neue”,
+    �Helvetica Neue�,
     Helvetica,
     Arial,
     sans-serif;
     //background-color: #fff;
+	  @include medium_1366(){
+        margin-bottom: 20px;
+        height: auto;
+	  }
     .menu-item{
       cursor: pointer;
       float: right;
@@ -66,6 +70,10 @@
         color: #5E2612;
         font-size: 35px
       }
+	    @include medium_1366(){
+		    @include size(30%, 209px);
+	    }
+
     }
     #application-settings{
       background: #795548 url('../images/home_page/Mobile_app_developing_256.png') 20% center no-repeat;
@@ -78,6 +86,9 @@
         bottom: 20%;
         right: 5%;
       }
+	    @include medium_1366(){
+		    @include size(31%, 209px);
+	    }
     }
     #menu-management{
       background: #5D4360 url('../images/home_page/Open_Menu_256.png') 80% center no-repeat;
@@ -90,6 +101,9 @@
         top: 40%;
         right: 60%;
       }
+	    @include medium_1366(){
+		    @include size(32%, 209px);
+	    }
     }
     #business-customers{
       background: #22313F url('../images/home_page/Business_meeting_256.png') center -50% no-repeat;
@@ -102,6 +116,9 @@
         bottom: 5%;
         right: 10%;
       }
+	    @include medium_1366(){
+		    @include size(18%, 188px);
+	    }
     }
     #coupons{
       background: #C76E06 url('../images/home_page/Commercial_coupon_scissors_in_broken_line_square_256.png') 90% center no-repeat;
@@ -115,6 +132,9 @@
         right: 60%;
         color: #fff;
       }
+	    @include medium_1366(){
+		    @include size(30%, 188px);
+	    }
     }
     #control-panel{
       background: #96281B url('../images/home_page/Responsive_website_design_on_monitor_screen_256.png') center 150% no-repeat;
@@ -127,6 +147,9 @@
         top: 3%;
         right: 15%;
       }
+	    @include medium_1366(){
+		    @include size(18.5%, 188px);
+	    }
     }
     #statistics{
       background: grey url('../images/home_page/Pie_Chart_Stats_256.png') 10% center no-repeat;
@@ -138,6 +161,9 @@
         top: 10%;
         right: 5%;
       }
+	    @include medium_1366(){
+		    @include size(25%, 188px);
+	    }
     }
     #queries{
       background: #1E824C url('../images/home_page/Question_mark_on_a_circular_black_background_256.png') center 80% no-repeat;
@@ -149,6 +175,9 @@
         top: 5%;
         right: 5%;
       }
+	    @include medium_1366(){
+		    @include size(30%, 209px);
+	    }
     }
     #system-backup{
       background: #8B5742 url('../images/home_page/Download_database_256.png') 20% center no-repeat;
@@ -162,6 +191,9 @@
         right: 10%;
         word-spacing: 500px;
       }
+	    @include medium_1366(){
+		    @include size(30%, 209px);
+	    }
     }
     #pending-orders{
       background: #22313F url('../images/home_page/Logistics_delivery_truck_and_clock_256.png') 85% center no-repeat;
@@ -175,6 +207,9 @@
         right: 55%;
         word-spacing: 500px;
       }
+	    @include medium_1366(){
+		    @include size(30%, 209px);
+	    }
     }
   }
 }

@@ -94,6 +94,8 @@ app.use(require('./business-customers'));
 app.use(require('./pending-orders'));
 app.use(require('./application-settings'));
 app.use(require('./system-backup'));
+app.use(require('./queries'));
+app.use(require('./private-customers-queries'));
 
 //app.use(require('./authentication'));
 //app.use(require('./routers'));

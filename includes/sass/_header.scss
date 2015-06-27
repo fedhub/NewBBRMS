@@ -84,7 +84,7 @@ header{
   }
   .nav-strip{
     @include size(100%, 20%);
-    background-color: brown;
+    background-color: rgba(brown, 1);
   }
   .logo{
     @include size(365px, 100%);
@@ -94,16 +94,16 @@ header{
   }
 }
 
-@include medium_1366(){
-  header{
-    .user-icon{
-      p{
-        font-size: 25px;
-        padding-top: 2px;
-      }
-    }
-    .logo{
-      width: 255px;
-    }
-  }
-}
+//@include medium_1366(){
+//  header{
+//    .user-icon{
+//      p{
+//        font-size: 25px;
+//        padding-top: 2px;
+//      }
+//    }
+//    .logo{
+//      width: 255px;
+//    }
+//  }
+//}
