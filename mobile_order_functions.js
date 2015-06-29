@@ -156,7 +156,7 @@ mobile_order_functions.make_order = function(req, res){
 mobile_order_functions.last_orders = function(req, res){
 
     var phone_number = req.params.phone_number.split('=')[1];
-    var query = 'SELECT `order_json` FROM `last_orders` WHERE `phone_number`="'+phone_number+'";';
+    var query = 'SELECT `order_json` FROM `last_orders` WHERE `phone_number`="'+phone_number+'" ORDER BY `id` DESC;';
     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
