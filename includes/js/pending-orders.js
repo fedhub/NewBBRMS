@@ -304,7 +304,7 @@ function normalize_height2(){
     $('.order-cont').height($(window).height() - 100);
     $('.cart-cont').height($('.order-cont').height() - $('footer').height() - $('.order-details-cont').height() - $('.customer-details-cont').height() - 45);
     if (document.documentElement.clientWidth <= 1024) {
-        $('.order-cont').height($(window).height() + 100);
+        $('.order-cont').height($(window).height() + 120);
         $('.cart-cont').height($('.order-cont').height() - $('footer').height() - $('.order-details-cont').height() - $('.customer-details-cont').height() - 45);
     }
 }
