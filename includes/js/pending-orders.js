@@ -246,7 +246,7 @@ function real_time_order_handler(data){
     var orders_count = $('.order-cont').length;
     if(serial_number == 1 || (serial_number > 1 && orders_count == 0)){
         $('.pending-orders-cont').append($(html).fadeIn());
-        normalize_height();
+        normalize_height2();
         $('.order-cont').eq(0).find('.button').click(function(){button_handler(this)});
         $('.order-cont').eq(0).find('.status-item').click(function(){status_handler($(this))});
         $('.order-cont').eq(0).find('#order-time').click(function(){get_closing_time(0)});
@@ -256,14 +256,13 @@ function real_time_order_handler(data){
         set_dynamic_status($('.order-cont').eq(0));
     }
     if(serial_number > 1){
-        console.log('here');
         $('.order-cont').each(function(i){
             var time_str = $(this).find('#order-time p').text().split(':');
             var time_params = {hour: parseInt(time_str[0]), minutes: parseInt(time_str[1])};
             if(order_hour == time_params.hour || order_hour > time_params.hour){
                 if(order_minutes < time_params.minutes && order_hour == time_params.hour){
                     $($(this)).before($(html).fadeIn());
-                    normalize_height();
+                    normalize_height2();
                     $('.order-cont').eq(i).find('.button').click(function(){button_handler(this)});
                     $('.order-cont').eq(i).find('.status-item').click(function(){status_handler($(this))});
                     $('.order-cont').eq(i).find('#order-time').click(function(){get_closing_time(i)});
@@ -275,7 +274,7 @@ function real_time_order_handler(data){
                 }
                 if(i == orders_count - 1){
                     $('.pending-orders-cont').append($(html).fadeIn());
-                    normalize_height();
+                    normalize_height2();
                     $('.order-cont').eq(orders_count).find('.button').click(function(){button_handler(this)});
                     $('.order-cont').eq(orders_count).find('.status-item').click(function(){status_handler($(this))});
                     $('.order-cont').eq(orders_count).find('#order-time').click(function(){get_closing_time(orders_count)});
@@ -287,7 +286,7 @@ function real_time_order_handler(data){
             }
             if(order_hour < time_params.hour){
                 $($(this)).before($(html).fadeIn());
-                normalize_height();
+                normalize_height2();
                 $('.order-cont').eq(i).find('.button').click(function(){button_handler(this)});
                 $('.order-cont').eq(i).find('.status-item').click(function(){status_handler($(this))});
                 $('.order-cont').eq(i).find('#order-time').click(function(){get_closing_time(i)});
@@ -300,6 +299,12 @@ function real_time_order_handler(data){
         });
     }
 }
+
+function normalize_height2(){
+    $('.order-cont').height($(window).height() - 100);
+    $('.cart-cont').height($('.order-cont').height() - $('footer').height() - $('.order-details-cont').height() - $('.customer-details-cont').height() - 45);
+}
+
 
 function set_status_text($status_items, order_type){
     if(order_type == 'משלוח'){
