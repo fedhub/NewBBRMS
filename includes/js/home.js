@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-    $('#managers').click(function(){window.location = base_url+'/managers';});
     $('#application-settings').click(function(){window.location = base_url+'/application-settings';});
     $('#menu-management').click(function(){window.location = base_url+'/menu-types';});
     $('#business-customers').click(function(){window.location = base_url+'/business-companies';});

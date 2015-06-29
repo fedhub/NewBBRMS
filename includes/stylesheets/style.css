@@ -369,7 +369,7 @@ header {
 header .top-strip {
   width: 100%;
   height: 25%;
-  background-color: #7B7C79;
+  background-color: rgba(123, 124, 121, 0.8);
 }
 /* line 8, ../sass/_header.scss */
 header .authentication-cont {
@@ -414,7 +414,7 @@ header .options-cont {
   border-radius: 10px;
   border-top-left-radius: 0;
   padding-top: 10px;
-  background-color: grey;
+  background-color: #A3A59E;
 }
 /* line 38, ../sass/_header.scss */
 header .options-cont:hover {
@@ -490,6 +490,7 @@ header .logo {
   background: url("../images/logo.png") no-repeat;
   background-position: center center;
   background-size: contain;
+  cursor: pointer;
 }
 
 /* line 2, ../sass/_body.scss */
@@ -786,7 +787,7 @@ header .logo {
   width: 20%;
   height: 100%;
   float: right;
-  background-color: grey;
+  background-color: #A3A59E;
 }
 /* line 5, ../sass/_side-nav.scss */
 .side-nav nav {

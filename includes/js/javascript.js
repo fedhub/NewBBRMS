@@ -8,6 +8,10 @@ $(document).ready(function() {
         $('html').css('zoom', '75%');
     }
 
+    $('.logo').click(function(){
+        window.location = base_url;
+    });
+
     var $header_height;
     var $footer_height;
     $('.main').ready(function(){
