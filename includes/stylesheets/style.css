@@ -4216,7 +4216,7 @@ footer {
 @media only screen and (max-width: 1366px) {
   /* line 316, ../sass/_pending-orders.scss */
   .pending-orders-cont #order-time {
-    width: 25%;
+    width: 23%;
   }
 }
 /* line 323, ../sass/_pending-orders.scss */

@@ -303,6 +303,10 @@ function real_time_order_handler(data){
 function normalize_height2(){
     $('.order-cont').height($(window).height() - 100);
     $('.cart-cont').height($('.order-cont').height() - $('footer').height() - $('.order-details-cont').height() - $('.customer-details-cont').height() - 45);
+    if (document.documentElement.clientWidth <= 1024) {
+        $('.order-cont').height($(window).height());
+        $('.cart-cont').height($('.order-cont').height() - $('footer').height() - $('.order-details-cont').height() - $('.customer-details-cont').height() - 45);
+    }
 }
 
 
