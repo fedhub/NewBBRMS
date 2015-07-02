@@ -76,6 +76,7 @@ app.use(function(req, res, next) {
 //}
 
 app.use(require('./mysql'));
+app.use(require('./application-settings'));
 app.use(require('./mobile_authentication_routers'));
 app.use(require('./mobile_menu_routers'));
 app.use(require('./mobile_order_routers'));
@@ -92,7 +93,6 @@ app.use(require('./menu-additions'));
 app.use(require('./addition-types'));
 app.use(require('./business-customers'));
 app.use(require('./pending-orders'));
-app.use(require('./application-settings'));
 app.use(require('./system-backup'));
 app.use(require('./queries'));
 app.use(require('./private-customers-queries'));

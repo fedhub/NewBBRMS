@@ -33,13 +33,13 @@ app_settings.post('/get-working-hours', function(req, res){
     mysql.getConnection(function(err, conn){
         if(!err){
             conn.query(query, function(err, result){
-                var working_time = {
-                    open_hour: result[0].opening_hour,
-                    open_minutes: result[0].opening_minutes,
-                    close_hour: result[0].closing_hour,
-                    close_minutes: result[0].closing_minutes
-                };
                 if(!err){
+                    var working_time = {
+                        open_hour: result[0].opening_hour,
+                        open_minutes: result[0].opening_minutes,
+                        close_hour: result[0].closing_hour,
+                        close_minutes: result[0].closing_minutes
+                    };
                     res.send({status: true, working_time: working_time});
                 }
                 else{
