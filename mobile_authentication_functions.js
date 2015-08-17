@@ -13,6 +13,10 @@ mobile_authentication_functions.sign_up = function(req, res){
     var house_number = customer_details.house_number;
     var floor = customer_details.floor;
     var enter = customer_details.enter;
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
 
     var query = "SELECT COUNT(id) AS val FROM `private_customers` WHERE phone_number='"+phone_number+"';";
     mysql.getConnection(function(err, conn){
@@ -21,9 +25,9 @@ mobile_authentication_functions.sign_up = function(req, res){
                 if(!err){
                     if(result[0].val == 0) {
                         query = "INSERT INTO `private_customers`" +
-                        "(`first_name`, `last_name`, `phone_number`, `email`, `street`, `house_number`, `floor`, `enter`) " +
+                        "(`first_name`, `last_name`, `phone_number`, `email`, `street`, `house_number`, `floor`, `enter`, `day`, `month`, `year`) " +
                         "VALUES " +
-                        "('" + mysql_real_escape_string(first_name) + "', '" + mysql_real_escape_string(last_name) + "', '" + phone_number + "', '" + email + "', '" + mysql_real_escape_string(street) + "', '" + house_number + "', '" + floor + "', '" + enter + "');";
+                        "('" + mysql_real_escape_string(first_name) + "', '" + mysql_real_escape_string(last_name) + "', '" + phone_number + "', '" + email + "', '" + mysql_real_escape_string(street) + "', '" + house_number + "', '" + floor + "', '" + enter + "', '" + day + "', '" + month + "', '" + year + "');";
                         conn.query(query, function(err, result){
                             if(!err) res.send(true);
                             else console.log("There was an error with MySQL Query: " + query + ' ' + err);
