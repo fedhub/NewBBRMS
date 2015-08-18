@@ -42,4 +42,22 @@ mobile_order_routers.post('/decrease-from-budget', function(req, res){
     mobile_order_functions.decrease_from_budget(req, res);
 });
 
+mobile_order_routers.get('/credit-payment&:terminalnumber&:lowprofilecode', function(req, res){
+
+    var terminalnumber = req.params.terminalnumber;
+    terminalnumber = decodeURIComponent(terminalnumber);
+    terminalnumber = terminalnumber.replace('terminalnumber=','');
+
+    var lowprofilecode = req.params.lowprofilecode;
+    lowprofilecode = decodeURIComponent(lowprofilecode);
+    lowprofilecode = lowprofilecode.replace('lowprofilecode=','');
+
+    var cardcom_url = "https://secure.cardcom.co.il/external/LowProfileClearing3.aspx?terminalnumber="+terminalnumber+"&lowprofilecode="+lowprofilecode;
+
+    res.render('credit-payment', {
+        cardcom_url: cardcom_url
+    });
+
+});
+
 module.exports = mobile_order_routers;
