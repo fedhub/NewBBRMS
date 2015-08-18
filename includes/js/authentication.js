@@ -1,4 +1,4 @@
-var base_url = 'http://www.best-biss.com';
+var base_url = 'https://www.best-biss.com';
 //var base_url = 'http://best-biss.herokuapp.com';
 //var base_url = 'http://localhost:3000';
 $(document).ready(function() {
