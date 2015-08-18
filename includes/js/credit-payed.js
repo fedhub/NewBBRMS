@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    alert('here');
 
-    history.go(-5);
+    history.go(-2);
 
 });
