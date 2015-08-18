@@ -60,4 +60,10 @@ mobile_order_routers.get('/credit-payment&:terminalnumber&:lowprofilecode', func
 
 });
 
+mobile_order_routers.get('/payment-success', function(req, res){
+
+    res.render('credit-payed');
+
+});
+
 module.exports = mobile_order_routers;
