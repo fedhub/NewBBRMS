@@ -470,6 +470,11 @@ function get_order_cont_elm(data){
             '</p></section>';
         }
         html += ''+
+        '<section class="description background">'+
+            '<p><span class="blink_me" style="font-size: 40px;">הערות: </span>'+
+                cart[i].comments+
+            '</p>'+
+        '</section>'+
         '</section>';
     }
     html += '' +
