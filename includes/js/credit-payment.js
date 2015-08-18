@@ -2,7 +2,9 @@ $(document).ready(function() {
 
     var height = $(document).height();
     var width = $(document).width();
-    $('iframe').css('height', height);
-    $('iframe').css('width', width);
+    $('body').css('height', height);
+    $('body').css('width', width);
+    $('iframe').css('height', '100%');
+    $('iframe').css('width', '100%');
 
 });
