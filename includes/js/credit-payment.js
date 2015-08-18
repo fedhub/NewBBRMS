@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     var height = $(window).height();
     var width = $(window).width();
-    alert(height + ' x ' + width);
+    $('iframe').css('height', height);
+    $('iframe').css('width', width);
 
 });
