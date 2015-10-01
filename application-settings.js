@@ -3,6 +3,30 @@ var app_settings = express.Router();
 var mysql = require('./mysql');
 var settings = require('./settings');
 
+mysql.getConnection(function(err, conn){
+    if(!err){
+        var query = 'select menu_stamp from `application_settings`';
+        conn.query(query, function(err, result){
+            if(!err){
+                settings.init_menu_stamp(result[0].menu_stamp);
+            }
+            else{
+                console.log('failed getting menu stamp from mysql');
+            }
+        });
+    }
+    else{
+        console.log('failed to get connection');
+    }
+});
+
+app_settings.post('/menu-stamp', function(req, res){
+
+    var stamp = {status: settings.get_menu_stamp()};
+    res.send(stamp);
+
+});
+
 app_settings.post('/get-closing-time', function(req, res){
 
     var query = 'SELECT `closing_hour`, `closing_minutes` FROM `application_settings` WHERE `id`="1";';

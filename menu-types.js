@@ -46,10 +46,11 @@ menu_types.post('/conceal-menu-type&:menu_type_id', function(req, res){
                 if(!err){
                     if((result[0].tot_count - result[0].sealed_count) >= 2){
                         query = 'UPDATE `food_types` SET `seal`="1" WHERE `id`='+menu_type_id+';';
-                        mysql.getConnection(function(err, conn){
-                            if(!err){
+                        //mysql.getConnection(function(err, conn){
+                            //if(!err){
                                 conn.query(query, function(err, result){
                                     if(!err){
+                                        settings.inc_menu_stamp();
                                         res.send({status: true, msg: ''});
                                     }
                                     else {
@@ -57,9 +58,9 @@ menu_types.post('/conceal-menu-type&:menu_type_id', function(req, res){
                                         res.send({status: false, msg: 'הייתה בעיה בעדכון ההסתרה של הפריט, אנא נסה שוב מאוחר יותר'});
                                     }
                                 });
-                            }
-                            else{console.log(err);}
-                        });
+                            //}
+                            //else{console.log(err);}
+                        //});
                     }
                     else{
                         res.send({status: false, msg: 'מדובר בפריט האחרון בקטגוריה זו שאינו מוסתר ולכן לא ניתן להסתיר אותו מהמשתמשים מאחר וזה עלול לגרום לשיבושים בתפקוד של האפליקצייה'});
@@ -84,6 +85,7 @@ menu_types.post('/reveal-menu-type&:menu_type_id', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true, msg: ''});
                 }
                 else {
@@ -142,6 +144,7 @@ function delete_process_menu_type(res, menu_type_id){
                     query = 'DELETE FROM `food_types_images` WHERE `food_type_id`="' + menu_type_id + '"';
                     conn.query(query, function (err, result) {
                         if (!err) {
+                            settings.inc_menu_stamp();
                             query = 'SELECT `id` FROM `food_items` WHERE `food_type_id`="' + menu_type_id + '";';
                             conn.query(query, function (err, result) {
                                 if (!err) {
@@ -213,6 +216,7 @@ menu_types.post('/add-menu-type', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     var addition_type_id = result.insertId;
                     query = 'INSERT INTO `addition_items`(`addition_type_id`, `name`, `description`, `price`) VALUES ("'+addition_type_id+'","'+info.addition_item_name+'","'+info.addition_item_description+'","'+info.addition_item_price+'");';
                     conn.query(query, function(err, result){
@@ -370,6 +374,7 @@ menu_types.post('/update-menu-type-details', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true});
                 }
                 else{
@@ -402,6 +407,7 @@ menu_types.post('/switch-type-related-image-selected', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true});
                 }
                 else{
@@ -430,6 +436,7 @@ menu_types.post('/switch-type-stock-image-selected', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     query = 'INSERT INTO `food_types_images`(`food_type_id`, `image_id`, `active`) VALUES ("'+menu_type_id+'","'+new_image_id+'","1");';
                     conn.query(query, function(err, result){
                         if(!err){
@@ -498,6 +505,7 @@ menu_types.post('/upload-related-type-image&:menu_type_id&:old_image_id', functi
                     query = 'INSERT INTO `food_types_images`(`food_type_id`, `image_id`, `active`) VALUES ("'+menu_type_id+'","'+new_image_id+'","1");';
                     conn.query(query, function(err, result){
                         if(!err){
+                            settings.inc_menu_stamp();
                             var query = 'UPDATE `food_types_images` SET `active`="0" WHERE `food_type_id`="'+menu_type_id+'" AND `image_id`="'+old_image_id+'";';
                             conn.query(query, function(err, result){
                                 if(!err){

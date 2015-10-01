@@ -1,9 +1,32 @@
-var express    = require('express');
-var settings      = express.Router();
+var express = require('express');
+var settings = express.Router();
+var mysql = require('./mysql');
 
 // Authentication
 var is_connected = false;
 var is_admin = false;
+var menu_stamp = 0;
+
+settings.init_menu_stamp = function(stamp){
+    menu_stamp = stamp;
+};
+
+settings.inc_menu_stamp = function(){
+    menu_stamp++;
+    mysql.getConnection(function(err, conn){
+        if(!err){
+            var query = 'UPDATE `application_settings` SET `menu_stamp`='+menu_stamp+' WHERE 1';
+            conn.query(query);
+            conn.release();
+        }
+        else console.log('failed to get connection');
+
+    });
+};
+
+settings.get_menu_stamp = function(){
+    return menu_stamp;
+};
 
 settings.get_is_connected = function(){
     return is_connected;

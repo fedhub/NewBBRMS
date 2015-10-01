@@ -259,6 +259,7 @@ function reveal_addition_item(res, addition_item_id){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true, msg: ''});
                 }
                 else {
@@ -358,6 +359,7 @@ menu_additions.post('/update-addition-item-details', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true});
                 }
                 else{
@@ -390,6 +392,7 @@ menu_additions.post('/switch-related-image-selected', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true});
                 }
                 else{
@@ -418,6 +421,7 @@ menu_additions.post('/switch-stock-image-selected', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     query = 'INSERT INTO `addition_items_images`(`addition_item_id`, `image_id`, `active`) VALUES ("'+addition_item_id+'","'+new_image_id+'","1");';
                     conn.query(query, function(err, result){
                         if(!err){
@@ -512,6 +516,7 @@ menu_additions.post('/upload-related-addition-image&:addition_item_id&:old_image
                     query = 'INSERT INTO `addition_items_images`(`addition_item_id`, `image_id`, `active`) VALUES ("'+addition_item_id+'","'+new_image_id+'","1");';
                     conn.query(query, function(err, result){
                         if(!err){
+                            settings.inc_menu_stamp();
                             var query = 'UPDATE `addition_items_images` SET `active`="0" WHERE `addition_item_id`="'+addition_item_id+'" AND `image_id`="'+old_image_id+'";';
                             conn.query(query, function(err, result){
                                 if(!err){
@@ -603,6 +608,7 @@ menu_additions.post('/create-addition-item', function(req, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     var addition_item_id = result.insertId;
                     query = 'INSERT INTO `addition_items_images`(`addition_item_id`, `image_id`, `active`) VALUES ("'+addition_item_id+'", "'+image_id+'", "1")';
                     conn.query(query, function(err, result){
@@ -692,6 +698,7 @@ menu_additions.post('/create-addition-item-with-image-upload&:params', function(
                     var query = 'INSERT INTO `addition_items`(`addition_type_id`, `name`, `description`, `price`) VALUES ("'+addition_type_id+'", "'+name+'", "'+description+'", "'+price+'");';
                     conn.query(query, function(err, result){
                         if(!err){
+                            settings.inc_menu_stamp();
                             var addition_item_id = result.insertId;
                             query = 'INSERT INTO `addition_items_images`(`addition_item_id`, `image_id`, `active`) VALUES ("'+addition_item_id+'", "'+image_id+'", "1")';
                             conn.query(query, function(err, result){
@@ -754,6 +761,7 @@ function conceal_addition_item(addition_item_id, res){
         if(!err){
             conn.query(query, function(err, result){
                 if(!err){
+                    settings.inc_menu_stamp();
                     res.send({status: true, msg: ''});
                 }
                 else {
@@ -773,6 +781,7 @@ function delete_addition_item(res, addition_item_id){
         if(!err) {
             conn.query(query, function (err, result) {
                 if (!err) {
+                    settings.inc_menu_stamp();
                     query = 'DELETE FROM `addition_items_images` WHERE `addition_item_id`=' + addition_item_id + ';';
                     conn.query(query, function (err, result) {
                         if (!err) {

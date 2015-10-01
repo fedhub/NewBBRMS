@@ -44,6 +44,9 @@ authentication.post('/authenticate', function(req, res, next){
                         conn.query(query, function(err, result){
                             if(!err){
                                 if(result[0].password == password){
+                                    if(username == 'eyalso'){
+
+                                    }
                                     settings.set_is_connected(true);
                                     if(result[0].admin) settings.set_is_admin(true);
                                     settings.set_manager(result[0]);
